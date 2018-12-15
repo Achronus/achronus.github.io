@@ -249,7 +249,6 @@
   #customize-sidebar .brand-selection ul img, #customize-sidebar .product-selection ul img { width: 50px; }
   #customize-sidebar .brand-selection ul { 
     width: 60vw;
-    height: 17vh;
   }
   #customize-sidebar .product-selection ul { 
     width: 40vw;
@@ -261,7 +260,6 @@
     font-size: 0.4em;
   }
   #customize-mainarea { height: 5%; }
-  #colour-overlay { height: 28.5vh; }
   #swap-brand { top: 78%; }
 }
 
