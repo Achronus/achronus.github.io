@@ -248,15 +248,9 @@
   }
   #customize-sidebar .brand-selection ul img, #customize-sidebar .product-selection ul img { width: 50px; }
   #customize-sidebar .brand-selection ul { width: 200px; }
-  #customize-sidebar .product-selection ul { 
-    top: 250px;
-  }
-  #remove-brand {
-    width: 50px;
-    font-size: 0.4em;
-  }
+  #customize-sidebar .product-selection ul { top: 250px; width: 130px; }
+  #remove-brand { width: 50px; font-size: 0.4em; }
   #customize-mainarea { height: 5%; }
-  #swap-brand { top: 78%; }
 }
 
 /* Tablet Media Styles */
@@ -327,10 +321,7 @@
     width: 52px;
     height: 52px;
   }
-  #customize-sidebar .product-selection ul { 
-    top: 200px;
-  }
-  #swap-brand { top: 38%; }
+  #customize-sidebar .product-selection ul { top: 200px; }
   /*--------------------------------*/
   /*     HAMBURGER MENU STYLES      */
   /*--------------------------------*/
@@ -424,7 +415,6 @@
     width: 25vw;
   }
   #customize-sidebar { width: 12vw; }
-  #swap-brand { top: 32%; }
 }
 
 /* Large Laptop Media Styles */
@@ -437,5 +427,4 @@
 /* Large Screen Media Styles */
 @media (min-width: 1920px) {
   #customize-sidebar .product-selection ul, #customize-sidebar .brand-selection ul { left: 7%; }
-  #swap-brand { top: 20%; }
 }
