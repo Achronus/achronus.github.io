@@ -469,4 +469,8 @@
 /* Large Screen Media Styles */
 @media (min-width: 1920px) {
   #customize-sidebar .product-selection ul, #customize-sidebar .brand-selection ul { left: 7%; }
+  #swap-brand { top: 20%; }
+  #colour-overlay { height: 25.5vh; }
+  #customize-sidebar .product-selection ul { height: 15vh; }
+  #customize-sidebar .brand-selection ul { width: 19vw; }
 }
