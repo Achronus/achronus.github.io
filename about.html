@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Customize | About Us</title>
+	<!-- Custom styles go here -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Mali:400,400i,700,700i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,400i,700,700i" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<!-- Custom scripts go here -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<!-- Header Start -->
+		<div id="header" class="sticky">
+			<div class="logo left-col">
+				<h1><a href="index.html">Customize</a></h1>
+			</div><!-- ./logo -->
+			<div class="nav-bar lg-right-col">
+				<div class="pages">
+					<ul>
+						<li><a href="about.html">About</a></li>
+						<li><a href="customizer.html">Customizer</a></li>
+					</ul>
+				</div>
+				<div class="ctas">
+					<ul>
+						<li><button class="login">Login</button></li>
+						<li><button class="signup">Sign Up</button></li>
+					</ul>
+				</div>
+			</div><!-- ./nav-bar -->
+			<!-- Hamburger Menu -->
+			<div class="hamburger-menu">
+				<button class="toggle-container">
+					<i class="fas fa-bars"></i>
+				</button><!-- ./toggle-container -->
+				<div class="hb-nav menu-hide">
+					<div class="hb-content">
+						<span class="close">&times;</span>
+						<ul>
+							<li><a href="about.html">About</a></li>
+							<li><a href="customizer.html">Customizer</a></li>
+							<li><button class="login">Login</button></li>
+							<li><button class="signup">Sign Up</button></li>
+						</ul>
+					</div><!-- ./hb-content -->
+				</div><!-- ./hb-nav -->
+			</div><!-- ./hamburger-menu -->
+		</div><!-- ./header -->
+		
+		<!-- Main Start -->
+		<div id="main">
+			<div id="about">
+				<div class="md-left-col">
+					<div class="about-description">
+						<h1>WE ARE CUSTOMIZE</h1>
+						<p>Customize is a unique brand dedicated to bringing you the ability to create your own t-shirts & hoodie designs with some of the best brands on the market.</p>
+						<p>Whether you want to have a hoodie that has your favourite band logo or simply create a design yourself, it can be done directly on our website.</p>
+						<button class="main-btn">Get Creative</button>
+					</div><!-- ./about-description -->
+				</div><!-- ./md-left-col -->
+				<div class="right-col hide-sm">
+					<div class="about-logo">
+						<h1>Customize</h1>
+					</div><!-- ./about-logo -->
+				</div><!-- ./right-col -->
+			</div><!-- ./about -->
+			<hr class="line-break">
+			<div id="brands">
+				<h1>POPULAR BRANDS</h1>
+					<div id="brand-icon-container">
+						<div class="image-list">
+							<div class="brand-logo">
+								<img src="assets/brands/about/disney.jpg" alt="Disney Logo">
+							</div><!-- ./brand-logo -->
+							<div class="brand-logo">
+								<img src="assets/brands/about/google.png" alt="Google Logo">
+							</div><!-- ./brand-logo -->
+							<div class="brand-logo">
+								<img src="assets/brands/about/netflix.png" alt="Netflix Logo">
+							</div><!-- ./brand-logo -->
+							<div class="brand-logo">
+								<img src="assets/brands/about/starbucks.jpg" alt="Starbucks Logo">
+							</div><!-- ./brand-logo -->
+							<div class="brand-logo">
+								<img src="assets/brands/about/vamps.png" alt="The Vamps Logo">
+							</div><!-- ./brand-logo -->
+							<div class="brand-logo">
+								<img src="assets/brands/about/beatles.jpg" alt="The Beatles Logo">
+							</div><!-- ./brand-logo -->
+							<div class="brand-logo">
+								<img src="assets/brands/about/arctic-monkeys.jpg" alt="Arctic Monkeys Logo">
+							</div><!-- ./brand-logo -->
+							<div class="brand-logo">
+								<img src="assets/brands/about/acdc.png" alt="AC/DC Logo">
+							</div><!-- ./brand-logo -->
+						</div><!-- ./image-list -->
+					</div><!-- #/brand-icon-container -->
+			</div><!-- ./brands -->
+		</div><!-- ./main -->
+
+		<!-- Footer Start -->
+		<div id="footer">
+			<div class="footer-logo md-left-col">
+				<h1><a href="index.html">Customize</a></h1>
+				<p>&copy; Customize 2018</p>
+			</div><!-- ./footer-logo -->
+			<div class="contact left-col">
+				<h3>Contact</h3>
+				<p><a href="mailto:support@customizer.com">support@customizer.com</a></p>
+			</div><!-- ./contact -->
+			<div class="social right-col">
+				<a href="#fb"><i class="fab fa-facebook-f"></i></a>
+				<a href="#twitter"><i class="fab fa-twitter"></i></a>
+			</div><!-- ./social -->
+		</div><!-- ./footer -->
+	</div><!-- ./container -->
+
+	<!-- Login Modal -->
+	<div id="loginModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="logo">
+					<h1>Customize</h1>
+				</div><!-- ./logo -->
+				<span class="close">&times;</span>
+			</div><!-- ./modal-header -->
+			<div class="modal-body">
+				<h1>Login</h1>
+				<p>New to <span>Customize?</span> <a class="signupBtn" href="#signup">Sign Up</a></p>
+				<div id="loginForm" class="form-group">
+					<div class="alert-danger" role="alert">
+						<p id="errorMissingField">Both fields are required</p>
+						<p id="errorLogin">Email address or password is incorrect</p>
+					</div><!-- ./alert-danger -->
+					<div class="form-input">
+						<input type="email" name="loginEmail" id="loginEmail" placeholder="Email address">
+					</div><!-- ./form-input -->
+					<div class="form-input">
+						<input type="password" name="loginPassword" id="loginPassword" placeholder="Password">
+					</div><!-- ./form-input -->
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="remember me" id="rememberMe">
+						<label class="form-check-label" for="rememberMe">Remember me</label>
+					</div><!-- ./form-check -->
+					<div class="form-forgot">
+						<a class="forgotPass" href="#forgotPass">Forgot Password?</a>
+					</div><!-- ./form-forgot -->
+					<div class="form-btn">
+						<button id="loginFormSubmit" type="submit" class="secondary-btn circle-btn">Login</button>
+					</div><!-- ./form-btn -->
+				</div><!-- #/loginForm -->
+			</div><!-- ./modal-body -->
+		</div><!-- ./modal-content -->
+	</div><!-- ./loginModal -->
+
+	<!-- Sign Up Modal -->
+	<div id="signupModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="logo">
+					<h1>Customize</h1>
+				</div><!-- ./logo -->
+				<span class="close">&times;</span>
+			</div><!-- ./modal-header -->
+			<div class="modal-body">
+				<h1>Sign Up</h1>
+				<p>Already have an account? <a class="loginBtn" href="#login">Login</a></p>
+				<div id="signupForm" class="form-group">
+					<div class="form-input email-input">
+						<input type="email" name="email" id="email" placeholder="Email address">
+						<div class="alert-danger" role="alert">
+							<p id="emailRequired">Field is required</p>
+						</div><!-- ./alert-danger -->
+					</div><!-- ./form-input -->
+					<div class="form-input confirmEmail-input">
+						<input type="email" name="confirmEmail" id="confirmEmail" placeholder="Confirm email address">
+						<div class="alert-danger" role="alert">
+							<p id="errorConfirmEmail">Email address does not match</p>
+							<p id="cEmailRequired">Field is required</p>
+						</div><!-- ./alert-danger -->
+					</div><!-- ./form-input -->
+					<div class="form-input password-input">
+						<input type="password" name="password" id="password" placeholder="Password">
+						<div class="alert-danger" role="alert">
+							<p id="passwordRequired">Field is required</p>
+						</div><!-- ./alert-danger -->
+					</div><!-- ./form-input -->
+					<div class="form-input confirmPassword-input">
+						<input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password">
+						<div class="alert-danger" role="alert">
+							<p id="errorConfirmPassword">Password does not match</p>
+							<p id="cPasswordRequired">Field is required</p>
+						</div><!-- ./alert-danger -->
+					</div><!-- ./form-input -->
+					<div class="form-btn">
+						<button id="signupFormSubmit" type="submit" class="secondary-btn circle-btn">Sign Up</button>
+					</div><!-- ./form-btn -->
+				</div><!-- #/signupForm -->
+				<p class="terms">By signing up you agree to us saving your details under LocalStorage</p>
+			</div><!-- ./modal-body -->
+		</div><!-- ./modal-content -->
+	</div><!-- ./signupModal -->
+
+	<!-- Forgot Password Modal -->
+	<div id="forgotPassModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="logo">
+					<h1>Customize</h1>
+				</div><!-- ./logo -->
+				<span class="close">&times;</span>
+			</div><!-- ./modal-header -->
+			<div class="modal-body">
+				<h1>Reset Password</h1>
+				<p>Enter your email address and we'll send you a link to reset your password.</p>
+				<div id="forgotPassForm" class="form-group">
+					<div class="form-input">
+						<div class="alert-danger" role="alert">
+							<p id="errorNoEmailInput">An email address is required</p>
+							<p id="errorInvalidEmail">Sorry that email address is not stored in localStorage</p>
+						</div><!-- ./alert-danger -->
+						<input type="email" name="forgotEmail" id="forgotEmail" placeholder="e.g. youremail@gmail.com">
+					</div><!-- ./form-input -->
+					<button id="backBtn" type="submit" class="secondary-btn circle-btn">Back</button>
+					<button id="sentEmail" type="submit" class="secondary-btn circle-btn">Send</button>
+				</div><!-- #/forgotPassForm -->
+			</div><!-- ./modal-body -->
+		</div><!-- ./modal-content -->
+	</div><!-- ./forgotPassModal -->
+
+	<!-- Sent Email Modal -->
+	<div id="sentEmailModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="logo">
+					<h1>Customize</h1>
+				</div><!-- ./logo -->
+				<span class="close">&times;</span>
+			</div><!-- ./modal-header -->
+			<div class="modal-body">
+				<h1>Sent! Please check your email</h1>
+				<p>Only kidding! This functionality isn't setup for this demo.</p>
+				<button type="submit" class="doneBtn secondary-btn circle-btn">Done</button>
+			</div><!-- ./modal-body -->
+		</div><!-- ./modal-content -->
+	</div><!-- ./sentEmailModal -->
+
+	<!-- Additional scripts -->
+	<script src="js/scripts.js"></script>
+</body>
+</html>

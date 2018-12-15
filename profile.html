@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Customize | Your Profile</title>
+  <!-- Custom styles go here -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Mali:400,400i,700,700i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,400i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+	<!-- Custom scripts go here -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+	<div id="container" class="profile-page">
+		<!-- Header Start -->
+		<div id="header" class="sticky">
+      <div class="logo left-col">
+        <h1><a href="index.html">Customize</a></h1>
+      </div><!-- ./logo -->
+      <div class="nav-bar lg-right-col">
+        <div class="pages">
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="customizer.html">Customizer</a></li>
+          </ul>
+        </div>
+        <div class="ctas">
+          <ul>
+            <li><button class="logout">Logout</button></li>
+          </ul>
+        </div>
+      </div><!-- ./nav-bar -->
+      <!-- Hamburger Menu -->
+			<div class="hamburger-menu">
+        <button class="toggle-container">
+          <i class="fas fa-bars"></i>
+        </button><!-- ./toggle-container -->
+        <div class="hb-nav menu-hide">
+          <div class="hb-content">
+            <span class="close">&times;</span>
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="customizer.html">Customizer</a></li>
+              <li><button class="logout">Logout</button></li>
+            </ul>
+          </div><!-- ./hb-content -->
+        </div><!-- ./hb-nav -->
+      </div><!-- ./hamburger-menu -->
+    </div><!-- ./header -->
+		
+		<!-- Main Start -->
+		<div id="main">
+      <div id="profile">
+        <div class="sm-left-col hide-sm">
+          <div class="account-sidebar">
+            <a id="primaryBtn" class="profile-main-btn" href="#my-details">My Details</a>
+            <a id="secondaryBtn" class="secondary-btn" href="#saved-work">View Saved Work</a>
+          </div><!-- ./account-sidebar -->
+        </div><!-- ./sm-left-col -->
+        <div class="lg-right-col">
+          <div id="my-details" class="profile-details">
+            <div class="my-details">
+              <div class="details-header">
+                <div class="details-title">
+                  <i class="far fa-user"></i>
+                  <h3>My Details</h3>
+                </div><!-- ./details-title -->
+                <i class="fas fa-cog"></i>
+              </div><!-- ./details-header -->
+              <div class="details-content">
+                  <div class="alert-success" role="alert">
+                    <p>Fields are unlocked for editing.</p>
+                    <p>Once a field is edited, please click off the field to update your settings automatically</p>
+                  </div><!-- ./alert-success -->
+                <div class="email">
+                  <label>Email Address:</label>
+                  <input type="email" name="profileEmail" id="profileEmail" disabled>
+                  <div class="alert-danger" role="alert">
+                    <p id="reqProEmail">An email address is required</p>
+                    <p id="invalidProEmail">Please input a valid email address</p>
+                  </div><!-- ./alert-danger -->
+                </div><!-- ./email -->
+                <div class="password">
+                  <label>Password:</label>
+                  <input type="password" name="profilePassword" id="profilePassword" disabled>
+                </div><!-- ./password -->
+              </div><!-- ./details-content -->
+            </div><!-- ./my-details -->
+            <hr class="line-break">
+            <div id="saved-work" class="saved-work">
+              <div class="saved-work-header">
+                  <i class="fas fa-tshirt"></i>
+                  <h3>Saved Work</h3>
+              </div><!-- ./saved-work-header -->
+              <div class="saved-work-content">
+              </div><!-- ./saved-work-content -->
+            </div><!-- ./saved-work -->
+          </div><!-- ./profile-details -->
+        </div><!-- ./lg-right-col -->
+      </div><!-- #/profile -->
+		</div><!-- ./main -->
+
+		<!-- Footer Start -->
+		<div id="footer">
+			<div class="footer-logo md-left-col">
+				<h1><a href="index.html">Customize</a></h1>
+				<p>&copy; Customize 2018</p>
+			</div><!-- ./footer-logo -->
+			<div class="contact left-col">
+				<h3>Contact</h3>
+				<p><a href="mailto:support@customizer.com">support@customizer.com</a></p>
+			</div><!-- ./contact -->
+			<div class="social right-col">
+				<a href="#fb"><i class="fab fa-facebook-f"></i></a>
+				<a href="#twitter"><i class="fab fa-twitter"></i></a>
+			</div><!-- ./social -->
+		</div><!-- ./footer -->
+  </div><!-- ./container -->
+
+	<!-- Additional scripts -->
+	<script src="js/scripts.js"></script>
+</body>
+</html>

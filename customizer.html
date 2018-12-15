@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Customize | Create Your Own Product</title>
+	<!-- Custom styles go here -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Mali:400,400i,700,700i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,400i,700,700i" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<!-- Custom scripts go here -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body id="customize-page">
+	<div id="container">
+		<!-- Header Start -->
+		<div id="header" class="sticky">
+			<div class="flex-items">
+				<div class="flex-nav">
+					<h1 class="logo"><a href="index.html">Customize</a></h1>
+					<div id="customize-nav">
+						<div class="file-title">
+							<label for="fileName">File Name:</label>
+							<input type="text" name="fileName" id="fileName" maxlength="52">
+							<div class="alert-success" role="alert">
+								<p>Customizer saved successfully</p>
+							</div><!-- ./alert-success -->
+						</div><!-- ./file-title -->
+						<div id="save" class="save">
+							<button type="submit" class="secondary-btn circle-btn">Save</button>
+						</div><!-- ./save -->
+					</div><!-- #/customize-nav -->
+				</div><!-- ./flex-nav -->
+			</div><!-- ./flex-items -->
+		</div><!-- ./header -->
+		
+		<!-- Main Start -->
+		<div id="main">
+			<div id="custom-design">
+				<div id="customize-sidebar">
+					<div class="product-selection">
+						<i class="fas fa-box-open"></i>
+						<div class="hide">
+							<ul></ul>
+						</div>
+					</div><!-- ./product-selection -->
+					<div class="brand-selection">
+						<i class="fas fa-tag"></i>
+						<div class="hide">
+							<ul></ul>
+						</div>
+					</div><!-- ./brand-selection -->
+					<div class="colour-selection">
+						<input id="colourInput" type="color" value="#ffffff">
+						<i class="fas fa-palette"></i>
+					</div>
+				</div><!-- #/customize-sidebar -->
+				<div id="customize-mainarea">
+					<div id="product-img-main">
+						<img id="swap-product" class="jsonObject" src="assets/products/product1.png" alt="Product image">
+						<div id="colour-overlay" class="jsonObject"></div>
+						<img id="swap-brand"  class="jsonObject" src="assets/brands/customizer/brand1.png" alt="Brand image">
+					</div>
+				</div><!-- #/customize-mainarea -->
+			</div><!-- #/custom-design -->
+		</div><!-- ./main -->
+		
+	</div><!-- #/container -->
+	
+	<!-- Additional scripts -->
+	<script src="js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,468 @@
+/*----------------------------*/
+/*       MEDIA QUERIES        */
+/*----------------------------*/
+/* Mobile Media Styles */
+@media (min-width: 320px) and (max-width: 425px) {
+  button.circle-btn, #forgotPassForm button.circle-btn {
+    width: 20%;
+  }
+  .modal-content .close {
+    width: 30vw;
+  }
+  .form-check, .form-forgot {
+    width: 50%;
+  }
+  #header .nav-bar {
+    display: none;
+  }
+  #header .logo, #header .nav-bar {
+    margin: 20px 25px;
+  }
+  #header .logo.left-col {
+    width: 55vw;
+  }
+  #about .about-description h1, #brands h1 {
+    font-size: 2.4em
+  }
+  #about .about-description p {
+    font-size: 1em;
+  }
+  #footer {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  #footer .footer-logo, #footer .contact, #footer .social {
+    margin: 20px 30px;
+  }
+  #footer .social.right-col {
+    width: 60vw;
+  }
+  #info {
+    margin: 50px;
+  }
+  #info .flex-row {
+    text-align: center;
+    flex-wrap: wrap;
+  }
+  #info .flex-row .sm-left-col {
+    display: none;
+  }
+  #brands, #about {
+    margin: 30px 0px;
+  }
+  #main #about .md-left-col {
+    width: 100vw;
+    text-align: center;
+  }
+  #main #about .right-col.hide-sm {
+    display: none;
+  }
+  #brands .image-list {
+    justify-content: center;
+  }
+  #brands .brand-logo {
+    width: 100%;
+    padding: 20px 0px;
+    text-align: center;
+  }
+  .modal-content .close, .modal-header .logo {
+    width: 100vw;
+    text-align: center;
+  }
+  .modal-header {
+    flex-wrap: wrap;
+  }
+  button.circle-btn, #forgotPassForm button.circle-btn, #signupFormSubmit {
+    width: 35vw;
+  }
+  .modal-body h1 {
+    font-size: 3.6em;
+  }
+  .modal-content {
+    padding: 20px 10px;
+  }
+  .alert-danger {
+    width: 80vw;
+  }
+  #forgotPassModal .modal-body h1 {
+    font-size: 3em;
+  }
+  #forgotPassModal .modal-body p {
+    font-size: 1em;    
+  }
+  #forgotPassModal button.circle-btn {
+    margin: 0 10px;
+  }
+  #sentEmailModal h1 {
+    font-size: 2.6em;
+    letter-spacing: 1px;
+  }
+  .jumbo-content h1 { font-size: 1.6em; }
+  .jumbo-content button { font-size: 1em; width: 55%; }
+  #jumbotron { height: 20vh; }
+  .homepage video { top: 30%; }
+  #info { margin: 30px 0; }
+  #info h1 { font-size: 2em; }
+  #info .design { font-size: 1em; }
+  #main #profile .sm-left-col.hide-sm  { display: none; }
+  #main #profile .lg-right-col { width: 100vw; }
+  #profile .profile-details { margin: 30px 20px; }
+  #profile .details-content .email, #profile .details-content .password {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  #profile .details-content .email label, #profile .details-content .email input, 
+  #profile .details-content .password label, #profile .details-content .password input {
+    width: 100vw;
+  }
+  #profile .details-content .email input, #profile .details-content .password input {
+    text-align: center;
+    margin-top: 10px;
+  }
+  #profile .details-content .password label {
+    margin-right: 0;
+  }
+  #saved-work .saved-work-content .custom-item {
+    flex-wrap: wrap;
+    padding: 20px 0;
+  }
+  #saved-work .saved-work-content .custom-item .name, #profile .saved-work-content .custom-item .date,
+  #saved-work .saved-work-content .custom-item .item-img, #profile .saved-work-content .custom-item .item-num {
+    width: 40vw;
+    margin: 10px 5px;
+  }
+  #saved-work .saved-work-content .custom-item img {
+    width: 15vw;
+    height: 15vw;
+  }
+  #saved-work .sm-first-item { order: 1; }
+  #saved-work .sm-second-item { order: 2; }
+  #saved-work .sm-third-item { order: 3; }
+  #saved-work .sm-fourth-item { order: 4; }
+  #customize-nav .alert-success { margin-bottom: 0; width: 95%; }
+  /*--------------------------------*/
+  /*     HAMBURGER MENU STYLES      */
+  /*--------------------------------*/
+  #header .hamburger-menu {
+    display: block;
+    text-align: center;
+    width: 40vw;
+  }
+  #header .hamburger-menu .toggle-container {
+    background: #fff;
+    box-shadow: none;
+    border: none;
+    padding: 10px;
+    font-size: 2em;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+  #header .hamburger-menu .menu-hide {
+    display: none;
+  }
+  #header .hamburger-menu .menu-show {
+    display: block;
+  }
+  #header .hamburger-menu .hb-nav {
+    width: 100vw;
+    height: 100vh;
+  }
+  #header .hamburger-menu .hb-nav .hb-content {
+    background-color: #1787C1;
+    color: #fff;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Mali', Arial;
+    padding-top: 20px;
+  }
+  #header .hamburger-menu .hb-nav ul {
+    list-style: none;
+    font-family: 'Montserrat Alternates', Arial;
+    color: #fff;
+  }
+  #header .hamburger-menu .hb-nav ul a, #header .hamburger-menu .hb-nav button {
+    font-family: 'Montserrat Alternates', Arial;
+    background-color: #1787C1;
+    font-size: 1.2em;
+    color: #fff;
+  }
+  #header .hamburger-menu .hb-nav li:hover a, #header .hamburger-menu .hb-nav li:hover button {
+    width: 100vw;
+    color: #242424;
+    background-color: #fff;
+    transition: 0.2s ease-in-out;
+  }
+  #header .hamburger-menu .hb-nav li:hover {
+    background-color: #fff;
+    transition: 0.2s ease-in-out;
+  }
+  #header .hamburger-menu .hb-nav button {
+    border: 0;
+  }
+  #header .hamburger-menu .hb-nav .close {
+    font-size: 5em;
+    font-family: Arial;
+  }
+  #header .hamburger-menu button.toggle-container {
+    border: none;
+    background-color: #fff;
+    color: #242424;
+    padding: 0;
+  }
+  #header .hamburger-menu li {
+    padding: 20px 0;
+  }
+  #header .flex-items .flex-nav { flex-wrap: wrap; }
+
+  /*------------------------*/
+  /*   CUSTOMIZER STYLES    */
+  /*------------------------*/
+  #customize-nav .save { margin-top: 20px; }
+  #customize-nav .file-title { margin-right: 0; }
+  #customize-nav .file-title input { width: 51vw; }
+  #customize-nav .file-title label { margin-right: 20px; }
+  #header .flex-items .flex-nav h1.logo {
+    text-align: center;
+    width: 100vw;
+  }
+  #customize-nav {
+    width: 100vw;
+    justify-content: center;
+    margin: 0;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  #customize-page .sticky + #main { padding-top: 200px; }
+  #customize-sidebar { width: 12vw; }
+  #customize-sidebar i {
+    font-size: 0.8em;
+    padding: 6px;
+    margin: 10px 4px;
+  }
+  #custom-design .colour-selection input {
+    padding: 10px;
+    margin: 10px 4px;
+    width: 26px;
+    height: 26px;
+  }
+  #customize-sidebar .brand-selection ul img, #customize-sidebar .product-selection ul img { width: 50px; }
+  #customize-sidebar .brand-selection ul { 
+    width: 60vw;
+  }
+  #customize-sidebar .product-selection ul { 
+    width: 40vw;
+    top: 250px;
+    height: 16vh;
+  }
+  #remove-brand {
+    width: 50px;
+    font-size: 0.4em;
+  }
+  #customize-mainarea { height: 5%; }
+  #colour-overlay { height: 44.5vh; }
+}
+
+/* Tablet Media Styles */
+@media (min-width: 426px) and (max-width: 768px) {
+  #jumbotron { height: 50vh; }
+  .homepage video { top: 40%; }
+  .modal-content .close {
+    width: 15vw;
+  }
+  #loginModal .form-check, #loginModal .form-forgot {
+    width: 25%;
+  }
+  button.circle-btn, #forgotPassModal button.circle-btn {
+    width: 15%;
+  }
+  #header .logo {
+    width: 60vw;
+  }
+  #header .nav-bar {
+    display: none;
+  }
+  #info .sm-left-col {
+    width: 30vw;
+  }
+  #footer .footer-logo, #footer .contact, #footer .social {
+    margin: 40px 20px;
+  }
+  #footer .footer-logo {
+    margin: 40px 30px;
+  }
+  #main #about .md-left-col {
+    width: 100vw;
+  }
+  #main #about .right-col.hide-sm, #main #profile .sm-left-col.hide-sm {
+    display: none;
+  }
+  #main #profile .lg-right-col {
+    width: 100vw;
+  }
+  #brands .brand-logo {
+    width: 36vw;
+  }
+  #forgotPassForm .alert-danger { width: 50vw; }
+  #customize-nav button { width: 15vw; }
+  #header .flex-items .flex-nav { flex-wrap: wrap; }
+  #customize-nav .file-title input { width: 51vw; }
+  #header .flex-items .flex-nav h1.logo {
+    text-align: center;
+    width: 100vw;
+  }
+  #customize-nav {
+    width: 100vw;
+    justify-content: center;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  #customize-page .sticky + #main { padding-top: 140px; }
+  #customize-sidebar { width: 12vw; }
+  #product-img-main { top: 10%; }
+  #customize-mainarea { height: 40%; }
+  #customize-sidebar i {
+    font-size: 1.4em;
+    padding: 14px;
+    margin: 16px;
+  }
+  #custom-design .colour-selection input {
+    padding: 16px;
+    margin: 16px;
+    width: 52px;
+    height: 52px;
+  }
+  #customize-sidebar .brand-selection ul { 
+    width: 46vw;
+    height: 48vh;
+  }
+  #customize-sidebar .product-selection ul { 
+    width: 30vw;
+    height: 24vh;
+    top: 200px;
+  }
+  #colour-overlay { height: 44.5vh; }
+  /*--------------------------------*/
+  /*     HAMBURGER MENU STYLES      */
+  /*--------------------------------*/
+  #header .hamburger-menu {
+    display: block;
+    text-align: center;
+    width: 40vw;
+  }
+  #header .hamburger-menu .toggle-container {
+    background: #fff;
+    box-shadow: none;
+    border: none;
+    padding: 10px;
+    font-size: 2em;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+  #header .hamburger-menu .menu-hide {
+    display: none;
+  }
+  #header .hamburger-menu .menu-show {
+    display: block;
+  }
+  #header .hamburger-menu .hb-nav {
+    width: 100vw;
+    height: 100vh;
+  }
+  #header .hamburger-menu .hb-nav .hb-content {
+    background-color: #1787C1;
+    color: #fff;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Mali', Arial;
+    padding-top: 20px;
+  }
+  #header .hamburger-menu .hb-nav ul {
+    list-style: none;
+    font-family: 'Montserrat Alternates', Arial;
+    color: #fff;
+  }
+  #header .hamburger-menu .hb-nav ul a, #header .hamburger-menu .hb-nav button {
+    font-family: 'Montserrat Alternates', Arial;
+    background-color: #1787C1;
+    font-size: 1.2em;
+    color: #fff;
+  }
+  #header .hamburger-menu .hb-nav li:hover a, #header .hamburger-menu .hb-nav li:hover button {
+    width: 100vw;
+    color: #242424;
+    background-color: #fff;
+    transition: 0.2s ease-in-out;
+  }
+  #header .hamburger-menu .hb-nav li:hover {
+    background-color: #fff;
+    transition: 0.2s ease-in-out;
+  }
+  #header .hamburger-menu .hb-nav button {
+    border: 0;
+  }
+  #header .hamburger-menu .hb-nav .close {
+    font-size: 5em;
+    font-family: Arial;
+  }
+  #header .hamburger-menu button.toggle-container {
+    border: none;
+    background-color: #fff;
+    color: #242424;
+    padding: 0;
+  }
+  #header .hamburger-menu li {
+    padding: 20px 0;
+  }
+}
+
+/* Small Laptop Media Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  #header .nav-bar { width: 100vw; }
+  #loginModal .form-check, #loginModal .form-forgot {
+    width: 18%;
+  }
+  #about .about-logo h1 {
+    font-size: 4em;
+  }
+  #forgotPassModal button.circle-btn {
+    width: 10%;
+  }
+  #signupFormSubmit {
+    width: 12vw;
+  }
+  #brands .brand-logo {
+    width: 25vw;
+  }
+  #customize-sidebar { width: 12vw; }
+  #product-img-main { top: 30%; }
+  #customize-sidebar .brand-selection ul { 
+    width: 34vw;
+    height: 46vh;
+  }
+  #customize-sidebar .product-selection ul { 
+    width: 23vw;
+    height: 26vh;
+  }
+  #colour-overlay { height: 44.5vh; }
+}
+
+/* Large Laptop Media Styles */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  #customize-sidebar { width: 9vw; }
+  #customize-sidebar .brand-selection ul { 
+    left: 9.1%;
+    width: 26vw;
+    height: 40vh;
+  }
+  #customize-sidebar .product-selection ul { 
+    left: 9.1%;
+    width: 18vw;
+  }
+  #colour-overlay { height: 38.5vh; }
+}
+
+/* Large Screen Media Styles */
+@media (min-width: 1920px) {
+  #customize-sidebar .product-selection ul, #customize-sidebar .brand-selection ul { left: 7%; }
+}

@@ -1,0 +1,711 @@
+/*----------------------------*/
+/*          CSS RESET         */
+/*----------------------------*/
+* { padding: 0; margin: 0; } 
+button { font-family: 'Montserrat Alternates', Arial; font-size: 1em; cursor: pointer; transition: 0.2s ease-in-out; }
+button:hover { transition: 0.2s ease-in-out; }
+a { color: #242424; text-decoration: none; transition: 0.2s ease-in-out; }
+a:hover { color: #1787C1; transition: 0.2s ease-in-out; }
+a:active { color: #242424; }
+body { color: #242424; }
+
+/*----------------------------*/
+/*       CUSTOM STYLES        */
+/*----------------------------*/
+@font-face {
+  font-family: 'Minstrel Poster';
+  src: url('../fonts/MinstrelPosterWHG/MINSPSW.ttf');
+  src: url('../fonts/MinstrelPosterWHG/MINSPSW.eot?iefix') format('eot'),
+	     url('../fonts/MinstrelPosterWHG/MINSPSW.woff') format('woff'),
+	     url('../fonts/MinstrelPosterWHG/MINSPSW.ttf') format('truetype'),
+	     url('../fonts/MinstrelPosterWHG/MINSPSW.svg#minspsw') format('svg');
+}
+
+/*----------------------------*/
+/*        COLUMN STYLES       */
+/*----------------------------*/
+.sm-left-col { width: 20vw; justify-content: flex-start; }
+.left-col { width: 50vw; justify-content: flex-start; }
+.md-left-col { width: 70vw; justify-content: flex-start; }
+.sm-right-col { width: 20vw; justify-content: flex-end; }
+.right-col { width: 50vw; justify-content: flex-end; }
+.lg-right-col { width: 80vw; justify-content: flex-end; }
+.fullwidth-col { width: 100vw; justify-content: center; }
+
+/*----------------------------*/
+/*         MAIN STYLES        */
+/*----------------------------*/
+#header, #footer, .nav-bar, #about, #profile {
+  display: flex;
+  align-items: center;
+}
+
+#header {
+  box-shadow: 0px 0px 6px #646464;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + #main { padding-top: 110px; }
+.logo, .nav-bar { margin: 20px 50px; }
+.logo h1, .footer-logo h1 {
+  font-family: 'Indie Flower', Arial;
+  font-weight: normal;
+  font-size: 3em;
+}
+
+.nav-bar ul{ margin: 0 10px; }
+.nav-bar .pages, .nav-bar .ctas {
+  justify-content: space-around;
+  display: inline-flex;
+}
+
+.nav-bar li {
+  display: inline-flex;
+  font-family: 'Montserrat Alternates', Arial;
+  font-size: 1em;
+  margin: 0 20px;
+}
+
+.ctas button.login, button.logout, button.secondary-btn {
+  border: 1px solid #242424;
+  background-color: #fff;
+  padding: 10px 15px;
+  color: #242424;
+}
+
+button.circle-btn {
+  border-radius: 30px;
+  width: 8vw;
+}
+
+.ctas button.login:hover, button.logout:hover, button.secondary-btn:hover {
+  border: 1px solid #444343;
+  background-color: #444343;
+  color: #fff;
+}
+
+.ctas button.signup, button.main-btn {
+  border: 1px solid #1787C1;
+  background-color: #1787C1;
+  padding: 10px 15px;
+  color: #fff;
+}
+
+.ctas button.signup:hover, button.main-btn:hover {
+  border: 1px solid #51A5D1;
+  background-color: #51A5D1;
+}
+
+#main { margin: 20px 15px; }
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#footer {
+  background-color: #06446C;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Mali', Arial;
+}
+#footer .contact h3 { font-weight: normal; padding-bottom: 10px; }
+#footer .contact p, #footer .footer-logo p { font-size: 0.8em; }
+#footer .footer-logo, #footer .contact, #footer .social { margin: 40px 50px; }
+#footer a { color: #fff; }
+#footer .social { text-align: center; }
+#footer .social .fab.fa-facebook-f { padding: 15px 23px; }
+#footer .social .fab {
+  background-color: #fff;
+  color: #06446C;
+  padding: 15px;
+  font-size: 2.2em;
+  border-radius: 50%;
+  margin: 0 10px;
+  transition: 0.2s ease-in-out;
+}
+#footer .social .fab:hover {
+  transition: 0.2s ease-in-out;
+  background-color: #06446C;
+  color: #fff;
+}
+
+.alert-success {
+  display: none;
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+#reqProEmail, #invalidProEmail { display: none; }
+.details-content .alert-danger {
+  margin: 0;
+  margin-top: 20px;
+  width: 50%;
+  text-align: center;
+}
+
+.alert-danger {
+  display: none;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  padding: 10px;
+  margin: 15px auto 0 auto;
+  width: 30%;
+}
+#forgotPassForm .alert-danger { margin-bottom: 15px; }
+.form-input { padding: 15px 0; }
+.form-btn { padding-top: 10px; }
+.form-input input {
+  border: 0;
+  border-bottom: 1px solid #e1e1e1;
+  padding: 5px;
+  transition: 0.2s ease-in-out;
+  font-size: 1em;
+}
+
+.form-input input:hover {
+  border-bottom: 1px solid #242424;
+  transition: 0.2s ease-in-out;
+}
+
+.form-input input::placeholder {
+  color: #242424;
+  font-family: 'Mali', Arial;
+}
+
+.form-check, .form-forgot {
+  display: inline-block;
+  width: 14%;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.form-check-input { 
+  -webkit-appearance: none;
+  background-color: #fff;
+  border: 1px solid #242424;
+  padding: 9px;
+  border-radius: 3px;
+  display: inline-block;
+	position: relative;
+}
+  
+.form-check-input:checked {
+  background-color: #fff;
+  border: 1px solid #242424;
+  color: #242424;
+}
+
+.form-check-input:checked:after {
+	content: '\2714';
+	font-size: 14px;
+	position: absolute;
+	top: 0px;
+	left: 3px;
+	color: #242424;
+}
+.form-check-label { padding-left: 10px; }
+
+/*--------------------------------*/
+/*     HAMBURGER MENU STYLES      */
+/*--------------------------------*/
+#header .hamburger-menu {
+  display: none;
+}
+
+/*--------------------------------*/
+/*    HOMEPAGE SPECIFIC STYLES    */
+/*--------------------------------*/
+.homepage video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  z-index: -100;
+  transform: translate(-50%, -50%);
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
+#jumbotron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+}
+
+#jumbotron .jumbo-content { text-align: center; }
+
+.jumbo-content h1 {
+  font-family: 'Montserrat Alternates', Arial;
+  font-size: 2.8em;
+  font-weight: bold;
+  padding: 35px 0;
+}
+
+.jumbo-content button {
+  font-size: 1.2em;
+  width: 45%;
+}
+
+#info { font-family: 'Mali', Arial; margin: 80px 50px; }
+#info .create h3 { font-size: 2em; }
+#info .create h3, #info .design p { margin-bottom: 10px; }
+#info .create ul, #info .design { font-size: 1.2em; }
+#info .create ul { list-style: none; }
+#info .create li { margin-bottom: 10px; }
+#info .create li:before { content: '- '; }
+#info .design { padding-top: 20px; }
+
+#info h1 {
+  font-family: 'Minstrel Poster', Arial;
+  font-size: 3em;
+  letter-spacing: 5px;
+  padding: 25px 0;
+}
+
+/*--------------------------------*/
+/*   ABOUT PAGE SPECIFIC STYLES   */
+/*--------------------------------*/
+#about .about-description h1, #brands h1 { 
+  font-family: 'Minstrel Poster', Arial;
+  font-size: 3em;
+  letter-spacing: 5px;
+}
+
+#about .about-logo h1 {
+  text-align: center;
+  font-family: 'Indie Flower', Arial;
+  font-weight: normal;
+  font-size: 5em;
+}
+
+#about .about-description p {
+  font-family: 'Mali', Arial;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+#about button {
+  margin-top: 10px;
+  padding: 10px 30px;
+}
+
+#brands #brand-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#brands .image-list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
+#about .about-description h1 { margin-bottom: 20px; }
+#brands, #about { margin: 80px 50px; }
+#brands h1 { text-align: center; }
+#brands .brand-logo { width: 20vw; padding: 20px 15px; }
+
+/*----------------------------------*/
+/*   PROFILE PAGE SPECIFIC STYLES   */
+/*----------------------------------*/
+.profile-page #main { margin: 0; }
+#profile .account-sidebar a.profile-main-btn, #profile .account-sidebar a.secondary-btn { margin-bottom: 10px; }
+#profile .details-content .email, #profile .details-content .password { width: 100%; }
+#profile .details-content .email { margin-bottom: 30px; }
+#profile .details-content .email label { margin-right: 20px; }
+#profile .details-content .password label { margin-right: 57px; }
+#profile .details-content .password input { font-family: 'Indie Flower'; font-size: 1em; }
+#profile .details-content label { font-weight: bold; }
+#profile .details-header, #profile .details-content, #profile .saved-work-header, #profile .saved-work-content .custom-item { border: 1px solid #646464; }
+#profile .details-header, #profile .saved-work-header { margin-bottom: 30px; }
+#profile .details-title i, #profile .details-title h3 { display: inline-block; }
+#profile .details-title i, #profile .saved-work-header i { margin-right: 10px; }
+#profile .details-header i, #profile .saved-work-header i { font-size: 1.4em; }
+#profile .saved-work-content { text-align: center; }
+#profile .profile-details { margin: 50px; }
+#profile .details-content {
+  display: flex;
+  justify-content: flex-start;
+  padding: 50px 50px;
+  flex-wrap: wrap;
+}
+
+#profile .details-header, #profile .details-content, #profile .saved-work-header, #profile .saved-work-content {
+  font-family: 'Mali', Arial;
+  color: #242424; 
+}
+
+#profile .details-header { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+#profile .account-sidebar a { 
+  font-family: 'Mali', Arial;
+  cursor: pointer;
+  display: block;
+  width: 60%;
+  padding: 15px 15px;
+  font-size: 1.1em;
+  margin: 0 auto;
+  transition: 0.2s ease-in-out; 
+}
+
+.profile-page a.profile-main-btn {
+  border: 1px solid #1787C1;
+  background-color: #1787C1;
+  padding: 10px 15px;
+  color: #fff;
+}
+
+.profile-page a.secondary-btn {
+  border: 1px solid #242424;
+  background-color: #fff;
+  padding: 10px 15px;
+  color: #242424;
+}
+
+#profile .account-sidebar {
+  border-right: 1px solid #646464;
+  height: 115vh;
+  padding: 50px 0;
+  text-align: center;
+  position: fixed;
+  top: 110px;
+  width: 20vw;
+}
+
+#profile .details-content input {
+  width: 35%;
+  border: 0;
+  padding: 5px;
+  border-bottom: 1px solid #707070;
+  font-family: 'Mali', Arial;
+  font-size: 0.9em;
+}
+
+#profile .saved-work-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+#profile .saved-work-content .custom-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 20px 60px;
+}
+
+#profile .saved-work-content .custom-item img {
+  width: 5vw;
+  height: 5vw;
+  background-color: #EBEBEB;
+}
+
+.profile-page #footer {
+  z-index: 1;
+  position: relative;
+}
+
+#profile input:disabled {
+  background: inherit;
+}
+
+#profile .details-header i.fas.fa-cog {
+  cursor: pointer;
+}
+
+/*----------------------------------------*/
+/*     CUSTOMIZE PAGE SPECIFIC STYLES     */
+/*----------------------------------------*/
+#customize-nav {
+  display: flex;
+  align-items: center;
+  margin: 0 100px;
+}
+
+#header .flex-items {
+  display: flex;
+  align-items: center;
+}
+
+#header .flex-items .flex-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+}
+
+#header .flex-items h1.logo {
+  font-family: 'Indie Flower', Arial;
+  font-weight: normal;
+  font-size: 3em;
+}
+
+#customize-nav .file-title {
+  font-family: 'Mali', Arial;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1em;
+  margin-right: 30px;
+}
+
+#customize-nav .file-title label {
+  margin-right: 30px;
+}
+
+#customize-nav .file-title input {
+  width: 20vw;
+  border: 0;
+  padding: 5px;
+  border-bottom: 1px solid #707070;
+  font-family: 'Mali', Arial;
+  font-size: 1em;
+}
+#customize-nav .alert-success {
+  font-weight: normal;
+  margin-top: 10px;
+}
+#customize-page .sticky + #main { padding-top: 90px; }
+#customize-page #main { height: 84vh; margin: 0; }
+#main #custom-design, #customize-sidebar, #customize-mainarea { height: inherit; }
+#customize-sidebar { 
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  box-shadow: 0px 0px 6px #646464;
+  padding: 20px 0;
+  width: 7vw;
+}
+
+#main #custom-design {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+#customize-mainarea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FCFCFC;
+  z-index: -1;
+  width: 98.7vw;
+  height: 50%;
+  margin: 0;
+  padding: 100px 0;
+  position: absolute;
+}
+
+#customize-mainarea img {
+  position: absolute;
+}
+
+#swap-brand {
+  width: 80px;
+  left: 78px;
+  top: 24%;
+  display: none;
+}
+
+#product-img-main #swap-product {
+  mix-blend-mode: color-burn;
+}
+
+#colour-overlay {
+  width: 240px;
+  height: 38.5vh;
+  filter: opacity(50%) saturate(200%);
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-origin: fill-box;
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  mask-origin: fill-box;
+  transform: translateY(0%);
+}
+
+#product-img-main {
+  position: relative;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 20vw;
+  left: 150px;
+}
+
+#remove-brand {
+  width: 110px;
+  margin: 5px;
+  background: none;
+  border: none;
+  font-size: 0.6em;
+  font-weight: bold;
+  font-family: 'Minstrel Poster', Arial;
+}
+
+#customize-sidebar i {
+  border: 1px solid #646464;
+  color: #242424;
+  border-radius: 50%;
+  font-size: 2em;
+  padding: 20px;
+  margin: 20px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+#customize-sidebar i:hover {
+  border: 1px solid #1687C1;
+  background-color: #1687C1;
+  color: #fff;
+}
+
+#custom-design .colour-selection input {
+  mix-blend-mode: hue;
+  position: absolute;
+  padding: 20px;
+  margin: 20px;
+  width: 74px;
+  height: 74px;
+  cursor: pointer;
+  color: #242424;
+  border: 1px solid #646464;
+  background-color: #ffffff;
+  border-radius: 50%;
+  font-size: 2em;
+  transition: 0.2s ease-in-out;
+  opacity: 0;
+}
+
+#custom-design .colour-selection input:hover + i.fas.fa-palette {
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+}
+
+#customize-sidebar .product-selection ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  flex-wrap: wrap;
+  width: 12vw;
+  height: 20vh;
+  position: absolute;
+  left: 12.1%;
+  top: 150px;
+  border: 1px solid #b9b9b9;
+  background-color: #ffffff;
+}
+
+#customize-sidebar .brand-selection ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  flex-wrap: wrap;
+  width: 18vw;
+  height: 26vh;
+  position: absolute;
+  left: 12.1%;
+  top: 250px;
+  border: 1px solid #b9b9b9;
+  background-color: #ffffff;
+}
+
+#customize-sidebar .brand-selection li, #customize-sidebar .product-selection li { margin: 7px; }
+#customize-sidebar .brand-selection li:hover, #customize-sidebar .product-selection li:hover { background-color: #f9f9f9; opacity: 0.8; }
+#customize-sidebar .hide { display: none; }
+#custom-design .product-selection, #custom-design .brand-selection, #custom-design .colour-selection { text-align: center; }
+#custom-design .colour-selection input::-webkit-color-swatch { border: none; }
+#custom-design .colour-selection input::-webkit-color-swatch-wrapper { padding: 0; }
+#custom-design .colour-selection input::-moz-color-swatch, #custom-design .colour-selection input::-moz-focus-inner { border: none; }
+#custom-design .colour-selection input::-moz-focus-inner { padding: 0; }
+
+/*----------------------------*/
+/*           MODALS           */
+/*----------------------------*/
+#signupModal, #loginModal, #forgotPassModal, #sentEmailModal { display: none; }
+.modal-header .logo { width: 90vw; }
+.modal-content .logo, .modal-content .nav-bar { margin: 0px 50px; }
+.modal-content .modal-body { display: inherit; flex-wrap: wrap; text-align: center; }
+.modal-header, .modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* The Close Button */
+.modal-content .close {
+  color: #000000;
+  font-size: 5em;
+  width: 10vw;
+  font-family: Arial;
+}
+
+.modal-content .close:hover, .modal-content .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  height: 100%;
+  font-family: 'Mali', Arial;
+  overflow: auto;
+  padding-right: 0;
+}
+
+.modal-body h1 {
+  font-family: 'Minstrel Poster', Arial;
+  font-size: 4em;
+  letter-spacing: 5px;
+  padding-bottom: 10px;
+}
+.modal-body p { margin-bottom: 25px; font-size: 1.1em; }
+.modal-body .alert-danger p { margin: 10px 0; display: none; }
+.modal-body p.terms { margin-top: 20px; }
+.modal-body a { color: #1787C1; }
+.modal-body a:hover { color: #242424; }
+#forgotPassModal .form-input input { width: 300px; }
+#forgotPassModal button.circle-btn { width: 8%; margin: 0 45px; }
+#loginModal #loginEmail { font-family: 'Mali', Arial; }
