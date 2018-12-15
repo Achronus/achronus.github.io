@@ -454,14 +454,14 @@
   #customize-sidebar { width: 9vw; }
   #customize-sidebar .brand-selection ul { 
     left: 9.1%;
-    width: 26vw;
+    width: 28vw;
     height: 30vh;
   }
   #customize-sidebar .product-selection ul { 
     left: 9.1%;
     width: 18vw;
   }
-  #colour-overlay { height: 38.5vh; }
+  #colour-overlay { height: 31.5vh; }
 }
 
 /* Large Screen Media Styles */

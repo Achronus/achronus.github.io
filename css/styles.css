@@ -600,6 +600,9 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
 }
 
 #custom-design .colour-selection input {
+  mix-blend-mode: hue;
+  -moz-mix-blend-mode: hue;
+  -webkit-mix-blend-mode: hue;
   position: absolute;
   padding: 20px;
   margin: 20px;
