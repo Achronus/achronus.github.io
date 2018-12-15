@@ -247,13 +247,9 @@
     height: 26px;
   }
   #customize-sidebar .brand-selection ul img, #customize-sidebar .product-selection ul img { width: 50px; }
-  #customize-sidebar .brand-selection ul { 
-    width: 60vw;
-  }
+  #customize-sidebar .brand-selection ul { width: 200px; }
   #customize-sidebar .product-selection ul { 
-    width: 40vw;
     top: 250px;
-    height: 10vh;
   }
   #remove-brand {
     width: 50px;
@@ -319,7 +315,6 @@
   }
   #customize-page .sticky + #main { padding-top: 140px; }
   #customize-sidebar { width: 12vw; }
-  #product-img-main { top: 10%; }
   #customize-mainarea { height: 40%; }
   #customize-sidebar i {
     font-size: 1.4em;
@@ -332,13 +327,7 @@
     width: 52px;
     height: 52px;
   }
-  #customize-sidebar .brand-selection ul { 
-    width: 46vw;
-    height: 28vh;
-  }
   #customize-sidebar .product-selection ul { 
-    width: 30vw;
-    height: 16vh;
     top: 200px;
   }
   #swap-brand { top: 38%; }
@@ -435,36 +424,18 @@
     width: 25vw;
   }
   #customize-sidebar { width: 12vw; }
-  #product-img-main { top: 30%; }
-  #customize-sidebar .brand-selection ul { 
-    width: 34vw;
-    height: 30vh;
-  }
-  #customize-sidebar .product-selection ul { 
-    width: 23vw;
-    height: 16vh;
-  }
   #swap-brand { top: 32%; }
 }
 
 /* Large Laptop Media Styles */
 @media (min-width: 1025px) and (max-width: 1440px) {
   #customize-sidebar { width: 9vw; }
-  #customize-sidebar .brand-selection ul { 
-    left: 9.1%;
-    width: 28vw;
-    height: 30vh;
-  }
-  #customize-sidebar .product-selection ul { 
-    left: 9.1%;
-    width: 18vw;
-  }
+  #customize-sidebar .brand-selection ul { left: 9.1%; }
+  #customize-sidebar .product-selection ul { left: 9.1%; }
 }
 
 /* Large Screen Media Styles */
 @media (min-width: 1920px) {
   #customize-sidebar .product-selection ul, #customize-sidebar .brand-selection ul { left: 7%; }
   #swap-brand { top: 20%; }
-  #customize-sidebar .product-selection ul { height: 15vh; }
-  #customize-sidebar .brand-selection ul { width: 19vw; }
 }
