@@ -287,7 +287,7 @@ button.circle-btn {
 /*--------------------------------*/
 /*   ABOUT PAGE SPECIFIC STYLES   */
 /*--------------------------------*/
-#about .about-description h1, #brands h1 { 
+#about .about-description h1, #brands h1, #demo h1 { 
   font-family: 'Minstrel Poster', Arial;
   font-size: 3em;
   letter-spacing: 5px;
@@ -324,7 +324,7 @@ button.circle-btn {
 }
 hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
 #about .about-description h1 { margin-bottom: 20px; }
-#brands, #about { margin: 80px 50px; }
+#brands, #about, #demo { margin: 80px 50px; }
 #brands h1 { text-align: center; }
 #brands .brand-logo { width: 20vw; padding: 20px 15px; }
 
