@@ -410,7 +410,7 @@ function signupFormValidation() {
 }
 
 var pImg = '';
-// Get products function
+// Get products function - outputs product images into ul container
 function getProducts() {
   for (i = 0; i < 2; i++) {
       var imgSrc = "assets/products/product" + (i + 1) + ".png",
@@ -435,7 +435,7 @@ function getProducts() {
 
 var bImg = '';
 var button = '';
-// Get brand logos function
+// Get brand logos function - outputs brand logos into ul container
 function getBrandLogos() {
   for (i = 0; i < 8; i++) {
     var imgSrc = "assets/brands/customizer/brand" + (i + 1) + ".png",
@@ -459,31 +459,34 @@ function getBrandLogos() {
   });
 }
 
-// Add product function
+// Add product function - changes product image
 function addProduct() {
   $('.product-img').click(function() {
     //console.log($(this).attr('src'));
     $('#swap-product').attr('src', $(this).attr('src'));
     $('#colour-overlay').css('-webkit-mask-image', 'url("' + $(this).attr('src') + '"');
     $('#colour-overlay').css('mask-image', 'url("' + $(this).attr('src') + '"');
+    $("#customize-sidebar .product-selection div").css('display', 'none');
   });
 }
 
-// Add brand function
+// Add brand function - adds or removes brand image onto product
 function addBrand() {
   $('.brand-img').click(function() {
     // Add brand image
     $('#swap-brand').attr('src', $(this).attr('src'));
     $('#swap-brand').css('display', 'block');
+    $("#customize-sidebar .brand-selection div").css('display', 'none');
   });
 
   // Remove brand image
   $('#remove-brand').click(function() {
     $('#swap-brand').css('display', 'none');
+    $("#customize-sidebar .brand-selection div").css('display', 'none');
   });
 }
 
-// Save customizer function
+// Save customizer function - saves customizer elements within localStorage and outputs to profile page
 function saveCustomizer() {
   i = localStorage.getItem('Counter');
   idTrack = localStorage.getItem('ID Track');
