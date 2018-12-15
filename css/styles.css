@@ -538,18 +538,29 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
 
 #product-img-main #swap-product {
   mix-blend-mode: color-burn;
+  -moz-mix-blend-mode: color-burn;
+  -webkit-mix-blend-mode: color-burn;
 }
 
 #colour-overlay {
   width: 240px;
   height: 38.5vh;
   filter: opacity(50%) saturate(200%);
-  -webkit-mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-origin: fill-box;
+  -moz-filter: opacity(50%) saturate(200%);
+  -webkit-filter: opacity(50%) saturate(200%);
+  -ms-filter: opacity(50%) saturate(200%);
   mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  -moz-mask-size: 100% 100%;
+  -ms-mask-size: 100% 100%;
   mask-repeat: no-repeat;
+  -moz-mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  -ms-mask-repeat: no-repeat;
   mask-origin: fill-box;
+  -moz-mask-origin: fill-box;
+  -webkit-mask-origin: fill-box;
+  -ms-mask-origin: fill-box;
   transform: translateY(0%);
 }
 
@@ -589,7 +600,6 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
 }
 
 #custom-design .colour-selection input {
-  mix-blend-mode: hue;
   position: absolute;
   padding: 20px;
   margin: 20px;
