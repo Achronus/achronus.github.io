@@ -543,8 +543,8 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
 }
 
 #colour-overlay {
-  width: 240px;
-  height: 38.5vh;
+  width: inherit;
+  height: inherit;
   filter: opacity(50%) saturate(200%);
   -moz-filter: opacity(50%) saturate(200%);
   -webkit-filter: opacity(50%) saturate(200%);
@@ -568,7 +568,8 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
   position: relative;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 20vw;
+  width: 240px;
+  height: 240px;
   left: 150px;
 }
 
