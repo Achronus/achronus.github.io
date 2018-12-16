@@ -106,14 +106,8 @@ $(document).ready(function() {
         $(".details-content .alert-danger").toggle(function() {
           $("#reqProEmail").fadeIn().css('display', 'block');
         });
-      } else if( $("#profileEmail").not(':contains("@")') ) {
-        $(".details-content .alert-danger").toggle(function() {
-          $("#invalidProEmail").fadeIn().css('display', 'block');
-          $("#reqProEmail").fadeIn().css('display', 'none');
-        });
       } else {
         $("#reqProEmail").fadeIn().css('display', 'none');
-        $("#invalidProEmail").fadeIn().css('display', 'none');
         localStorage.setItem('Email Address', $('#profileEmail').val());
       }
     });
