@@ -112,6 +112,8 @@
     flex-wrap: wrap;
     text-align: center;
   }
+  #profile .details-content { padding: 30px; }
+  #profile .details-content .alert-danger { width: 100%; }
   #profile .details-content .email label, #profile .details-content .email input, 
   #profile .details-content .password label, #profile .details-content .password input {
     width: 100vw;
