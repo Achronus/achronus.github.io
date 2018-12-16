@@ -130,6 +130,8 @@ $(document).ready(function() {
 
   // Set mask for customizer onload
   $('#colour-overlay').css('-webkit-mask-image', 'url("assets/products/product1.png")');
+  $('#colour-overlay').css('-moz-mask-image', 'url("assets/products/product1.png")');
+  $('#colour-overlay').css('-ms-mask-image', 'url("assets/products/product1.png")');
   $('#colour-overlay').css('mask-image', 'url("assets/products/product1.png")');
 
 }); // End of document.ready()
@@ -465,6 +467,8 @@ function addProduct() {
     //console.log($(this).attr('src'));
     $('#swap-product').attr('src', $(this).attr('src'));
     $('#colour-overlay').css('-webkit-mask-image', 'url("' + $(this).attr('src') + '"');
+    $('#colour-overlay').css('-moz-mask-image', 'url("' + $(this).attr('src') + '"');
+    $('#colour-overlay').css('-ms-mask-image', 'url("' + $(this).attr('src') + '"');
     $('#colour-overlay').css('mask-image', 'url("' + $(this).attr('src') + '"');
     $("#customize-sidebar .product-selection div").css('display', 'none');
   });
@@ -557,6 +561,8 @@ function createJSONObject(JSONContainer) {
     var bgcolor = $(this).css("background-color");
     var mask = $(this).css("mask-image");
     var webkitMask = $(this).css("-webkit-mask-image");
+    var mozMask = $(this).css("-moz-mask-image");
+    var msMask = $(this).css("-ms-mask-image");
 
     // Item values
     item = {};
@@ -567,6 +573,8 @@ function createJSONObject(JSONContainer) {
     item ["bgcolor"] = bgcolor;
     item ["mask-image"] = mask;
     item ["-webkit-mask-image"] = webkitMask;
+    item ["-moz-mask-image"] = mozMask;
+    item ["-ms-mask-image"] = msMask;
 
     // Push items into the object
     JSONContainer.push(item);
