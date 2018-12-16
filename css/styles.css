@@ -512,6 +512,14 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
   margin-top: 20px;
 }
 
+#customizer-bg {
+  width: 100vw;
+  height: 100%;
+  z-index: -2;
+  background-color: #fefefe;
+  overflow: hidden;
+}
+
 #customize-mainarea {
   display: flex;
   align-items: center;
@@ -563,7 +571,7 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
 
 #product-img-main {
   position: relative;
-  top: 20vh;
+  top: auto;
   transform: translate(-50%, -50%);
   width: 240px;
   height: 240px;
