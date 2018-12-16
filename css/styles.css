@@ -240,6 +240,9 @@ button.circle-btn {
   height: auto;
   z-index: -100;
   transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   -webkit-filter: blur(3px);
   -moz-filter: blur(3px);
   -o-filter: blur(3px);
@@ -566,12 +569,15 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
   -moz-mask-origin: fill-box;
   -webkit-mask-origin: fill-box;
   -ms-mask-origin: fill-box;
-  transform: translateY(0%);
 }
 
 #product-img-main {
   position: relative;
   transform: translate(-8%, -75%);
+  -webkit-transform: translate(-8%, -75%);
+  -moz-transform: translate(-8%, -75%);
+  -ms-transform: translate(-8%, -75%);
+  
   width: 240px;
   height: 240px;
 }
