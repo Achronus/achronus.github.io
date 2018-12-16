@@ -247,6 +247,7 @@
     height: 26px;
   }
   #customize-sidebar .brand-selection ul img, #customize-sidebar .product-selection ul img { width: 50px; }
+  #customize-sidebar .brand-selection ul, #customize-sidebar .product-selection ul { left: 11%; }
   #customize-sidebar .brand-selection ul { width: 200px; }
   #customize-sidebar .product-selection ul { top: 250px; width: 130px; }
   #remove-brand { width: 50px; font-size: 0.4em; }
@@ -418,11 +419,10 @@
 /* Large Laptop Media Styles */
 @media (min-width: 1025px) and (max-width: 1440px) {
   #customize-sidebar { width: 9vw; }
-  #customize-sidebar .brand-selection ul { left: 9.1%; }
-  #customize-sidebar .product-selection ul { left: 9.1%; }
+  #customize-sidebar .brand-selection ul, #customize-sidebar .product-selection ul { left: 8.5%; }
 }
 
 /* Large Screen Media Styles */
 @media (min-width: 1920px) {
-  #customize-sidebar .product-selection ul, #customize-sidebar .brand-selection ul { left: 7%; }
+  #customize-sidebar .product-selection ul, #customize-sidebar .brand-selection ul { left: 6.6%; }
 }

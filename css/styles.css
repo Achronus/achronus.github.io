@@ -627,7 +627,7 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
   background-color: #000;
   color: #fff;
 }
-
+#customize-sidebar .product-selection ul, #customize-sidebar .brand-selection ul { left: 12%; }
 #customize-sidebar .product-selection ul {
   display: flex;
   align-items: center;
@@ -636,7 +636,6 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
   height: auto;
   width: 240px;
   position: absolute;
-  left: 12.1%;
   top: 150px;
   border: 1px solid #b9b9b9;
   background-color: #ffffff;
@@ -650,7 +649,6 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
   height: auto;
   width: 350px;
   position: absolute;
-  left: 12.1%;
   top: 250px;
   border: 1px solid #b9b9b9;
   background-color: #ffffff;
