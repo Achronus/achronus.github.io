@@ -250,7 +250,6 @@
   #customize-sidebar .brand-selection ul { width: 200px; }
   #customize-sidebar .product-selection ul { top: 250px; width: 130px; }
   #remove-brand { width: 50px; font-size: 0.4em; }
-  #customize-mainarea { height: 5%; }
 }
 
 /* Tablet Media Styles */
@@ -309,7 +308,6 @@
   }
   #customize-page .sticky + #main { padding-top: 140px; }
   #customize-sidebar { width: 12vw; }
-  #customize-mainarea { height: 40%; }
   #customize-sidebar i {
     font-size: 1.4em;
     padding: 14px;
