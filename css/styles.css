@@ -575,8 +575,8 @@ hr.line-break { margin: 50px; border: 1px solid #eae9e9; }
   position: relative;
   transform: translate(-8%, -75%);
   -webkit-transform: translate(-8%, -75%);
-  -moz-transform: translate(-8%, -50%);
-  -ms-transform: translate(-8%, -50%);
+  -moz-transform: translate(-8%, -35%);
+  -ms-transform: translate(-8%, -35%);
   width: 240px;
   height: 240px;
 }
