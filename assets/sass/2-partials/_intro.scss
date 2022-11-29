@@ -1,9 +1,9 @@
 // INTRO STYLES
 #top-home {
   height: 100%;
-  @include background('/wp-content/uploads/2021/06/home-header-bg.jpg', bottom, center, no-repeat, cover);
+  @include background('assets/imgs/home-header-bg.jpg', bottom, center, no-repeat, cover);
   #intro-home {
-    @include remMargin(60px, 0px);
+    @include remMargin(24px, 0px);
     .title {
       font-family: $dm-sans;
       h2 {
@@ -27,6 +27,20 @@
             z-index: -1;
           }
         }
+        .social-icons {
+          a {
+            transition: $base-transition;
+            &.linkedin-btn {
+              background-color: #0976b4;
+            }
+            &.github-btn {
+              background-color: #454545;
+            }
+            svg {
+              color: #fff;
+            }
+          }
+        }
       }
       .ctas {
         .portfolio-btn, .wiki-btn {
@@ -45,6 +59,11 @@
               color: #fff;
               background-color: $black;
               border-color: $black;
+            }
+          }
+          svg {
+            &.svg-inline--fa {
+              vertical-align: -0.2em;
             }
           }
         }

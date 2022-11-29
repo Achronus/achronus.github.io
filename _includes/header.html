@@ -1,7 +1,3 @@
-{% assign about_page = 'about' %}
-{% assign portfolio_page = 'portfolio' %}
-{% assign wiki_page = 'wiki' %}
-
 <nav id="site-navigation" class="main-navigation navbar navbar-light navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -20,19 +16,19 @@
                     </a>
                 </li><!-- .nav-item -->
                 <li class="nav-item">
-                    <a href="/{{ about_page }}" class="nav-link">
+                    <a href="/{{ head.about_page_url }}" class="nav-link">
                         About<br>
                         <span>Personal Info</span>
                     </a>
                 </li><!-- .nav-item -->
                 <li class="nav-item">
-                    <a href="/{{ portfolio_page }}" class="nav-link">
+                    <a href="/{{ head.portfolio_page_url }}" class="nav-link">
                         Portfolio<br>
                         <span>Selected Works</span>
                     </a>
                 </li><!-- .nav-item -->
                 <li class="nav-item">
-                    <a href="/{{ wiki_page }}" class="nav-link">
+                    <a href="/{{ head.wiki_page_url }}" class="nav-link">
                         Wiki<br>
                         <span>Collected Writing</span>
                     </a>

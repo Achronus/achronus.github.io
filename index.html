@@ -2,9 +2,6 @@
 title: Ryan Partridge - Portfolio
 layout: homepage
 ---
-{% assign linkedin_url = 'https://www.linkedin.com/in/ryan-partridge-08b7118b/' %}
-{% assign github_url = 'https://github.com/Achronus' %}
-
 <!-- INTRO
 ============================================================================== -->
 <section id="intro-home">
@@ -14,13 +11,13 @@ layout: homepage
                 <h2>Programming the <div class="blue-underline">Future</div></h2>        
                 <div class="row ctas">
                     <div class="col-auto portfolio-btn">
-                        <a href="/portfolio/" class="btn btn-primary">
+                        <a href="/{{ head.portfolio_page_url }}" class="btn btn-primary">
                             <i class="fas fa-chevron-circle-right"></i>
                             <span class="name">View Portfolio</span>
                         </a>
                     </div> <!-- .col -->
                     <div class="col-auto wiki-btn">
-                        <a href="/wiki/" class="btn btn-primary">
+                        <a href="/{{ head.wiki_page_url }}" class="btn btn-primary">
                             <i class="fas fa-angle-right"></i>
                             <span class="name">View Wiki</span>
                         </a>
@@ -34,10 +31,10 @@ layout: homepage
 
         <div class="row">
             <div class="col-auto social-icons mt-5">
-                <a class="btn btn-primary linkedin-btn" href="{{ linkedin_url }}" role="button">
+                <a class="btn btn-primary linkedin-btn" href="{{ head.linkedin_url }}" role="button">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a class="btn btn-primary github-btn" href="{{ github_url }}" role="button">
+                <a class="btn btn-primary github-btn" href="{{ head.github_url }}" role="button">
                     <i class="fab fa-github"></i>
                 </a>
             </div><!-- .social-icons-->

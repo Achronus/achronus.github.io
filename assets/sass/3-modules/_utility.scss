@@ -40,25 +40,3 @@
     }
   }
 }
-
-// COOKIES PAGE
-#cookies {
-  .content {
-    @include remMargin(40px, 0px);
-    p {
-      font-family: $rubik;
-      font-weight: 300;
-      color: $black;
-      @include remFont(16px);
-      a {
-        text-decoration: none;
-        color: $dark-blue;
-        transition: $base-transition;
-        &:hover {
-          color: $torquoise;
-          transition: $base-transition;
-        }
-      }
-    }
-  }
-}

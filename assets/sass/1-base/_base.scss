@@ -1,6 +1,6 @@
 // BASE STYLES
 #page {
-  @include background('/wp-content/uploads/2021/06/section-bg.jpg', top, center, repeat, initial);
+  @include background('/assets/imgs/section-bg.jpg', top, center, repeat, initial);
 }
 
 section {
@@ -33,7 +33,7 @@ section {
   &:not(.error-page, .single-page) {
     &#top-page {
       height: 42%;
-      @include background('/wp-content/uploads/2021/06/header-bg.jpg', bottom, center, no-repeat, cover);
+      @include background('/assets/imgs/header-bg.jpg', bottom, center, no-repeat, cover);
       #intro {
         .title {
           h2 {

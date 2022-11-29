@@ -48,20 +48,3 @@
     }
   }
 }
-
-#cookie-notice {
-    a {
-        &.cn-button {
-            background-color: $black;
-            padding: 4px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: $base-transition;
-        }
-        &:hover {
-            background-color: #fff;
-            color: $black;
-            transition: $base-transition;
-        }
-    }
-}
