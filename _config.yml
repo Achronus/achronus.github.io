@@ -1,2 +1,9 @@
 name: Ryan Partridge - Portfolio
 description: My portfolio website.
+
+linkedin_url: 'https://www.linkedin.com/in/ryan-partridge-08b7118b/'
+github_url: 'https://github.com/Achronus'
+
+about_page_url: 'about'
+portfolio_page_url: 'portfolio'
+wiki_page_url: 'wiki'

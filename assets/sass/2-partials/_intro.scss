@@ -10,6 +10,7 @@
         font-weight: bold;
         color: $black;
         text-transform: capitalize;
+        @include remFont(80px);
         div {
           &.blue-underline {
             display: inline-block;

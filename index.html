@@ -4,6 +4,7 @@ layout: homepage
 ---
 <!-- INTRO
 ============================================================================== -->
+<p>{{ site.pages }}</p>
 <section id="intro-home">
     <div class="container">
         <div class="row">
@@ -11,13 +12,13 @@ layout: homepage
                 <h2>Programming the <div class="blue-underline">Future</div></h2>        
                 <div class="row ctas">
                     <div class="col-auto portfolio-btn">
-                        <a href="/{{ layout.portfolio_page_url }}" class="btn btn-primary">
+                        <a href="/{{ site.portfolio_page_url }}" class="btn btn-primary">
                             <i class="fas fa-chevron-circle-right"></i>
                             <span class="name">View Portfolio</span>
                         </a>
                     </div> <!-- .col -->
                     <div class="col-auto wiki-btn">
-                        <a href="/{{ layout.wiki_page_url }}" class="btn btn-primary">
+                        <a href="/{{ site.wiki_page_url }}" class="btn btn-primary">
                             <i class="fas fa-angle-right"></i>
                             <span class="name">View Wiki</span>
                         </a>
@@ -25,10 +26,10 @@ layout: homepage
                 </div> <!-- .row -->
                 <div class="row">
                     <div class="col-auto social-icons mt-5">
-                        <a class="btn btn-primary linkedin-btn" href="{{ layout.linkedin_url }}" role="button">
+                        <a class="btn btn-primary linkedin-btn" href="{{ site.linkedin_url }}" role="button">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a class="btn btn-primary github-btn" href="{{ layout.github_url }}" role="button">
+                        <a class="btn btn-primary github-btn" href="{{ site.github_url }}" role="button">
                             <i class="fab fa-github"></i>
                         </a>
                     </div><!-- .social-icons-->
