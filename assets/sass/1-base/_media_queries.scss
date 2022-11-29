@@ -137,12 +137,6 @@
 }
 
 @include media-breakpoint-up(sm) {
-  #intro-home {
-    .social-icons {
-      margin: inherit;
-    }
-  }
-
   section{
     &#activity {
       .col-sm-6 {
