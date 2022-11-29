@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-  {% include head.html %}
-  <body>
-    {% include header.html %}
-    <main class="page-content" aria-label="Content">
-        {{ content }}
-    </main>
-    {% if page.homepage != true %}
+    {% include head.html %}
+    <body>
+        {% include header.html %}
+        <main class="page-content" aria-label="Content">
+            <!-- INTRO
+            ============================================================================== -->
+            <section id="intro">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-auto title">
+                            <h2>{{ page.title }}</h2>
+                        </div><!-- .title -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </section><!-- #intro -->
+            {{ content }}
+        </main>
         {% include footer.html %}
-    {% endif %}
     </body>
 </html>
