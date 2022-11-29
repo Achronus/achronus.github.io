@@ -2,4 +2,45 @@
 title: Ryan Partridge - Portfolio
 layout: homepage
 ---
-<p>TBC</p>
+{% assign linkedin_url = 'https://www.linkedin.com/in/ryan-partridge-08b7118b/' %}
+{% assign github_url = 'https://github.com/Achronus' %}
+
+<!-- INTRO
+============================================================================== -->
+<section id="intro-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-auto col-md-6 title align-self-center">
+                <h2>Programming the <div class="blue-underline">Future</div></h2>        
+                <div class="row ctas">
+                    <div class="col-auto portfolio-btn">
+                        <a href="/portfolio/" class="btn btn-primary">
+                            <i class="fas fa-chevron-circle-right"></i>
+                            <span class="name">View Portfolio</span>
+                        </a>
+                    </div> <!-- .col -->
+                    <div class="col-auto wiki-btn">
+                        <a href="/wiki/" class="btn btn-primary">
+                            <i class="fas fa-angle-right"></i>
+                            <span class="name">View Wiki</span>
+                        </a>
+                    </div> <!-- .col -->
+                </div> <!-- .row -->
+            </div><!-- .col -->
+            <div class="col-auto col-md-6 graphic">
+                <img src="assets/imgs/banner.png" alt="banner">
+            </div><!-- .col -->
+        </div><!-- .row -->
+
+        <div class="row">
+            <div class="col-auto social-icons mt-5">
+                <a class="btn btn-primary" href="{{ linkedin_url }}" role="button">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a class="btn btn-primary" href="{{ github_url }}" role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div><!-- .social-icons-->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</section><!-- #intro-home -->

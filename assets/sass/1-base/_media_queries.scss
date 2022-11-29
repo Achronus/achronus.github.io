@@ -1,6 +1,11 @@
 // MEDIA QUERIES
 @include media-breakpoint-up(xs) {
+  #mainNavBar {
+    margin-top: 1.5rem;
+  }
+
   #intro-home {
+    margin-top: 0;
     .title, .graphic {
       margin: 0 auto;
     }
@@ -14,6 +19,9 @@
           margin: auto;
         }
       }
+    }
+    .social-icons {
+      margin: 0 auto;
     }
   }
 

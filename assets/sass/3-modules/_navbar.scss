@@ -1,6 +1,18 @@
 // NAVBAR STYLES
+#intro-home {
+  .social-icons {
+    .linkedin-btn {
+      background-color: #0976b4;
+    }
+    .github-btn {
+      background-color: #454545;
+    }
+  }
+}
+
 #site-navigation {
   @include remPad(20px, 0px);
+  @include remMarginTop(30px);
   transition: $base-transition;
   &.navbar-light {
     .custom-logo {
