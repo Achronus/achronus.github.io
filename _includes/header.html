@@ -1,7 +1,46 @@
-<nav class="navbar">
-    <div class="container-fluid">
+---
+about_page: about
+portfolio_page: portfolio
+wiki_page: wiki
+---
+
+<nav id="site-navigation" class="main-navigation navbar navbar-expand-lg">
+    <div class="container">
         <a class="navbar-brand" href="/">
             Ryan.<span class="me-text">me</span>
-        </a>
-    </div>
-</nav>
+        </a><!-- .navbar-brand -->
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavBar" aria-controls="mainNavBar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button><!-- .navbar-toggler -->
+        
+        <div id="mainNavBar" class="navbar-collapse collapse">
+            <ul class="navbar-nav ms-auto navbar-nav-scroll text-center">
+                <li class="nav-item">
+                    <a href="/" aria-current="page" class="nav-link">
+                        Home
+                    </a>
+                </li><!-- .nav-item -->
+                <li class="nav-item">
+                    <a href="/{{ about_page }}/" class="nav-link">
+                        About<br>
+                        <span>Personal Info</span>
+                    </a>
+                </li><!-- .nav-item -->
+                <li class="nav-item">
+                    <a href="/{{ portfolio_page }}/" class="nav-link">
+                        Portfolio<br>
+                        <span>Selected Works</span>
+                    </a>
+                </li><!-- .nav-item -->
+                <li class="nav-item">
+                    <a href="/{{ wiki_page }}/" class="nav-link">
+                        Wiki<br>
+                        <span>Collected Writing</span>
+                    </a>
+                </li><!-- .nav-item -->
+            </ul><!-- .navbar-nav -->
+        </div><!-- #mainNavBar -->
+
+    </div><!-- .container -->
+</nav><!-- #site-navigation -->
