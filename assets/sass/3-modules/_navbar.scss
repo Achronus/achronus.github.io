@@ -6,6 +6,16 @@
       width: 100%;
       transition: $base-transition;
     }
+    .navbar-brand {
+      font-weight: bold;
+      font-family: $dm-sans;
+      @include remFont(32px);
+      span {
+        &.me-text {
+          color: #107ebd;
+        }
+      }
+    }
     .nav-item {
       @include remMargin(0px, 15px);
       &.current_page_item {

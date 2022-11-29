@@ -223,7 +223,7 @@ p {
       }
     }
     &:hover {
-      background-color: $black;
+      background-color: $black !important;
       svg {
         &.fa-linkedin {
           color: #fff;

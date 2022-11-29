@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-    {% include head.html %}
+    {%- include vars.html -%}
+    {%- include head.html -%}
     <body>
         <section id="top-home" class="default-page">
-            {% include header.html %}
+            {%- include header.html -%}
             {{ content }}
         </section><!-- #top-home -->
     </body>

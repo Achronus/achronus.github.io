@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-    {% include head.html %}
+    {%- include vars.html -%}
+    {%- include head.html -%}
     <body>
-        {% include header.html %}
+        {%- include header.html -%}
         <main class="page-content" aria-label="Content">
             <!-- INTRO
             ============================================================================== -->
@@ -17,6 +18,6 @@
             </section><!-- #intro -->
             {{ content }}
         </main>
-        {% include footer.html %}
+        {%- include footer.html -%}
     </body>
 </html>

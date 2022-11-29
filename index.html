@@ -11,33 +11,33 @@ layout: homepage
                 <h2>Programming the <div class="blue-underline">Future</div></h2>        
                 <div class="row ctas">
                     <div class="col-auto portfolio-btn">
-                        <a href="/{{ head.portfolio_page_url }}" class="btn btn-primary">
+                        <a href="/{{ vars.portfolio_page_url }}" class="btn btn-primary">
                             <i class="fas fa-chevron-circle-right"></i>
                             <span class="name">View Portfolio</span>
                         </a>
                     </div> <!-- .col -->
                     <div class="col-auto wiki-btn">
-                        <a href="/{{ head.wiki_page_url }}" class="btn btn-primary">
+                        <a href="/{{ vars.wiki_page_url }}" class="btn btn-primary">
                             <i class="fas fa-angle-right"></i>
                             <span class="name">View Wiki</span>
                         </a>
                     </div> <!-- .col -->
                 </div> <!-- .row -->
+                <div class="row">
+                    <div class="col-auto social-icons mt-5">
+                        <a class="btn btn-primary linkedin-btn" href="{{ vars.linkedin_url }}" role="button">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a class="btn btn-primary github-btn" href="{{ vars.github_url }}" role="button">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div><!-- .social-icons-->
+                </div><!-- .row -->
             </div><!-- .col -->
             <div class="col-auto col-md-6 graphic">
-                <img src="assets/imgs/banner.png" alt="banner">
+                <img src="/assets/imgs/banner.png" alt="banner">
             </div><!-- .col -->
         </div><!-- .row -->
 
-        <div class="row">
-            <div class="col-auto social-icons mt-5">
-                <a class="btn btn-primary linkedin-btn" href="{{ head.linkedin_url }}" role="button">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a class="btn btn-primary github-btn" href="{{ head.github_url }}" role="button">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div><!-- .social-icons-->
-        </div><!-- .row -->
     </div><!-- .container -->
 </section><!-- #intro-home -->
