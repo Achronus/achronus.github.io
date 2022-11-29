@@ -1,0 +1,70 @@
+// SIDEBAR STYLES
+.sidebar {
+  h2 {
+    font-family: $rubik;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $black;
+    @include remFont(24px);
+    @include remMarginBot(20px);
+    &:before {
+      display: inline-block;
+      content: "";
+      border-top: 5px solid $dark-blue;
+      width: 2.5rem;
+      @include remMarginRight(15px);
+      transform: translateY(-6px);
+    }
+  }
+  .about-me {
+    @include remMargin(40px, 0px);
+    .portrait {
+      img {
+        border-radius: 50%;
+        border: 3px $dark-blue solid;
+      }
+    }
+    .social-icons {
+      @include remMarginTop(20px);
+    }
+    .description {
+      @include remMarginTop(30px);
+      h3 {
+        font-family: $rubik;
+        font-weight: 500;
+        text-transform: capitalize;
+        color: $black;
+        @include remFont(22px);
+      }
+    }
+  }
+  .categories {
+    @include remMarginBot(40px);
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li {
+        font-family: $rubik;
+        color: $black;
+        font-weight: 300;
+        text-transform: capitalize;
+        @include remPadBot(15px);
+        &:before {
+          content: '>';
+          @include remPadRight(5px);
+          color: $grey;
+        }
+        span {
+          &.number {
+            float: right;
+            border-radius: 5px;
+            background-color: $tag-bg;
+            @include remPad(0px, 5px);
+            color: $grey;
+          }
+        }
+      }
+    }
+  }
+}

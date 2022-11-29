@@ -1,0 +1,99 @@
+// PROJECT SINGLE PAGE
+#single-project, #single-wiki {
+  .item {
+    @include remMarginBot(20px);
+    .img-content {
+      position: relative;
+      .overlay {
+        position: absolute;
+        font-family: $rubik;
+        bottom: 0;
+        background-color: #fff;
+        left: 12.5%;
+        width: 75%;
+        min-height: 20%;
+        max-height: 100%;
+        @include remPadAll(35px);
+        h2 {
+          color: $black;
+          font-weight: 500;
+          @include remMarginTop(10px);
+        }
+        .social {
+          @include remMarginTop(20px);
+          svg {
+            @include remMarginRight(5px);
+          }
+          .author {
+            img {
+              width: 20%;
+              display: inline-block;
+              @include remMarginRight(8px);
+              border-radius: 50%;
+            }
+            p {
+              display: inline-block;
+            }
+          }
+          .views {
+            font-family: $rubik;
+            font-weight: 300;
+            color: $black;
+            @include remFont(14px);
+            @include remPad(0px, 10px);
+          }
+          .code {
+            @include remMarginBot(10px);
+            a {
+              @include remFont(16px);
+              @include remPad(5px, 10px);
+              font-family: $rubik;
+              font-weight: 300;
+              color: #fff;
+              background-color: $black;
+              border-radius: 5px;
+              text-decoration: none;
+              transition: $base-transition;
+              text-align: center;
+            }
+            &:hover {
+              a {
+                background-color: $dark-blue;
+                color: #fff;
+                transition: $base-transition;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#single-project {
+  .content-text {
+    .excerpt {
+      p {
+        font-weight: 500;
+        font-style: italic;
+        @include remFont(16px);
+        @include remPad(0px, 50px);
+        @include remMarginBot(0px);
+      }
+      &::before, &::after {
+        font-family: 'Secular One', sans-serif;
+        font-style: italic;
+        @include remFont(30px);
+        @include remPad(0px, 20px);
+      }
+      &::before {
+        content: "\201C";
+      }
+      &::after {
+        content: "\201D";
+        float: right;
+        @include remMarginBot(30px);
+      }
+    }
+  }
+}

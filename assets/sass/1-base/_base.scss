@@ -1,0 +1,549 @@
+// BASE STYLES
+#page {
+  @include background('/wp-content/uploads/2021/06/section-bg.jpg', top, center, repeat, initial);
+}
+
+section {
+  &:not(#nav-content) {
+    @include remPad(40px, 0px);
+  }
+  &#intro {
+    @include remPad(20px, 0px);
+  }
+  &#single-wiki {
+    @include remPad(24px, 0px);
+  }
+  &#category-description, &#topic-description {
+    @include remPadTop(24px);
+    @include remPadBot(16px);
+  }
+  &#breadcrumbs {
+    @include remPadTop(40px);
+    @include remPadBot(0px);
+    &.article {
+      padding-top: 0;
+      .container {
+        padding: 0;
+        .btn-breadcrumb {
+          @include remMarginBot(10px);
+        }
+      }
+    }
+  }
+  &:not(.error-page, .single-page) {
+    &#top-page {
+      height: 42%;
+      @include background('/wp-content/uploads/2021/06/header-bg.jpg', bottom, center, no-repeat, cover);
+      #intro {
+        .title {
+          h2 {
+            font-family: $rubik;
+            @include remFont(40px);
+            color: $black;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+p {
+  font-family: $rubik;
+  font-weight: 300;
+  color: $black;
+}
+
+.text {
+  @extend p;
+  text-align: left;
+  @include remFont(17px);
+}
+
+.wp-block-table {
+  font-family: $rubik;
+  @include remMarginTop(20px);
+  @include remMarginBot(20px);
+  thead {
+    font-weight: 500;
+  }
+  tbody {
+    font-weight: 300;
+  }
+  thead, tbody {
+    td {
+      @include remPad(15px, 10px);
+      border: 1px solid rgba(25, 146, 216, 0.1);
+      background-color: rgba(241, 252, 254, 0.3);
+    }
+  }
+}
+
+.description {
+  font-family: $rubik;
+  font-weight: 300;
+  color: $black;
+  @include remFont(16px);
+  @include remMarginTop(60px);
+  @include remMarginBot(60px);
+  .content-text {
+    font-family: $rubik;
+    .wp-block-table {
+      ul {
+        margin: 0;
+        display: inline-block;
+        @include remPadLeft(15px);
+        @include remMarginLeft(15px);
+        padding-right: 0 !important;
+        li {
+          text-transform: capitalize;
+          margin-bottom: 0 !important;
+          &::marker {
+            color: $torquoise;
+          }
+        }
+        &:nth-child(1) {
+          margin: 0;
+        }
+      }
+    }
+    h2 {
+      @include remMarginTop(40px);
+      @include remMarginBot(10px);
+      @include remFont(30px);
+      @include remPadBot(10px);
+      border-bottom: 1px solid #eee;
+    }
+    h3 {
+      @include remFont(26px);
+      @include remMarginBot(10px);
+      @include remMarginTop(20px);
+      font-weight: 400;
+    }
+    p {
+      @include remFont(17px);
+      &.quote {
+        font-style: italic;
+        text-align: center;
+      }
+      span {
+        &.med {
+          font-weight: 500;
+        }
+      }
+      &.img-caption {
+        font-style: italic;
+        text-align: center;
+      }
+    }
+    ul, ol {
+      &:not(.contents) {
+        @include remPadRight(50px);
+        li {
+          @include remMarginBot(10px);
+          span {
+            &.med {
+              font-weight: 500;
+            }
+          }
+        }
+      }
+      &.contents {
+        li {
+          @include remMarginBot(5px);
+          @include remMarginTop(5px);
+        }
+      }
+      &.sublist {
+        @include remPadLeft(15px);
+        li {
+          @include remMarginBot(2px);
+          @include remMarginTop(0px);
+        }
+      }
+    }
+    a {
+      color: $blue;
+      transition: $base-transition;
+      @include remMarginBot(5px);
+      &:hover {
+        color: $torquoise;
+        transition: $base-transition;
+      }
+    }
+  }
+}
+
+.img-container {
+  .img-caption {
+    font-style: italic;
+    text-align: center;
+    @include remPadTopBot(10px);
+  }
+}
+
+.wp-block-image {
+  @include remMarginTop(10px);
+  figure {
+    figcaption {
+      text-align: center;
+    }
+  }
+}
+
+.demo {
+  @include remMarginTop(40px);
+  @include remMarginBot(40px);
+  h2 {
+    font-family: $rubik;
+    font-weight: 500;
+    text-transform: capitalize;
+    @include remFont(24px);
+  }
+}
+
+.social-icons {
+  text-align: center;
+  a {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    @include remPadAll(0px);
+    @include remMargin(0px, 10px);
+    svg {
+      @include remMargin(10px, 10px);
+      @include remFont(26px);
+      &.fa-linkedin {
+        color: #0976b4;
+      }
+      &.fa-github {
+        color: #454545;
+      }
+    }
+    &:hover {
+      background-color: $black;
+      svg {
+        &.fa-linkedin {
+          color: #fff;
+        }
+        &.fa-github {
+          color: #fff;
+        }
+      }
+    }
+  }
+  &.icon-border {
+    a {
+      @include boxShadow(0px, 0px, 10px, rgba(25, 146, 216, 0.3));
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.cta {
+  p {
+    font-family: $rubik;
+    font-weight: 500;
+    color: $black;
+    text-transform: uppercase;
+    text-decoration: none;
+    @include remPadLeftRight(0px);
+    svg {
+      @include remMarginLeft(5px);
+    }
+  }
+}
+
+#articles, #latest-article, #portfolio, #categories {
+  .cta {
+    svg {
+      background-color: #fff;
+      color: $dark-blue;
+      border-radius: 50%;
+      @include remFont(30px);
+      transition: $base-transition;
+    }
+  }
+}
+
+.project-item {
+  @include remMarginBot(20px);
+  .content {
+    position: relative;
+    a {
+      text-decoration: none;
+      &:hover {
+        .overlay {
+          background: $black;
+          transition: $base-transition;
+          .cta p, h2 {
+            color: #fff;
+            transition: $base-transition;
+          }
+        }
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    color: #40d9f1;
+  }
+  .overlay {
+    position: absolute;
+    font-family: $rubik;
+    bottom: 0;
+    background-color: #fff;
+    @include remPadAll(15px);
+    left: 13%;
+    width: 75%;
+    min-height: 20%;
+    max-height: 100%;
+    h2 {
+      color: $black;
+      font-weight: 500;
+      @include remMarginTop(10px);
+    }
+  }
+}
+
+ul, ol {
+  margin-left: 0;
+}
+
+#portfolio, #articles, #categories {
+  .content {
+    background-color: $light-torquoise;
+    border: 3px solid $light-torquoise;
+    border-radius: 5px;
+    transition: $base-transition;
+    margin: 0;
+    img {
+      background-color: #fff;
+    }
+    .description {
+      @include remPadAll(15px);
+      margin: 0;
+      .text {
+        font-family: $rubik;
+        h2 {
+          color: $black;
+          font-weight: 500;
+          @include remFont(24px);
+          @include remMarginTop(10px);
+        }
+        p {
+          @include remFont(15px);
+          @include remMarginTop(20px);
+          @include remMarginBot(20px);
+        }
+        &:hover {
+          .cta {
+            svg {
+              color: $black;
+              transition: $base-transition;
+            }
+          }
+        }
+      }
+    }
+    &:hover {
+      transition: $base-transition;
+      transform: translateY(-10px);
+    }
+  }
+}
+
+.container, .container-fluid {
+  .tag {
+    font-family: $rubik;
+    color: #fff;
+    font-weight: 300;
+    @include remFont(14px);
+    background-color: $dark-blue;
+    display: inline-block;
+    text-transform: capitalize;
+    @include remPad(5px, 10px);
+    @include remMarginBot(5px);
+    svg {
+      color: #fff;
+      @include remMarginRight(2px);
+    }
+    &:not(.tag.date) {
+      &:hover {
+        color: #fff;
+        background-color: #242424;
+        transition: $base-transition;
+        svg {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.code-snippet {
+  pre {
+    background: #f1fcfe;
+  }
+}
+
+code {
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: #333;
+  &.inline {
+    color: #30bdbd;
+    background-color: #f9f2f4;
+    font-weight: bold;
+    border-radius: 4px;
+    @include remFont(14px);
+    @include remPad(2px, 4px);
+  }
+  span {
+    &.keyword {
+      font-weight: bold;
+    }
+    &.string {
+      color: #d14;
+    }
+    &.number {
+      color: #008080;
+    }
+    &.comment {
+      color: #998;
+      font-style: italic;
+    }
+    &.built-in {
+      color: #0086b3;
+    }
+    &.function {
+      color: #b9a81f;
+    }
+    &.class {
+      color: #048c33;
+    }
+    &.long-comment {
+      color: #ac7228;
+    }
+  }
+}
+
+// Reference: https://bootsnipp.com/snippets/y4Qa
+.btn-breadcrumb {
+  .btn {
+    color: #fff;
+    @include remPadTopBot(6px);
+    @include remPadLeftRight(24px);
+    &:not(:last-child) {
+      &::after, &::before {
+        content: " ";
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        margin-top: -17px;
+        border-top: 17px solid transparent;
+        border-bottom: 17px solid transparent;
+        z-index: 3;
+      }
+      &::after {
+        border-left: 10px solid $dark-blue;
+      }
+      &::before {
+        border-left: 10px solid $dark-blue;
+        margin-left: 1px;
+      }
+    }
+    &:first-child, &:last-child {
+      @include remPadTopBot(6px);
+    }
+    &:first-child {
+      @include remPadLeftRight(15px);
+    }
+    &:last-child {
+      @include remPadLeftRight(24px);
+    }
+    &.btn-primary {
+      border-color: #fff;
+      background-color: $dark-blue;
+      transition: $base-transition;
+      &:not(.project-tag, .date-text) {
+        &:last-child {
+          background-color: #eee;
+          color: $black;
+        }
+      }
+      &:not(:last-child) {
+        &::after {
+          transition: $base-transition;
+          border-left: 10px solid $dark-blue;
+        }
+        &::before {
+          transition: $base-transition;
+          border-left: 10px solid #fff;
+        }
+      }
+      &:hover {
+        &:not(:last-child) {
+          background-color: $black;
+          transition: $base-transition;
+          &::after {
+            transition: $base-transition;
+            border-left: 10px solid $black;
+          }
+          &::before {
+            transition: $base-transition;
+            border-left: 10px solid #fff;
+          }
+        }
+        a {
+          color: #fff;
+        }
+        &.project-tag {
+          background-color: $black;
+        }
+      }
+      &.project-tag {
+        &:not(:last-child) {
+          @include remPadRight(13px);
+        }
+      }
+      &.tag-icon, &.tag-icon:hover {
+        background-color: #eee;
+        color: $black;
+        &::after {
+          border-left-color: #eee;
+        }
+      }
+      &.project-tag, &.tag-icon {
+        @include remPadTopBot(4px);
+        &::after, &::before {
+          margin-top: -15px;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+        }
+        a {
+          font-weight: 300;
+        }
+      }
+      &:last-child, &.date-text, &.tag-icon {
+        cursor: default;
+      }
+      &.date-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 300;
+      }
+    }
+  }
+}

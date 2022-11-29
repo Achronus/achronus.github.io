@@ -1,0 +1,76 @@
+// NAVBAR STYLES
+#site-navigation {
+  @include remPad(20px, 0px);
+  transition: $base-transition;
+  &.navbar-light {
+    .custom-logo {
+      width: 100%;
+      transition: $base-transition;
+    }
+    .nav-item {
+      @include remMargin(0px, 15px);
+      &.current_page_item {
+        .nav-link {
+          color: $dark-blue;
+        }
+      }
+      .nav-link {
+        font-weight: 500;
+        font-family: $dm-sans;
+        text-transform: capitalize;
+        color: $black;
+        @include remFont(20px);
+        @include lineHeight(24px);
+        transition: $base-transition;
+        &.active {
+          color: $dark-blue;
+        }
+        span {
+          @include remFont(12px);
+        }
+        &:hover {
+          color: $dark-blue;
+        }
+      }
+    }
+    &.sticky-nav {
+      background-color: #fff;
+      height: 10vh;
+      z-index: 170;
+      @include remPadTop(20px);
+      margin: 0 auto;
+      border-bottom: 1px solid #eee;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      animation: slide-down 0.7s;
+      transition: $base-transition;
+      .custom-logo {
+        width: 80%;
+        transition: $base-transition;
+      }
+      .nav-item {
+        .nav-link {
+          @include remFont(18px);
+          transition: $base-transition;
+        }
+      }
+    }
+  }
+}
+
+.toggler-bg {
+  background-color: #fff;
+}
+
+@keyframes slide-down {
+  0% {
+      transform: translateY(-10%);
+  } 
+  100% {
+      transform: translateY(0);
+  } 
+}

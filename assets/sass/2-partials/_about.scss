@@ -1,0 +1,74 @@
+// ABOUT SECTION
+section {
+  &#about {
+    @include remMargin(40px, 0px);
+    .portrait {
+      img {
+        border-radius: 50%;
+        border: 3px $dark-blue solid;
+      }
+    }
+    .text {
+      font-family: $rubik;
+      font-weight: 300;
+      @include remFont(40px);
+      @include remMargin(40px, 0px);
+      text-align: center;
+      span {
+        &.blue {
+          color: $blue;
+        }
+      }
+    }
+  }
+}
+
+// ABOUT PAGE
+section {
+  &#about-me {
+    @include remMargin(40px, 0px);
+    .portrait {
+      @include remMargin(30px, 0px);
+      img {
+        border-radius: 50%;
+        border: 3px $dark-blue solid;
+      }
+    }
+    .text {
+      span {
+        &.blue {
+          color: $blue;
+        }
+      }
+      img {
+        width: 3%;
+      }
+      img:nth-child(2) {
+        width: 2.5%;
+      }
+    }
+  }
+  &#activity {
+    @include remMargin(40px, 0px);
+    .title {
+      img {
+        display: inline-block;
+        width: 8%;
+        vertical-align: top;
+        @include remMarginRight(5px);
+      }
+      h2 {
+        display: inline-block;
+        font-family: $rubik;
+        font-weight: 500;
+        @include remFont(30px);
+      }
+    }
+    .text {
+      @include remMarginBot(20px);
+      p {
+        @include remMarginBot(5px);
+      }
+    }
+  }
+}

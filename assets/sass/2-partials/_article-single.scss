@@ -1,0 +1,31 @@
+// ARTICLE SINGLE PAGE
+#article-title {
+    .title {
+        h2 {
+            font-family: "Rubik",sans-serif;
+            color: #242424;
+            font-weight: 500;
+        }
+    }
+}
+
+#single-wiki-blocks {
+    #tab-nav {
+
+    }
+    #tab-content {
+        border: 1px solid $light-grey;
+        border-radius: 5px;
+    }
+}
+
+#breadcrumbs {
+    &.single-blocks {
+        padding-top: 0;
+        .btn-breadcrumb {
+            .date-text {
+                font-weight: inherit;
+            }
+        }
+    }
+}

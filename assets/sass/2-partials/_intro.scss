@@ -1,0 +1,70 @@
+// INTRO STYLES
+#top-home {
+  height: 100%;
+  @include background('/wp-content/uploads/2021/06/home-header-bg.jpg', bottom, center, no-repeat, cover);
+  #intro-home {
+    @include remMargin(60px, 0px);
+    .title {
+      font-family: $dm-sans;
+      h2 {
+        font-weight: bold;
+        color: $black;
+        text-transform: capitalize;
+        div {
+          &.blue-underline {
+            display: inline-block;
+            position: relative;
+            z-index: 3;
+          }
+          &:after {
+            content: '';
+            width: 100%;
+            background: $torquoise;
+            height: 12px;
+            position: absolute;
+            bottom: 15px;
+            left: 0px;
+            z-index: -1;
+          }
+        }
+      }
+      .ctas {
+        .portfolio-btn, .wiki-btn {
+          a {
+            @include remMargin(20px, 0px);
+            @include remMarginBot(0px);
+            @include remPad(10px, 20px);
+            @include remFont(18px);
+            span {
+              &.text {
+                @include remPadLeft(10px);
+                @include remPadRight(6px);
+              }
+            }
+            &:hover {
+              color: #fff;
+              background-color: $black;
+              border-color: $black;
+            }
+          }
+        }
+        .portfolio-btn {
+          a {
+            color: #fff;
+            font-weight: 500;
+            background-color: $dark-blue;
+            border: 1px solid $dark-blue;
+          }
+        }
+        .wiki-btn {
+          a {
+            color: $dark-blue;
+            font-weight: 500;
+            background-color: #fff;
+            border: 2px solid $dark-blue;
+          }
+        }
+      }
+    }
+  }
+}

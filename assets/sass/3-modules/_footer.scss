@@ -1,0 +1,67 @@
+// FOOTER STYLES
+#footer{
+  @include remPad(30px, 0px);
+  @include remPadTop(40px);
+  background-color: $dark-blue;
+  .footer-text {
+    @include remFont(14px);
+    font-family: $rubik;
+    font-weight: normal;
+    p {
+      margin: 0;
+      color: #fff;
+    }
+  }
+}
+
+#back-to-top {
+  .top-link {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3em 3em 0;
+    border-radius: 50%;
+    padding: .25em;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    background-color: $dark-blue;
+    transition: $base-transition;
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    &.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+    &:hover {
+      background-color: $black;
+      transition: $base-transition;
+    }
+    svg {
+      @include remFont(24px);
+    }
+  }
+}
+
+#cookie-notice {
+    a {
+        &.cn-button {
+            background-color: $black;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: $base-transition;
+        }
+        &:hover {
+            background-color: #fff;
+            color: $black;
+            transition: $base-transition;
+        }
+    }
+}

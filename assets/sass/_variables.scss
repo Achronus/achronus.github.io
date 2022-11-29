@@ -1,0 +1,30 @@
+/* GLOBAL VARIABLES */
+// FONT FAMILIES
+$dm-sans: 'DM Sans', sans-serif;
+$rubik: 'Rubik', sans-serif;
+
+// BASE STYLES
+$base-size: 18px;
+$base-transition: ease-in-out 0.25s;
+
+// COLOURS
+$torquoise: #40d9f1;
+$dark-torquoise: #4fcbdf;
+$light-torquoise: #f1fcfe; // wiki article bg
+$light-blue: #2386bf; // nav hover
+$blue: #1992d8; // span text
+$dark-blue: #107ebd; // primary bg
+$black: #242424; // main text
+$grey: #6b6b6b; // light text
+$light-grey: #dee2e6;
+$tag-bg: #f1fcfe;
+
+// MAPPINGS
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);

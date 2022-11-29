@@ -1,0 +1,394 @@
+// MEDIA QUERIES
+@include media-breakpoint-up(xs) {
+  #intro-home {
+    .title, .graphic {
+      margin: 0 auto;
+    }
+    .title {
+      text-align: center;
+      h2 {
+        @include remFont(50px);
+      }
+      .ctas {
+        .col-auto {
+          margin: auto;
+        }
+      }
+    }
+  }
+
+  #footer {
+    .footer-text {
+      text-align: center;
+      @include remMarginBot(30px);
+    }
+    .social-icons {
+      text-align: center !important;  
+    }
+  }
+
+  #top-page {
+    #intro {
+      @include remMarginLeft(0px);
+      .title {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+  #activity {
+    .title, .text {
+      text-align: center;
+    }
+  }
+
+  #categories {
+    .project-item {
+      .content {
+        .overlay {
+          h2 {
+            @include remFont(24px);
+          }
+        }
+      }
+    }
+  }
+
+  #portfolio {
+    .project-item {
+      .content {
+        .overlay {
+          h2 {
+            @include remFont(24px);
+          }
+        }
+      }
+    }
+  }
+
+  #articles {
+    .article-item {
+      .content {
+        .text {
+          .tag {
+            li {
+              @include remFont(13px);
+            }
+          }
+          h2 {
+            @include remFont(24px);
+          }
+          .author {
+            p {
+              @include remFont(13px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #latest-article {
+    .article {
+      .article-overlay {
+        padding: 7% 5%;
+        left: 80%;
+      }
+    }
+  }
+
+  .sidebar {
+    h2 {
+      text-align: center;
+    }
+    .about-me {
+      text-align: center;
+      .portrait {
+        img {
+          width: 40%;
+        }
+      }
+      .social-icons {
+        text-align: center;
+        @include remMarginRight(0px);
+      }
+    }
+  }
+
+  #single-wiki {
+    .img-content {
+      .bg-img {
+        img {
+          height: 40vh;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  section{
+    &#activity {
+      .col-sm-6 {
+        .title {
+          @include remMarginTop(0px);
+        }
+      }
+    }
+  }
+
+  #portfolio {
+    .project-item {
+      .content {
+        .overlay {
+          h2 {
+            @include remFont(20px);
+          }
+        }
+      }
+    }
+  }
+
+  #latest-article {
+    .article {
+      .article-overlay {
+        padding: 4% 3%;
+        left: 60%;
+        width: 60%;
+      }
+    }
+  }
+
+  #single-wiki {
+    .img-content {
+      .bg-img {
+        min-height: 325px;
+        img {
+          height: auto;
+          object-fit: inherit;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  #intro-home {
+    .title {
+      text-align: left;
+      .ctas {
+        .col-auto {
+          margin: initial;
+        }
+      }
+    }
+  }
+  .footer-text {
+    text-align: center;
+    margin: 0 !important;
+  }
+
+  #top-page {
+    #intro {
+      @include remMarginTop(25px);
+      @include remMarginLeft(160px);
+      .title {
+        width: initial;
+        text-align: left;
+      }
+    }
+  }
+
+  #categories {
+    .project-item {
+      .content {
+        .overlay {
+          h2 {
+            @include remFont(24px);
+          }
+        }
+      }
+    }
+  }
+
+  #latest-article {
+    .article {
+      .article-overlay {
+        padding: 4% 3%;
+        left: 50%;
+        width: initial;
+      }
+    }
+  }
+
+  #articles {
+    .article-item {
+      .content {
+        .text {
+          .tag {
+            li {
+              @include remFont(11px);
+            }
+          }
+          h2 {
+            @include remFont(22px);
+          }
+          .author {
+            p {
+              @include remFont(11px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #single-wiki {
+    .img-content {
+      .bg-img {
+        min-height: inherit;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  #intro-home {
+    .title {
+      h2 {
+        @include remFont(70px);
+      } 
+    }
+  }
+
+  #activity {
+    .col-sm-6 {
+      .title, .text {
+        text-align: left;
+      }
+      .title {
+        @include remMargin(30px, 0px);
+      }
+    }
+  }
+
+  #categories {
+    .project-item {
+      .content {
+        .overlay {
+          h2 {
+            @include remFont(20px);
+          }
+        }
+      }
+    }
+  }
+
+  #latest-article {
+    .article {
+      .article-overlay {
+        padding: 4% 3%;
+        left: 45%;
+        width: initial;
+      }
+    }
+  }
+
+  #articles {
+    .article-item {
+      .content {
+        .text {
+          h2 {
+            @include remFont(20px);
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    h2 {
+      text-align: left;
+    }
+    .about-me {
+      text-align: left;
+      .portrait {
+        img {
+          width: 80%;
+        }
+      }
+      .social-icons {
+        @include remMarginRight(50px);
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  #intro-home {
+    .title {
+      h2 {
+        @include remFont(80px);
+      } 
+    }
+  }
+
+  #articles {
+    .article-item {
+      .content {
+        .text {
+          .tag {
+            li {
+              @include remFont(13px);
+            }
+            h2 {
+            @include remFont(24px);
+            }
+          }
+          .author {
+            p {
+              @include remFont(14px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    .about-me {
+      .portrait {
+        img {
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xxl) {
+  #categories {
+    .project-item {
+      .content {
+        .overlay {
+          h2 {
+            @include remFont(24px);
+          }
+        }
+      }
+    }
+  }
+
+  #portfolio {
+    .project-item {
+      .content {
+        .overlay {
+          h2 {
+            @include remFont(24px);
+          }
+        }
+      }
+    }
+  }
+}

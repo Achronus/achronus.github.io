@@ -1,0 +1,24 @@
+// CATEGORIES PAGE
+#categories {
+  .catalogue {
+    .row {
+      .project-item {
+        .content {
+          .description {
+            @include remPadAll(20px);
+          }
+        }
+      }
+    }
+  }
+}
+
+.wiki-page, .category-page {
+  #intro {
+    .title {
+      h2 {
+        text-transform: capitalize;
+      }
+    }
+  }
+}

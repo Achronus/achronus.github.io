@@ -1,0 +1,9 @@
+// PORTFOLIO PAGE
+#portfolio {
+  @include remMargin(40px, 0px);
+  .description {
+    .text {
+      @include remPadTop(10px);
+    }
+  }
+}

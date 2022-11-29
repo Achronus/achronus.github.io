@@ -1,0 +1,64 @@
+// 404 PAGE
+#error {
+  @include remMarginTop(92px);
+  @include remMarginBot(92px);
+  .content {
+    font-family: $rubik;
+    h1 {
+      font-weight: bold;
+      @include remFont(200px);
+    }
+    h2 {
+      font-weight: 500;
+      @include remFont(40px);
+      @include remMarginBot(40px);
+    }
+    p {
+      font-weight: 300;
+      @include remFont(18px);
+      @include remMarginTop(20px);
+      @include remMarginBot(20px);
+    }
+  }
+  .cta {
+    a {
+      @include remMargin(20px, 0px);
+      @include remPad(10px, 20px);
+      @include remFont(18px);
+      font-family: $rubik;
+      font-weight: 500;
+      background-color: $dark-blue;
+      border: none;
+      color: #fff;
+      text-transform: capitalize;
+      &:hover {
+        background-color: $black;
+      }
+      svg {
+        @include remMarginRight(5px);
+      }
+    }
+  }
+}
+
+// COOKIES PAGE
+#cookies {
+  .content {
+    @include remMargin(40px, 0px);
+    p {
+      font-family: $rubik;
+      font-weight: 300;
+      color: $black;
+      @include remFont(16px);
+      a {
+        text-decoration: none;
+        color: $dark-blue;
+        transition: $base-transition;
+        &:hover {
+          color: $torquoise;
+          transition: $base-transition;
+        }
+      }
+    }
+  }
+}
