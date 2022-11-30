@@ -15,8 +15,10 @@ document.addEventListener("DOMContentLoaded", function() {
       else {
         if (window.scrollY > 20) {
           document.getElementById('site-navigation').classList.add('sticky-nav');
+          document.getElementById('mainNavBar').classList.remove('mt-4');
         } else {
           document.getElementById('site-navigation').classList.remove('sticky-nav');
+          document.getElementById('mainNavBar').classList.add('mt-4');
         } 
       }
 
