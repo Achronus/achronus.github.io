@@ -3,14 +3,12 @@
   height: 100vh;
   @include background('/assets/imgs/home-header-bg.jpg', bottom, center, no-repeat, cover);
   #intro-home {
-    @include remMargin(40px, 0px);
     .title {
       font-family: $dm-sans;
       h2 {
         font-weight: bold;
         color: $black;
         text-transform: capitalize;
-        @include remFont(80px);
         div {
           &.blue-underline {
             display: inline-block;
