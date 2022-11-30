@@ -10,15 +10,14 @@
             {%- for page_tag in page.tags -%}
                 {%- for site_tag in site.tags -%}
                     {%- if page_tag == site_tag.slug -%}
-                    <div class="project-tag me-4 float-start">
+                    <div class="project-tag me-4 float-sm-start">
                         <i class="{{ site_tag.icon }}"></i>
                         {{ site_tag.title }}
                     </div><!-- project-tag -->
                     {%- endif -%}
                 {%- endfor -%}
             {%- endfor -%}
-            </div><!-- col -->
-        </div><!-- .tags -->
+        </div><!-- col -->
         <div class="code col-12 col-sm-auto col-lg-2 mt-3 mt-sm-5 text-center text-sm-end">
             <a href="{{ page.github_url }}">
                 <i class="fa-solid fa-code"></i>
