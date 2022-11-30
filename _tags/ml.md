@@ -1,4 +1,4 @@
 ---
 title: Machine Learning
-icon: fa-solid fa-brain-circuit
+icon: fa-solid fa-brain
 ---

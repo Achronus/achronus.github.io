@@ -67,7 +67,7 @@ p {
   font-family: $rubik;
   @include remMarginTop(20px);
   @include remMarginBot(20px);
-  table {
+  table, table.wp-block-table {
     width: 100%;
   }
   thead {
