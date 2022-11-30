@@ -7,3 +7,9 @@ github_url: 'https://github.com/Achronus'
 about_page_url: 'about'
 portfolio_page_url: 'portfolio'
 wiki_page_url: 'wiki'
+
+collections:
+  - activities
+  - portfolio
+  - wiki
+

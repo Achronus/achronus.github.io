@@ -38,39 +38,17 @@ id: about-page
 <section id="activity">
     <div class="container">
         <div class="row">
+            {%- for activity in site.activities -%}
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="title text-center text-md-start">
-                    <img src="/assets/imgs/icons/headphones.png" alt="Listening">
-                    <h2>Listening</h2>
+                    <img src="{{ activity.img_url }}" alt="{{ activity.header }}">
+                    <h2>{{ activity.header }}</h2>
                 </div><!-- title -->
                 <div class="text text-center text-md-start mt-4 mb-5 mb-md-0">
-                    <p>LoFi Beats</p>
-                    <p>Pop or 80s Classics</p>
-                    <p>AI Podcasts</p>
+                    {{ activity.content }}
                 </div><!-- text -->
             </div><!-- col -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="title text-center text-md-start">
-                    <img src="/assets/imgs/icons/book.png" alt="Reading">
-                    <h2>Reading</h2>
-                </div><!-- title -->
-                <div class="text text-center text-md-start mt-4 mb-5 mb-md-0">
-                    <p>Immune</p>
-                    <p>The Witcher Series</p>
-                    <p>Hands-On Deep Reinforcement Learning</p>
-                </div><!-- text -->
-            </div><!-- col -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="title text-center text-md-start">
-                    <img src="/assets/imgs/icons/tv.png" alt="Watching">
-                    <h2>Watching</h2>
-                </div><!-- title -->
-                <div class="text text-center text-md-start mt-4 mb-5 mb-md-0">
-                    <p>Series: S.W.A.T.</p>
-                    <p>Series: Cobra Kai</p>
-                    <p>Movie: The Martian</p>
-                </div><!-- text -->
-            </div><!-- col -->
+            {%- endfor -%}
         </div><!-- row -->
     </div><!-- container -->
 </section><!-- #activity -->
