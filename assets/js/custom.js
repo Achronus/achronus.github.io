@@ -62,4 +62,14 @@ jQuery(document).ready(function() {
   // Disable buttons in first and last tabs
   jQuery('#tab-content .tab-pane:first-child .helper-btn .btn-previous').addClass('disabled');
   jQuery('#tab-content .tab-pane:last-child .helper-btn .btn-next').addClass('disabled');
+
+  // Main navbar active
+  var current = location.pathname;
+  $('#mainNavBar li.nav-item a').each(function() {
+      var $this = $(this);
+      // if the current path is like this link, make it active
+      if($this.attr('href').indexOf(current) !== -1){
+          $this.addClass('active');
+      }
+  });
 });
