@@ -10,18 +10,17 @@ layout: default
             {%- for project in site.portfolio -%}
             <div class="col-md-6 col-xl-4 project-item">
                 <div class="content">
-                    <a href="{{ project.path }}">
-                        <img src="{{ project.img_url }}" alt="{{ project.title }}">
+                    <a href="{{ project.permalink }}">
+                        <img class="img-fluid" src="{{ project.img_url }}" alt="{{ project.title }}">
                     </a>
                     <div class="description">
-                        <a href="{{ project.path }}">
+                        <a href="{{ project.permalink }}">
                             <div class="text">
                                 <h2>{{ project.title }}</h2>
                                 <p>{{ project.desc }}</p>
                                 <div class="row">     
                                     <div class="tags col-10">
-                                        {%- assign tags = project.tags.split(', ') -%}
-                                        {%- for tag in tags -%}
+                                        {%- for tag in project.tags -%}
                                         <div class="project-tag btn btn-outline-primary me-2">
                                             <i class="fas fa-tag"></i>
                                             <a href="{{ project.path + tag }}">
