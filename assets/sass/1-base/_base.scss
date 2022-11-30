@@ -1,5 +1,5 @@
 // BASE STYLES
-#page {
+.single-page {
   @include background('/assets/imgs/section-bg.jpg', top, center, repeat, initial);
 }
 
@@ -30,7 +30,7 @@ section {
       }
     }
   }
-  &:not(.error-page, .single-page) {
+  &:not(.error-page) {
     &#top-page {
       height: 42%;
       @include background('/assets/imgs/header-bg.jpg', bottom, center, no-repeat, cover);
