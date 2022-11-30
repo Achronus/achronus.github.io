@@ -11,6 +11,8 @@ wiki_page_url: 'wiki'
 collections:
   activities:
     output: true
+  tags:
+    output: true
   portfolio:
     output: true
     permalink: /:collection/:title
