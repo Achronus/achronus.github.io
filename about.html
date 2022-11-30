@@ -38,7 +38,7 @@ id: about-page
 <section id="activity">
     <div class="container">
         <div class="row">
-            {%- for activity in site.collections.activities -%}
+            {%- for activity in site.activities -%}
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="title text-center text-md-start">
                     <img src="{{ activity.img_url }}" alt="{{ activity.header }}">
