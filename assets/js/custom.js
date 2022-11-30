@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-  setActiveClass();
-  setPortfolioTagFloats();
+  page_name = setActiveClass();
+  setPortfolioTagFloats(page_name);
   
   if (document.body.id != 'homepage') {
     // Create back to top button
@@ -87,16 +87,19 @@ function setActiveClass() {
       nav_links[i].classList.add('active');
     };
   };
+  return page_name;
 }
 
-function setPortfolioTagFloats() {
-  project_tags = document.getElementById('portfolio').getElementsByClassName('project-tag');
-  for (let i = 0; i < project_tags.length; i++) {
-    if (i % 2 == 0) {
-      project_tags[i].classList.add('float-start');
-    }
-    else {
-      project_tags[i].classList.add('float-end');	  
+function setPortfolioTagFloats(page_name) {
+  if (page_name == '/portfolio') {
+    project_tags = document.getElementById('portfolio').getElementsByClassName('project-tag');
+    for (let i = 0; i < project_tags.length; i++) {
+      if (i % 2 == 0) {
+        project_tags[i].classList.add('float-start');
+      }
+      else {
+        project_tags[i].classList.add('float-end');	  
+      }
     }
   }
 }
