@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+  setActiveClass();
+  
   if (document.body.id != 'homepage') {
     // Create back to top button
     const scrollToTopButton = document.querySelector('.top-link');
@@ -63,3 +65,23 @@ jQuery(document).ready(function() {
   jQuery('#tab-content .tab-pane:first-child .helper-btn .btn-previous').addClass('disabled');
   jQuery('#tab-content .tab-pane:last-child .helper-btn .btn-next').addClass('disabled');
 });
+
+
+function setActiveClass() {
+  // Get URL and convert into .nav-link format
+  page_url = window.location.href;
+  url_split = page_url.split('/')
+
+  page_name = url_split[url_split.length - 1] // Last item
+  page_name = '/' + page_name // homepage = '/', about = '/about', etc.
+
+  // Get .nav-link href for comparsion
+  nav_links = document.getElementById('mainNavBar').getElementsByClassName('nav-link');
+
+  // Add active to correct link
+  for (let i = 0; i < nav_links.length; i++) {
+    if (page_name == nav_links[i].getAttribute('href')) {
+      nav_links[i].classList.add('active');
+    };
+  };
+}
