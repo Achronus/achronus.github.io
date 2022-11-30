@@ -1,12 +1,37 @@
 // PROJECT SINGLE PAGE
+.single-page {
+  #site-navigation {
+    background-color: #fff;
+    height: 10vh;
+    z-index: 170;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    #mainNavBar {
+      margin-top: 0 !important;
+      .nav-link {
+        @include remFont(18px);
+      }
+    }
+  }
+}
+
 #single-project {
   .header {
-    h3 {
+    h3, h2, p {
       color: $black;
     }
+    h3 {
+      font-family: $rubik;
+      font-weight: 300;
+    }
     h2 {
-      color: $black;
-      font-weight: 500;
+      font-family: $dm-sans;
+      font-weight: 600;
+    }
+    p {
+      font-family: $dm-mono;
     }
   }
 }

@@ -1,8 +1,6 @@
 // BASE STYLES
 body {
-  #page {
     @include background('/assets/imgs/section-bg.jpg', top, center, repeat, initial);
-  }
 }
 
 section {
@@ -46,9 +44,6 @@ section {
         }
       }
     }
-  }
-  &.single-page {
-    @include background('/assets/imgs/single-header-bg.jpg', top, center, no-repeat, cover)
   }
 }
 

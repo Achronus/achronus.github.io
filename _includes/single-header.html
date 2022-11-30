@@ -1,17 +1,19 @@
-<div class="header">
-    <h3>PROJECT</h3>
-    <h2 class="mt-1">{{ page.title }}</h2>
+<div class="header text-center mt-5">
+    <h3 class="mb-4">PROJECT</h3>
+    <h2 class="mt-3 mb-4 display-5">{{ page.title }}</h2>
+    <p class="mb-5">{{ page.day }} {{ page.long_month }}, {{ page.year }}</p>
     <div class="row">
-        <div class="tags col-12 col-md-9">
+        <div class="tags col-12 col-md-4 offset-md-2 mb-5">
             {%- for tag in page.tags -%}
             <div class="project-tag btn btn-outline-primary me-2 disabled">
                 {{ tag }}
             </div><!-- project-tag -->
             {%- endfor -%}
         </div><!-- .tags -->
-        <div class="col-12 col-md-3 code">
+        <div class="col-12 col-md-4 code mb-5">
             <a href="{{ page.github_url }}">
                 <i class="fa-solid fa-code"></i>
+                View code
             </a>
         </div><!-- col -->
     </div><!-- row -->
