@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en-GB">
     {%- include head.html -%}
-    <body id="{{ page.id }}">
+    <body id="portfolio-single-page">
         <section id="top-page" class="single-page">
             {%- include header.html -%}
         </section><!-- #top-page -->
-        {{ content }}
+
+        <!-- PROJECT CONTENT
+        ============================================================================== -->
+        <section id="single-project">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-3 offset-lg-1 sidebar">
+                        {%- include sidebar.html -%}
+                    </div><!-- sidebar -->
+
+                    <div class="col-12 col-lg-8 item">
+                        {%- include single-header.html -%}
+                        <div class="description">
+                            {{ content }}
+                        </div><!-- .description -->
+                    </div><!-- .col -->
+                </div><!-- .row -->
+            </div><!-- .container -->
+        </section><!-- #single-project -->
         {%- include footer.html -%}
     </body>
 </html>

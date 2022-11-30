@@ -48,18 +48,6 @@
       transition: $base-transition;
       transform: translateY(-10px);
     }
-    .tags {
-      .project-tag {
-        color: $dark-blue;
-        border-color: $dark-blue;
-        &:hover {
-          color: $dark-blue;
-          border-color: $dark-blue;
-          cursor: initial;
-          background-color: transparent;
-        }
-      }
-    }
     .cta {
       svg {
         background-color: #fff;
@@ -68,6 +56,20 @@
         @include remFont(30px);
         transition: $base-transition;
       }
+    }
+  }
+}
+
+.tags {
+  .project-tag {
+    color: $dark-blue;
+    border-color: $dark-blue;
+    opacity: 1;
+    &:hover {
+      color: $dark-blue;
+      border-color: $dark-blue;
+      cursor: initial;
+      background-color: transparent;
     }
   }
 }
