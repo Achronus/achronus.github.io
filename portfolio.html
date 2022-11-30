@@ -17,21 +17,15 @@ layout: default
                         <a href="{{ project.url }}">
                             <div class="row">     
                                 <div class="tags col-12">
-                                    {%- assign counter = 1 -%}
                                     {%- for project_tag in project.tags -%}
                                         {%- for site_tag in site.tags -%}
                                             {%- if project_tag == site_tag.slug -%}
-                                            {%- if counter | modulo: 2 -%}
-                                            <div class="project-tag float-end">
-                                            {%- else -%}
-                                            <div class="project-tag float-start">
-                                            {%- endif -%}
+                                            <div class="project-tag">
                                                 <i class="{{ site_tag.icon }}"></i>
                                                 {{ site_tag.title }}
                                             </div><!-- project-tag -->
                                             {%- endif -%}
                                         {%- endfor -%}
-                                        {%- assign counter = counter | plus: 1 -%}
                                     {%- endfor -%}
                                 </div><!-- .tags -->
                             </div><!-- .row -->

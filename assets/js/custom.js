@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   setActiveClass();
+  setPortfolioTagFloats();
   
   if (document.body.id != 'homepage') {
     // Create back to top button
@@ -86,4 +87,16 @@ function setActiveClass() {
       nav_links[i].classList.add('active');
     };
   };
+}
+
+function setPortfolioTagFloats() {
+  project_tags = document.getElementById('portfolio').getElementsByClassName('project-tag');
+  for (let i = 0; i < project_tags.length; i++) {
+    if (i % 2 == 0) {
+      project_tags[i].classList.add('float-start');
+    }
+    else {
+      project_tags[i].classList.add('float-end');	  
+    }
+  }
 }
