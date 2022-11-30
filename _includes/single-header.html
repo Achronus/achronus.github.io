@@ -6,14 +6,19 @@
         <img class="img-fluid rounded" src="{{ page.img_url }}" alt="{{ page.title }}">
     </div><!-- bg-img -->
     <div class="row">
-        <div class="tags col-12 col-md-4 offset-md-2 mb-5">
-            {%- for tag in page.tags -%}
-            <div class="project-tag btn btn-outline-primary me-2 disabled">
-                {{ tag }}
-            </div><!-- project-tag -->
+        <div class="tags col-12 col-md-4 offset-md-2 mt-5">
+            {%- for page_tag in page.tags -%}
+                {$- for site_tag in site.tags -%}
+                    {%- if page_tag == site_tag.slug -%}
+                    <div class="project-tag btn btn-outline-primary me-2 disabled">
+                        <i class="{{ site_tag.icon }}"></i>
+                        {{ site_tag.title }}
+                    </div><!-- project-tag -->
+                    {%- endif -%}
+                {%- endfor -%}
             {%- endfor -%}
         </div><!-- .tags -->
-        <div class="col-12 col-md-4 code mb-5">
+        <div class="col-12 code col-md-4 mt-5">
             <a href="{{ page.github_url }}">
                 <i class="fa-solid fa-code"></i>
                 View code

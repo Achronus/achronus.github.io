@@ -19,7 +19,7 @@
 
 #single-project {
   .header {
-    h3, h2, p {
+    h3, h2, p, a {
       color: $black;
     }
     h3 {
@@ -32,6 +32,20 @@
     }
     p {
       font-family: $dm-mono;
+    }
+    .code {
+      a {
+        font-family: $dm-sans;
+        font-weight: 300;
+        transition: $base-transition;
+        svg {
+          @include remMarginRight(5px);
+        }
+        &:hover {
+          color: $dark-blue;
+          transition: $base-transition;
+        }
+      }
     }
   }
 }
