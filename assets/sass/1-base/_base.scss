@@ -64,10 +64,11 @@ p {
 }
 
 .wp-block-table {
+  width: 100%;
   font-family: $rubik;
   @include remMarginTop(20px);
   @include remMarginBot(20px);
-  table, table.wp-block-table {
+  table {
     width: 100%;
   }
   thead {
