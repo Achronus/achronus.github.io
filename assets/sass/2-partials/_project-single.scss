@@ -48,6 +48,12 @@
       }
     }
   }
+  p {
+    &.figure-label {
+      font-style: italic;
+      text-align: center;
+    }
+  }
 }
 
 #single-wiki {

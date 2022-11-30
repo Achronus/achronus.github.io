@@ -1,0 +1,71 @@
+---
+title: Dynamic Programming
+desc: A project that focuses on three Dynamic Programming methods (Policy Iteration, Truncated Policy Iteration, and Value Iteration) to solve a finite MDP.
+img_url: /assets/imgs/portfolio/dynamic-programming.jpg
+tags: gym rl
+layout: portfolio-single
+github_url: https://github.com/Achronus/Portfolio/tree/master/rl/dynamic_programming
+date: 09/08/2021
+---
+<div id="what" class="row">
+    <div class="col-12">
+        <h2>What is the Project?</h2>
+        <p>Dynamic Programming (DP) is an effective method for solving complex problems by breaking them down into sub-problems. The solutions to those sub-problems are then combined to solve the overall complex problem. For more information on DP, check out the <a href="/wiki-articles/rl-dynamic-programming/">RL: Dynamic Programming</a> article.</p>
+        <p>In Reinforcement Learning (RL), DP solves planning problems for finite Markov Decision Processes (MDPs). Within this project, I will provide three strategies that solve the same agent environment (MDP), OpenAI Gym's FrozenLake.</p>
+    </div><!-- .col -->
+</div><!-- #what -->
+
+<div id="environment" class="row">
+    <div class="col-12">
+        <h2>The Environment</h2>
+        <p>FrozenLake is a 4x4 grid containing a total of 16 states, $$\mathcal{S} = \{0, 1, 2, \cdots, 15\}$$. Agents can take one of four actions, $$\mathcal{A} = \{left, down, right, up\}$$, and start in the top left corner (<span class="med">S</span>), where they aim to reach the goal state (<span class="med">G</span>) in the bottom right corner. They can move on any frozen surface (<span class="med">F</span>) but must avoid falling into any holes (<span class="med">H</span>). The goal state provides a reward of +1 and 0 otherwise. Furthermore, an episode ends when the agent reaches the goal or falls into a hole.</p>
+        <div class="row">
+            <div class="col-12 text-center">
+                <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/dp-frozenlake.png" alt="FrozenLake environment">
+                <p class="figure-label">Figure 2.1 Depiction of the FrozenLake environment</p>
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .col -->
+</div><!-- #environment -->
+
+<div id="methods" class="row">
+    <div class="col-12">
+        <h2>Solving the Environment</h2>
+        <p>The environment was solved using Policy Iteration, Truncated Policy Iteration, and Value Iteration. Each variant uses a similar approach with slight differences, but all guarantee convergence to an optimal policy when applied to a finite MDP.</p>
+        <ul>
+            <li><span class="med">Policy Iteration</span>: uses a sequence of policy evaluation and improvement steps until the policy has converged to optimality. Firstly, policy evaluation focuses on estimating the state-value function by constantly performing a Bellman update. Next, policy improvement converts the estimate into an action-value function and maximises the actions taken to improve the policy.</li>
+            <li><span class="med">Truncated Policy Iteration</span>: acts similarly to Policy Iteration but limits the evaluation step to a maximum number of iterations through the space state, reducing computational complexity.</li>
+            <li><span class="med">Value Iteration</span>: acts like Policy Iteration but with a single evaluation step.</li>
+        </ul>
+        <div id="results" class="row">
+            <div class="col-12">
+                <h3>Results Comparsion</h3>
+                <p>Every method achieved the same optimal policy and state-value function, but Value Iteration proved superior due to converging faster.</p>
+                <div class="wp-block-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Type</td>
+                                <td>Time Taken</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Policy Iteration</td>
+                                <td>0.3448 seconds</td>
+                            </tr>
+                            <tr>
+                                <td>Truncated Policy Iteration</td>
+                                <td>0.2678 seconds</td>
+                            </tr>
+                            <tr>
+                                <td>Value Iteration</td>
+                                <td>0.0809 seconds</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- .wp-block-table -->
+            </div><!-- .col -->
+        </div><!-- #results -->
+    </div><!-- .col -->
+</div><!-- #methods -->

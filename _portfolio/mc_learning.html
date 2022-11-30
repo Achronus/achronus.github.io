@@ -65,7 +65,7 @@ date: 14/09/2021
                     <li><code class="inline">Agent card sum &lt;= 18</code>: take HIT action with 80% probability</li>
                 </ul>
                 <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/mc-prediction-results.png" alt="Prediction Results">
-                <p style="font-style: italic; text-align: center;">Figure 1.1. Monte-Carlo Prediction results for a player with and without a usable ace.</p>
+                <p class="figure-label">Figure 1.1. Monte-Carlo Prediction results for a player with and without a usable ace.</p>
                 <p>Both methods achieved the results highlighted in figure 1.1, where the algorithms performed <code class="inline">500,000 episodes</code> with a <code class="inline">gamma of 1.0</code> (no discounted return). The figure shows the difference in return (state value) when the agent's sum is between <code class="inline">10 - 21</code> and the dealer's sum is between <code class="inline">1 - 10</code>.</p>
                 <p>If the colour is dark-blue, the reward achieved is closer to <code class="inline">-1</code> (player lose), and when it is dark-red, it is closer to <code class="inline">+1</code> (player win). Whether the player has a usable ace or no usable ace, the estimated results are similar. For example, when the player's current sum is low <code class="inline">(10 - 12)</code>, they have a higher likelihood of winning because of the greater chance of receiving cards that will get the agent closer to <code class="inline">21</code>.</p>
             </div><!-- .col -->
