@@ -1,0 +1,218 @@
+---
+title: Wild Edible Plant Classifier
+desc: A project dedicated to classifying 35 classes of wild edible plants using Convolutional Neural Network architectures.
+img_url: /assets/imgs/portfolio/pc-plant-samples.jpg
+tags: ml pytorch
+layout: portfolio-single
+github_url: https://github.com/Achronus/wep-classifier
+date: 21/07/2021
+---
+<p>This project focuses on a Wild Edible Plant Classifier that compares the performance of three state-of-the-art CNN architectures: MobileNet v2, GoogLeNet, and ResNet-34. The artefact created is part of my BSc dissertation, aimed at classifying 35 classes of wild edible plants using Transfer Learning.</p>
+
+<div class="text-center">
+  <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/pc-plant-samples.jpg" alt="Wild Edible Plant Classes">
+  <p class="figure-label">Figure 1. The 35 Wild Edible Plant classes used in the project.</p>
+</div>
+
+<p>The 35 classes of wild edible plants are listed in table 1, accompanied by the number of images (per class) within the dataset. The dataset created is comprised of Flickr images, obtained through their API using the rudimentary scripts within the <code class="inline">\data_gathering</code> folder. The dataset can be found on Kaggle <a href="https://www.kaggle.com/ryanpartridge01/wild-edible-plants/">here</a> and contains 16,535 images, where the quantity of images per class varies from 400 to 500.</p>
+
+<div class="text-center">
+  <div class="row">
+    <div class="col-6 col-md-4">
+      <table class="wp-block-table">
+        <thead>
+          <tr>
+            <td>Class</td>
+            <td>Quantity</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alfalfa</td>
+            <td>470</td>
+          </tr>
+          <tr>
+            <td>Allium</td>
+            <td>481</td>
+          </tr>
+          <tr>
+            <td>Borage</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Burdock</td>
+            <td>460</td>
+          </tr>
+          <tr>
+            <td>Calendula</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Cattail</td>
+            <td>466</td>
+          </tr>
+          <tr>
+            <td>Chickweed</td>
+            <td>488</td>
+          </tr>
+          <tr>
+            <td>Chicory</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Chive blossoms</td>
+            <td>455</td>
+          </tr>
+          <tr>
+            <td>Coltsfoot</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Common mallow</td>
+            <td>439</td>
+          </tr>
+          <tr>
+            <td>Common milkweed</td>
+            <td>469</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6 col-md-4">
+      <table class="wp-block-table">
+        <thead>
+          <tr>
+            <td>Class</td>
+            <td>Quantity</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Common vetch</td>
+            <td>451</td>
+          </tr>
+          <tr>
+            <td>Common yarrow</td>
+            <td>474</td>
+          </tr>
+          <tr>
+            <td>Coneflower</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Cow parsley</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Cowslip</td>
+            <td>442</td>
+          </tr>
+          <tr>
+            <td>Crimson clover</td>
+            <td>400</td>
+          </tr>
+          <tr>
+            <td>Crithmum maritimum</td>
+            <td>433</td>
+          </tr>
+          <tr>
+            <td>Daisy</td>
+            <td>490</td>
+          </tr>
+          <tr>
+            <td>Dandelion</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Fennel</td>
+            <td>452</td>
+          </tr>
+          <tr>
+            <td>Fireweed</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Gardenia</td>
+            <td>500</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12 col-md-4">
+      <table class="wp-block-table">
+        <thead>
+          <tr>
+            <td>Class</td>
+            <td>Quantity</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Garlic mustard</td>
+            <td>409</td>
+          </tr>
+          <tr>
+            <td>Geranium</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Ground ivy</td>
+            <td>408</td>
+          </tr>
+          <tr>
+            <td>Harebell</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Henbit</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Knapweed</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Meadowsweet</td>
+            <td>456</td>
+          </tr>
+          <tr>
+            <td>Mullein</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Pickerelweed</td>
+            <td>454</td>
+          </tr>
+          <tr>
+            <td>Ramsons</td>
+            <td>489</td>
+          </tr>
+          <tr>
+            <td>Red clover</td>
+            <td>449</td>
+          </tr>
+          <tr>
+            <td style="font-style: italic;">Total</td>
+            <td style="font-style: italic;">16,535</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="figure-label">Table 1. A detailed list of the Wild Edible Plant classes with the number of images per class within the dataset.</p>
+</div>
+
+<p>The project is divided into three Jupyter Notebooks. The first one contains a sample of the plant classes to visualise them, stored within a zip file found inside the dataset folder, and covers steps 4 to 6 in the Machine Learning Pipeline diagram (figure 2). The second notebook focuses on the tuning of the CNN models, and the third and final notebook visualises their results.</p>
+
+<div class="text-center">
+  <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/ml-pipeline.png" alt="Machine Learning Pipeline">
+  <p class="figure-label">Figure 2. Machine Learning Pipeline diagram.</p>
+</div>
+
+<p>The dissertation report (in pdf format) is on the GitHub repository <a href="https://github.com/Achronus/wep-classifier/blob/main/wepc-dissertation-report.pdf">here</a>. A copy of its abstract is highlighted below.</p>
+
+<div class="text-abstract">
+    <p>Maintaining a steady flow of food is becoming increasingly difficult. With the global population predicted to reach 9.6 billion by 2050, new food sources are required. The research conducted in this paper shows that Deep Learning (DL) applications can improve the quantity and quality of harvests produced when using disease identification and plant recognition techniques.</p>
+    <p>However, they have not yet been used to identify natural vegetation as a potential food source. This study aims to understand the role DL plays in agricultural food production, expand DLs use within horticulture, and potentially identify new food sources within natural environments for daily consumption. Throughout this paper, various toolsets, machine environments, and research methods are discussed, assisting in determining the best methodology for creating an artefact that identifies wild edible plants. While the artefact focuses on three state-of-the-art Convolutional Neural Networks (CNNs), additional information found within this report includes the components of CNNs, accompanied by the design and development of the artefact itself.</p>
+    <p>The three architectures, GoogLe-Net, MobileNet v2, and ResNet-34, were built using the open-source deep learning framework PyTorch, where 36 variants of these models were created and tested using 12 different parameters. The model's performance was evaluated based on six performance metrics to classify 35 classes of wild edible plants, each trained and tested on a dataset containing 16,535 images. Overall, achieving classification accuracies of 74.29%, 82.85%, and 80.35%, for GoogLeNet, MobileNet v2, and ResNet-34, respectively.</p>
+</div>
