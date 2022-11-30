@@ -9,7 +9,5 @@ portfolio_page_url: 'portfolio'
 wiki_page_url: 'wiki'
 
 collections:
-  - activities
-  - portfolio
-  - wiki
-
+  activities:
+    output: true
