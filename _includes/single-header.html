@@ -8,7 +8,7 @@
     <div class="row">
         <div class="tags col-12 col-md-4 offset-md-2 mt-5">
             {%- for page_tag in page.tags -%}
-                {$- for site_tag in site.tags -%}
+                {%- for site_tag in site.tags -%}
                     <p>{{site_tag.slug }}</p>
                     {%- if page_tag == site_tag.slug -%}
                     <div class="project-tag btn btn-outline-primary me-2 disabled">
