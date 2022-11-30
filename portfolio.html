@@ -15,29 +15,31 @@ layout: default
                     </a>
                     <div class="description">
                         <a href="{{ project.url }}">
+                            <div class="row">     
+                                <div class="tags col-12">
+                                    {%- assign counter = 1 -%}
+                                    {%- for project_tag in project.tags -%}
+                                        {%- for site_tag in site.tags -%}
+                                            {%- if project_tag == site_tag.slug -%}
+                                            {%- if counter | modulo: 2 -%}
+                                            <div class="project-tag float-end">
+                                            {%- else -%}
+                                            <div class="project-tag float-start">
+                                            {%- endif -%}
+                                                <i class="{{ site_tag.icon }}"></i>
+                                                {{ site_tag.title }}
+                                            </div><!-- project-tag -->
+                                            {%- assign counter = counter | plus: 1 -%}
+                                            {%- endif -%}
+                                        {%- endfor -%}
+                                    {%- endfor -%}
+                                </div><!-- .tags -->
+                            </div><!-- .row -->
                             <div class="text">
                                 <h2>{{ project.title }}</h2>
                                 <p>{{ project.desc }}</p>
                                 <div class="row">     
-                                    <div class="tags col-10">
-                                        {%- for project_tag in project.tags -%}
-                                            {%- for site_tag in site.tags -%}
-                                                {%- assign counter = 1 -%}
-                                                {%- if project_tag == site_tag.slug -%}
-                                                {%- if counter | modulo: 2 -%}
-                                                <div class="project-tag float-end">
-                                                {%- else -%}
-                                                <div class="project-tag float-start">
-                                                {%- endif -%}
-                                                    <i class="{{ site_tag.icon }}"></i>
-                                                    {{ site_tag.title }}
-                                                </div><!-- project-tag -->
-                                                {%- assign counter = counter | plus: 1 -%}
-                                                {%- endif -%}
-                                            {%- endfor -%}
-                                        {%- endfor -%}
-                                    </div><!-- .tags -->
-                                    <div class="cta col-2 text-end">
+                                    <div class="cta col-12 text-end">
                                         <i class="fas fa-arrow-alt-circle-right"></i>
                                     </div><!-- .cta -->
                                 </div><!-- .row -->
