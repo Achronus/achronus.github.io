@@ -10,22 +10,20 @@ layout: default
             {%- for project in site.portfolio -%}
             <div class="col-md-6 col-xl-4 project-item">
                 <div class="content">
-                    <a href="{{ project.permalink }}">
+                    <a href="{{ project.url }}">
                         <img class="img-fluid" src="{{ project.img_url }}" alt="{{ project.title }}">
                     </a>
                     <div class="description">
-                        <a href="{{ project.permalink }}">
+                        <a href="{{ project.url }}">
                             <div class="text">
                                 <h2>{{ project.title }}</h2>
                                 <p>{{ project.desc }}</p>
                                 <div class="row">     
                                     <div class="tags col-10">
                                         {%- for tag in project.tags -%}
-                                        <div class="project-tag btn btn-outline-primary me-2">
+                                        <div class="project-tag btn btn-outline-primary me-2 disabled">
                                             <i class="fas fa-tag"></i>
-                                            <a href="{{ project.path + tag }}">
-                                                {{ tag }}
-                                            </a>
+                                            {{ tag }}
                                         </div><!-- project-tag -->
                                         {%- endfor -%}
                                     </div><!-- .tags -->
