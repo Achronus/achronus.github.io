@@ -20,8 +20,8 @@ layout: default
                                     {%- assign counter = 0 -%}
                                     {%- for project_tag in project.tags -%}
                                         {%- for site_tag in site.tags -%}
-                                            <p>{{ counter }}</p>
                                             {%- if project_tag == site_tag.slug -%}
+                                            {%- assign counter = counter | plus: 1 -%}
                                             {%- if counter | modulo: 2 -%}
                                             <div class="project-tag float-end">
                                             {%- else -%}
@@ -30,7 +30,6 @@ layout: default
                                                 <i class="{{ site_tag.icon }}"></i>
                                                 {{ site_tag.title }}
                                             </div><!-- project-tag -->
-                                            {%- assign counter = counter | plus: 1 -%}
                                             {%- endif -%}
                                         {%- endfor -%}
                                     {%- endfor -%}
