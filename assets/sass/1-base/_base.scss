@@ -51,6 +51,10 @@ p {
   font-family: $rubik;
   font-weight: 300;
   color: $black;
+  &.figure-label {
+    font-style: italic;
+    text-align: center;
+  }
 }
 
 .text {
