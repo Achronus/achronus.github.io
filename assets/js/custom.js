@@ -63,13 +63,27 @@ jQuery(document).ready(function() {
   jQuery('#tab-content .tab-pane:first-child .helper-btn .btn-previous').addClass('disabled');
   jQuery('#tab-content .tab-pane:last-child .helper-btn .btn-next').addClass('disabled');
 
-  // Main navbar active
-  var current = location.pathname;
-  $('#mainNavBar li.nav-item a').each(function() {
-      var $this = $(this);
-      // if the current path is like this link, make it active
-      if($this.attr('href').indexOf(current) !== -1){
-          $this.addClass('active');
+  // Main navbar active class
+  // Get current page URL
+  var current_url = window.location.href;
+
+  // Extract URL
+  url = current_url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#")); // remove # from URL
+  url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?")); // remove parameters from URL
+  url = url.substr(url.lastIndexOf("/") + 1); // select file name
+  
+  // If file name not available
+  if(url == '') {
+      url = 'index.html';
+  }
+  
+  // Loop all menu items
+  $('.menu li').each(function() {
+      var href = $(this).find('a').attr('href'); // select href
+  
+      // Add active class to respective filename
+      if(url == href) {
+        $(this).addClass('active');
       }
   });
 });
