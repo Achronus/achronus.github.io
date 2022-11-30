@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-GB">
     {%- include head.html -%}
-    <body id="portfolio-single-page">
+    <body id="page">
         <section id="top-page" class="single-page">
             {%- include header.html -%}
         </section><!-- #top-page -->
@@ -11,11 +11,7 @@
         <section id="single-project">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-12 col-lg-3 sidebar">
-                        {%- include sidebar.html -%}
-                    </div><!-- sidebar -->
-
-                    <div class="col-12 col-lg-9 item">
+                    <div class="col-12 item">
                         {%- include single-header.html -%}
                         <div class="description">
                             {{ content }}

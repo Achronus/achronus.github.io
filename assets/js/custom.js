@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   setActiveClass();
+  setSinglePageNavClass();
   
   if (document.body.id != 'homepage') {
     // Create back to top button
@@ -86,4 +87,12 @@ function setActiveClass() {
       nav_links[i].classList.add('active');
     };
   };
+}
+
+function setSinglePageNavClass() {
+  valid_page = document.getElementById('top-page').classList.contains('single-page');
+  
+  if (valid_page) {
+    document.getElementById('site-navigation').classList.add('sticky-nav');
+  }
 }

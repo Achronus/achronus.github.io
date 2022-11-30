@@ -1,6 +1,8 @@
 // BASE STYLES
-.single-page {
-  @include background('/assets/imgs/section-bg.jpg', top, center, repeat, initial);
+body {
+  #page {
+    @include background('/assets/imgs/section-bg.jpg', top, center, repeat, initial);
+  }
 }
 
 section {
