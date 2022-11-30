@@ -258,18 +258,6 @@ p {
   }
 }
 
-#articles, #latest-article, #portfolio, #categories {
-  .cta {
-    svg {
-      background-color: #fff;
-      color: $dark-blue;
-      border-radius: 50%;
-      @include remFont(30px);
-      transition: $base-transition;
-    }
-  }
-}
-
 .project-item {
   @include remMarginBot(20px);
   .content {
@@ -316,49 +304,6 @@ a {
 
 ul, ol {
   margin-left: 0;
-}
-
-#portfolio, #articles, #categories {
-  .content {
-    background-color: $light-torquoise;
-    border: 3px solid $light-torquoise;
-    border-radius: 5px;
-    transition: $base-transition;
-    margin: 0;
-    img {
-      background-color: #fff;
-    }
-    .description {
-      @include remPadAll(15px);
-      margin: 0;
-      .text {
-        font-family: $rubik;
-        h2 {
-          color: $black;
-          font-weight: 500;
-          @include remFont(24px);
-          @include remMarginTop(10px);
-        }
-        p {
-          @include remFont(15px);
-          @include remMarginTop(20px);
-          @include remMarginBot(20px);
-        }
-        &:hover {
-          .cta {
-            svg {
-              color: $black;
-              transition: $base-transition;
-            }
-          }
-        }
-      }
-    }
-    &:hover {
-      transition: $base-transition;
-      transform: translateY(-10px);
-    }
-  }
 }
 
 .container, .container-fluid {
