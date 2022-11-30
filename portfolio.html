@@ -20,10 +20,21 @@ layout: default
                                 <p>{{ project.desc }}</p>
                                 <div class="row">     
                                     <div class="tags col-10">
-                                        {%- for tag in project.tags -%}
-                                        <div class="project-tag btn btn-outline-primary me-2 disabled">
-                                            {{ tag }}
-                                        </div><!-- project-tag -->
+                                        {%- for page_tag in page.tags -%}
+                                            {%- for site_tag in site.tags -%}
+                                                {%- assign counter = 1 -%}
+                                                {%- if page_tag == site_tag.slug -%}
+                                                {%- if counter | modulo: 2 -%}
+                                                <div class="project-tag float-end">
+                                                {%- else -%}
+                                                <div class="project-tag float-start">
+                                                {%- endif -%}
+                                                    <i class="{{ site_tag.icon }}"></i>
+                                                    {{ site_tag.title }}
+                                                </div><!-- project-tag -->
+                                                {%- assign counter = counter | plus: 1 -%}
+                                                {%- endif -%}
+                                            {%- endfor -%}
                                         {%- endfor -%}
                                     </div><!-- .tags -->
                                     <div class="cta col-2 text-end">
