@@ -17,9 +17,10 @@ layout: default
                         <a href="{{ project.url }}">
                             <div class="row">     
                                 <div class="tags col-12">
-                                    {%- assign counter = 1 -%}
+                                    {%- assign counter = 0 -%}
                                     {%- for project_tag in project.tags -%}
                                         {%- for site_tag in site.tags -%}
+                                            <p>{{ counter }}</p>
                                             {%- if project_tag == site_tag.slug -%}
                                             {%- if counter | modulo: 2 -%}
                                             <div class="project-tag float-end">
