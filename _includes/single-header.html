@@ -1,23 +1,21 @@
-<div class="img-content">
+<div class="header">
+    <h3>PROJECT</h3>
+    <h2 class="mt-1">{{ page.title }}</h2>
+    <div class="row">
+        <div class="tags col-12 col-md-9">
+            {%- for tag in page.tags -%}
+            <div class="project-tag btn btn-outline-primary me-2 disabled">
+                {{ tag }}
+            </div><!-- project-tag -->
+            {%- endfor -%}
+        </div><!-- .tags -->
+        <div class="col-12 col-md-3 code">
+            <a href="{{ page.github_url }}">
+                <i class="fa-solid fa-code"></i>
+            </a>
+        </div><!-- col -->
+    </div><!-- row -->
     <div class="bg-img">
         <img class="img-fluid" src="{{ page.img_url }}" alt="{{ page.title }}">
     </div><!-- bg-img -->
-    <div class="overlay">
-        <h2>{{ page.title }}</h2>
-        <div class="row social">
-            <div class="tags col-12 col-md-9">
-                {%- for tag in page.tags -%}
-                <div class="project-tag btn btn-outline-primary me-2 disabled">
-                    {{ tag }}
-                </div><!-- project-tag -->
-                {%- endfor -%}
-            </div><!-- .tags -->
-            <div class="col-12 col-md-3 code">
-                <a href="{{ page.github_url }}">
-                <i class="fab fa-github"></i>
-                View code
-                </a>
-            </div><!-- col -->
-        </div><!-- row -->
-    </div><!-- overlay -->
-</div><!-- img-content -->
+</div><!-- .header -->

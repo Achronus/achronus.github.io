@@ -32,9 +32,8 @@ section {
       }
     }
   }
-  &:not(.error-page) {
+  &:not(.error-page, .single-page) {
     &#top-page {
-      height: 42%;
       @include background('/assets/imgs/header-bg.jpg', bottom, center, no-repeat, cover);
       #intro {
         .title {
@@ -47,6 +46,9 @@ section {
         }
       }
     }
+  }
+  .single-page {
+    @include background('/assets/imgs/single-header-bg.jpg', top, center, no-repeat, cover)
   }
 }
 

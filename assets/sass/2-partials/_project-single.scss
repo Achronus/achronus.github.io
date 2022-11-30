@@ -1,4 +1,16 @@
 // PROJECT SINGLE PAGE
+#single-project {
+  .header {
+    h3 {
+      color: $black;
+    }
+    h2 {
+      color: $black;
+      font-weight: 500;
+    }
+  }
+}
+
 #single-project, #single-wiki {
   .item {
     @include remMarginBot(20px);
