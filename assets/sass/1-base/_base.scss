@@ -67,6 +67,9 @@ p {
   font-family: $rubik;
   @include remMarginTop(20px);
   @include remMarginBot(20px);
+  table {
+    width: 100%;
+  }
   thead {
     font-weight: 500;
   }
