@@ -47,7 +47,7 @@ section {
       }
     }
   }
-  .single-page {
+  &.single-page {
     @include background('/assets/imgs/single-header-bg.jpg', top, center, no-repeat, cover)
   }
 }
