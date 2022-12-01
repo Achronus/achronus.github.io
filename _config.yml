@@ -21,4 +21,3 @@ collections:
     permalink: /wiki/:title
   wiki_articles:
     output: true
-    permalink: /:title
