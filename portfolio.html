@@ -9,7 +9,7 @@ layout: default
         <div class="row">
             {%- assign sorted = site.portfolio | sort: 'date' | reverse -%}
             {%- for project in sorted -%}
-            <div class="col-md-6 col-xl-4 project-item">
+            <div class="project-item col-md-6 col-xl-4">
                 <div class="content">
                     <a href="{{ project.url }}">
                         <img class="img-fluid" src="{{ project.img_url }}" alt="{{ project.title }}">
