@@ -19,9 +19,11 @@ collections:
   wiki:
     output: true
     permalink: /:collection/:title
-    categories:
-      output: true
-      permalink: /:collection/:title
-    topics:
-      output: true
-      permalink: /:collection/:title
+  wiki_categories:
+    output: true
+    collections_dir: /wiki/categories
+    permalink: /:collection/:title
+  wiki_topics:
+    output: true
+    collections_dir: /wiki/topics
+    permalink: /:collection/:title
