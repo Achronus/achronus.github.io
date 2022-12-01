@@ -5,30 +5,28 @@
         <div class="row">
             {%- assign sorted = site.wiki_articles | sort: 'date' | reverse -%}
             {%- for article in sorted -%}
-                {%- for site_tag in site.tags -%}
-                    {%- if article.tag == site_tag.slug -%}
-                    <div class="project-item col-md-6 col-xl-4">
-                        <div class="content">
-                          <a href="{{ article.url }}">
-                                <img class="img-fluid" src="{{ article.img_url }}" alt="{{ article.title }}">
-                          </a>
-                          <div class="description">
-                            <a href="{{ article.url }}">
-                              <div class="text">
-                                <h2>{{ article.title }}</h2>
-                                <p>{{ article.desc }}</p>
-                                <div class="row">
-                                    <div class="col cta text-end">
-                                        <i class="fas fa-arrow-alt-circle-right"></i>
-                                    </div><!-- .cta -->
-                                </div> <!-- .row -->
-                              </div><!-- .text -->
-                            </a>
-                          </div><!-- .description -->
-                        </div><!-- .content -->
-                      </div><!-- .project-item -->
-                    {%- endif -%}
-                {%- endfor -%}
+              {%- if article.topic == site_tag.slug -%}
+              <div class="project-item col-md-6 col-xl-4">
+                  <div class="content">
+                    <a href="{{ article.url }}">
+                        <img class="img-fluid" src="{{ article.img_url }}" alt="{{ article.title }}">
+                    </a>
+                    <div class="description">
+                      <a href="{{ article.url }}">
+                        <div class="text">
+                          <h2>{{ article.title }}</h2>
+                          <p>{{ article.desc }}</p>
+                          <div class="row">
+                              <div class="col cta text-end">
+                                  <i class="fas fa-arrow-alt-circle-right"></i>
+                              </div><!-- .cta -->
+                          </div> <!-- .row -->
+                        </div><!-- .text -->
+                      </a>
+                    </div><!-- .description -->
+                  </div><!-- .content -->
+                </div><!-- .project-item -->
+              {%- endif -%}
             {%- endfor -%}
         </div><!-- .row -->
     </div><!-- .container -->
