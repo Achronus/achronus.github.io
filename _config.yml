@@ -21,9 +21,9 @@ collections:
     permalink: /:collection/:title
   wiki_categories:
     output: true
-    collections_dir: /wiki/categories
+    collections_dir: /_wiki/categories
     permalink: /:collection/:title
   wiki_topics:
     output: true
-    collections_dir: /wiki/topics
+    collections_dir: /_wiki/topics
     permalink: /:collection/:title
