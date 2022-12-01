@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    {%- include head.html -%}
+    <body id="{{ page.id }} page">
+        <section id="top-page" class="default-page">
+        {%- include header.html -%}
+            <!-- INTRO
+            ============================================================================== -->
+            <section id="intro">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-auto title">
+                            {%- if page.slug != site.wiki_page_url -%}
+                                <h2>{{ page.title }} {{ page.type }}s</h2>
+                            {%- else -%}
+                                <h2>{{ page.title }}</h2>
+                            {%- endif -%}
+                        </div><!-- .title -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </section><!-- #intro -->
+        </section><!-- #top-page -->
+
+        {%- include breadcrumbs.html -%}
+
+        <!-- DESCRIPTION
+        ============================================================================== -->
+        <section id="description">
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto text">
+                        {{ page.content }}
+                    </div><!-- .col -->
+                </div><!-- .row -->
+            </div><!-- .container -->
+        </section><!-- #description -->
+
+        {%- include wiki-components.html -%}
+        {%- include footer.html -%}
+    </body>
+</html>
