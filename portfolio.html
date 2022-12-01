@@ -7,7 +7,7 @@ layout: default
 <section id="portfolio">
     <div class="container">
         <div class="row">
-            {%- for project in site.portfolio -%}
+            {%- for project in site.portfolio reversed -%}
             <div class="col-md-6 col-xl-4 project-item">
                 <div class="content">
                     <a href="{{ project.url }}">

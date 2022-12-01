@@ -1,4 +1,4 @@
 ---
 title: Supervised Learning
-icon: fa-solid fa-user-visor
+icon: fa-solid fa-users
 ---
