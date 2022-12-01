@@ -1,5 +1,72 @@
 ---
 title: Wiki
-layout: default 
+layout: default
 ---
-<p>TBC</p>
+<!-- BREADCRUMBS
+============================================================================== -->
+<section id="breadcrumbs">
+<div class="container">
+    <div class="row">
+    <div class="col-auto text btn-group btn-breadcrumb">
+        <a href="/{{ site.wiki_page_url }}" class="btn btn-primary current disabled">
+            <i class="fas fa-home"></i>
+        </a>
+    </div><!-- .col -->
+    </div><!-- .row -->
+</div><!-- .container -->
+</section><!-- #breadcrumbs -->
+
+<!-- DESCRIPTION
+============================================================================== -->
+<section id="description">
+    <div class="container">
+        <div class="row">
+            <div class="col-auto text">
+                <p>Welcome to the wiki! Here you will find articles relating to different areas of Machine Learning (ML). This wiki intends to be a resource for users interested in the field, aiming to gain an intuitive understanding of core ML algorithms and concepts.</p>
+                <p>The wiki is divided into distinct fields of ML, which is further subdivided into a collection of topics. Each topic has an individual set of articles associated with it, where they provide details on when and how to use each concept effectively. To get started, select one of the categories below.</p>
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</section><!-- #description -->
+
+<!-- ARTICLE CATEGORIES
+============================================================================== -->
+<section id="articles">
+    <div class="container">
+        <div class="row">
+            {%- assign sorted = site.wiki.categories | sort -%}
+            {%- for category in sorted -%}
+            <div class="article-item col-md-6 col-xl-4">
+                <a href="https://acius.co.uk/article_type/reinforcement-learning/">
+                    <div class="content">
+                        <div class="description">
+                            {%- for site_tag in site.tags -%}
+                                {%- if category.tag == site_tag.slug -%}
+                                <div class="row parent-tag">
+                                    <div class="icon col-3 col-sm-2 col-md-3 col-lg-2">
+                                        <i class="{{ site_tag.icon }}"></i>
+                                    </div><!-- icon -->
+                                    <div class="tag-text col-9 col-sm-10 col-md-9 col-lg-10">
+                                        <p class="title">{{ site_tag.title }}</p>
+                                        <p>Category</p>
+                                    </div><!-- text -->
+                                </div> <!-- tag -->
+                                {%- endif -%}
+                            {%- endfor -%}
+                            <div class="text">
+                                <h2>{{ category.title }}</h2>
+                                <p>{{ category.excerpt }}</p>
+                                <div class="row">
+                                    <div class="offset-6 col-6 cta text-end">
+                                        <i class="fas fa-arrow-alt-circle-right"></i>
+                                    </div><!-- .cta -->
+                                </div> <!-- .row -->
+                            </div><!-- .text -->
+                        </div><!-- .description -->
+                    </div><!-- .content -->
+                </a>
+            </div><!-- .article-item -->
+            {%- endfor -%}
+        </div><!-- .row -->
+    </div><!-- .container -->
+</section><!-- #articles -->

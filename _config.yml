@@ -16,3 +16,12 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:title
+  wiki:
+    output: true
+    permalink: /:collection/:title
+    categories:
+      output: true
+      permalink: /:collection/:title
+    topics:
+      output: true
+      permalink: /:collection/:title
