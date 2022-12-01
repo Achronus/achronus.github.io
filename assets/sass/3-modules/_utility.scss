@@ -1,4 +1,22 @@
 // 404 PAGE
+#error-page {
+  #site-navigation {
+    background-color: #fff;
+    height: 10vh;
+    z-index: 170;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    #mainNavBar {
+      margin-top: 0 !important;
+      .nav-link {
+        @include remFont(18px);
+      }
+    }
+  }
+}
+
 #error {
   @include remMarginTop(92px);
   @include remMarginBot(92px);
