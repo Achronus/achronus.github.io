@@ -3,11 +3,25 @@
 <section id="breadcrumbs">
     <div class="container">
         <div class="row">
-        <div class="col-auto text btn-group btn-breadcrumb">
-            <a href="/{{ site.wiki_page_url }}" class="btn btn-primary current">
-                <i class="fas fa-home"></i>
-            </a>
-        </div><!-- .col -->
+            {% assign crumbs = page.url | split: '/' %}
+            <div class="col-auto text btn-group btn-breadcrumb">
+                <a href="/{{ site.wiki_page_url }}" class="btn btn-primary">
+                    <i class="fas fa-home"></i>
+                </a>
+                {% for crumb in crumbs offset: 2 %}
+                    {% if forloop.last %}
+                        <a class="btn btn-primary current" disabled>
+                        {% for site_tag in site.tags %}
+                            {% if page.tag == site_tag.slug %}
+                                {{ site_tag.title }}
+                            {% endif %}
+                        {% endfor %}
+                        - {{ page.title }}</a>
+                    {% else %}
+                        <a href="/{{ site.wiki_page_url }}/{{ page.topic }}" class="btn btn-primary">{{ crumb | capitalize }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div><!-- .col -->
         </div><!-- .row -->
     </div><!-- .container -->
 </section><!-- #breadcrumbs -->
