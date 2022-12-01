@@ -1,61 +1,4 @@
 // WIKI PAGE
-section {
-  &#latest-article {
-    @include remPadTop(0px);
-  }
-}
-
-#latest-article {
-  .article {
-    position: relative;
-    @include remPadAll(0px);
-    img {
-      float: right;
-      width: 55%;
-      height: 70vh;
-      object-fit: cover;
-    }
-    .article-overlay {
-      position: absolute;
-      max-width: 550px;
-      min-width: 350px;
-      top: 50%;
-      transform: translate(-90%,-50%);
-      background-color: $light-torquoise;
-      transition: $base-transition;
-      @include boxShadow(0px, 0px, 10px, rgba(0, 0, 0, 0.2));
-      .description {
-        margin: 0;
-        .text {
-          .title {
-            font-family: $rubik;
-            color: $black;
-            font-weight: bold;
-            @include lineHeight(48px);
-            @include remFont(40px);
-            @include remPadTopBot(18px);
-          }
-          p {
-            font-family: $rubik;
-            color: $grey;
-            font-weight: 300;
-            @include remFont(18px);
-            @include remMarginBot(20px);
-          }
-          &:hover {
-            .cta {
-              svg {
-                color: $black;
-                transition: $base-transition;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 #articles {
   @include remMarginBot(50px);
   .catalogue {
@@ -107,10 +50,3 @@ section {
     }
   }
 }
-
-.article-overlay, .overlay {
-  .tag {
-    @include remMarginBot(5px);
-  }
-}
-

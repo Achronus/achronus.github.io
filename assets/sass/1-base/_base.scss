@@ -13,10 +13,6 @@ section {
   &#single-wiki {
     @include remPad(24px, 0px);
   }
-  &#category-description, &#topic-description {
-    @include remPadTop(24px);
-    @include remPadBot(16px);
-  }
   &#breadcrumbs {
     @include remPadTop(40px);
     @include remPadBot(0px);
@@ -269,16 +265,6 @@ p {
     position: relative;
     a {
       text-decoration: none;
-      &:hover {
-        .overlay {
-          background: $black;
-          transition: $base-transition;
-          .cta p, h2 {
-            color: #fff;
-            transition: $base-transition;
-          }
-        }
-      }
     }
   }
 }
@@ -288,22 +274,6 @@ a {
   color: inherit;
   &:hover {
     color: #40d9f1;
-  }
-  .overlay {
-    position: absolute;
-    font-family: $rubik;
-    bottom: 0;
-    background-color: #fff;
-    @include remPadAll(15px);
-    left: 13%;
-    width: 75%;
-    min-height: 20%;
-    max-height: 100%;
-    h2 {
-      color: $black;
-      font-weight: 500;
-      @include remMarginTop(10px);
-    }
   }
 }
 
