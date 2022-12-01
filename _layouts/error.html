@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    {%- include head.html -%}
+    <body id="page">
+        <section id="error-page" class="default-page">
+            {%- include header.html -%}
+        </section><!-- #top-page -->
+
+        <!-- ERROR MESSAGE
+        ============================================================================== -->
+        <section id="error">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        {{ content }}                        
+                    </div><!-- .col -->
+                </div><!-- .row -->
+            </div><!-- .container -->
+        </section><!-- #error -->
+        {%- include footer.html -%}
+    </body>
+</html>
