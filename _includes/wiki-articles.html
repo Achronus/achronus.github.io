@@ -1,12 +1,12 @@
-<!-- WIKI COMPONENTS
+<!-- WIKI ARTICLES
 ============================================================================== -->
 <section id="articles">
     <div class="container">
         <div class="row">
-            {%- assign sorted = page.list_type | sort -%}
+            {%- assign sorted = site.wiki_articles | sort -%}
             {%- for item in sorted -%}
             <div class="article-item col-md-6 col-xl-4">
-                <a href="{{ category.url }}">
+                <a href="{{ item.url }}">
                     <div class="content">
                         <div class="description">
                             {%- for site_tag in site.tags -%}

@@ -31,6 +31,9 @@
         .text {
           @include remMarginTop(10px);
           @include remPadAll(5px);
+          h2 {
+            @include remFont(20px);
+          }
         }
       }
       &:hover {

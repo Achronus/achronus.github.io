@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-GB">
     {%- include head.html -%}
-    <body id="{{ page.id }} page">
+    <body id="page {{ page.id }}">
         <section id="top-page" class="default-page">
         {%- include header.html -%}
             <!-- INTRO
@@ -35,7 +35,11 @@
             </div><!-- .container -->
         </section><!-- #description -->
 
-        {%- include wiki-components.html -%}
+        {%- if page.type == 'Topic' -%}
+            {%- include wiki-topics.html -%}
+        {%- elif page.type == 'Article' -%}
+            {%- include wiki-articles.html -%}
+        {%- endif -%}
         {%- include footer.html -%}
     </body>
 </html>
