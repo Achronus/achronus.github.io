@@ -1,0 +1,441 @@
+---
+title: RL: Dynamic Programming
+desc: Reinforcement Learning (RL) is an expansive and growing subfield within Machine Learning with a variety of important terminology. 
+img_url: /assets/imgs/wiki/rl-dynamic-programming.png
+date: 07/02/2022
+
+tag: rl
+topic: rl_intro
+type: article
+permalink: /wiki/rl_intro/:title
+layout: single-page
+---
+<div id="intro" class="row">
+    <div class="col-12">
+      <p>Throughout this article, we will identify what Dynamic Programming (DP) is in Reinforcement Learning (RL), its core components and algorithms, and discuss an expansion to DP to make its algorithms more powerful. Additionally, the algorithms highlighted within this article have coded counterparts presented in the <a href="/portfolio/dynamic_programming">Dynamic Programming</a> project.</p>
+    </div><!-- .col -->
+</div><!-- #intro -->
+
+<div id="what" class="row">
+    <div class="col-12">
+      <h2>What is Dynamic Programming?</h2>
+      <p>DP is a method for solving complex problems by breaking them down into subproblems, where these subproblems are then solved and combined to complete the whole complex problem. The word <span class="med">dynamic</span> relates to the sequential or temporal components of a problem, and <span class="med">programming</span> refers to optimising problems using algorithms like a policy. Understanding the fundamentals of this technique can provide a great starting point for grasping some of the more difficult algorithms in RL.</p>
+      <p>One of the basic principles of DP is the <span class="med">principle of optimality</span>. By definition, the theorem states:</p>
+      <p class="quote">A policy \(\pi(a|s)\) achieves the optimal value from state s when the value of that policy is the optimal value function (equation 1.1). However, this can only be true if any state \(s'\) is reachable from \(s\) when the policy \(\pi\) followed achieves the optimal value from state \(s'\) (equation 1.2).</p>
+      <div class="row">
+        <div class="col-11 text-center">
+          <p>
+            \(\begin{equation}
+            v_{\pi}(s) = v_*(s)
+            \end{equation}\)
+          </p>
+        </div>
+        <div class="col-1 text-end">
+          <p>(1.1)</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-11 text-center">
+          <p>
+            \(\begin{equation}
+            v_{\pi}(s') = v_*(s')          
+            \end{equation}\)
+          </p>
+        </div>
+        <div class="col-1 text-end">
+          <p>(1.2)</p>
+        </div>
+      </div>
+      <p>DP is ideal for problems that have two properties:</p>
+      <ul>
+        <li><span class="med">An optimal substructure</span> - explains that complex problems are decomposable into multiple solvable subproblems, where the optimal solutions to these subproblems can determine the optimal solution to the overall problem. These require a principle of optimality.</li>
+        <li><span class="med">Overlapping subproblems</span> - involves recursive subproblems that can be cached and reused to solve complex problems, typically through divide-and-conquer algorithms.</li>
+      </ul>
+      <p>In RL, Markov Decision Processes (MDPs) satisfy both the required properties, making DP a prime method for solving MDPs. Specifically, the Bellman Equation provides a recursive decomposition of complex problems, representing the optimal substructure, by breaking the problem into two pieces: the optimal behaviour for one step (an initial reward) and the optimal behaviour after that step (the discounted value of the successor state). Furthermore, the value function stores and reuses solutions, fulfilling the overlapping subproblems requirement.</p>
+      <p>DP is used to compute optimal policies given a perfect model of an agent's environment, embodied as an MDP, where it helps to solve two types of <span class="med">planning problems</span>:</p>
+      <ul>
+        <li><span class="med">Prediction</span> - given an MDP \(〈S,A,\mathcal{P},\mathcal{R},\gamma〉\) and a policy \(\pi\), or MRP \(〈S,\mathcal{P}^\pi,\mathcal{R}^\pi,\gamma〉\), as input, it outputs a value function \(v_\pi\).</li>
+        <li><span class="med">Control</span> - given an MDP \(〈S,A,\mathcal{P},\mathcal{R},\gamma〉\) as input, it outputs the optimal value function \(v_*\) and optimal policy \(\pi_*\).</li>
+      </ul>
+      <p>While this article focuses on the applications of DP in RL, DP itself isn't specific to the field. It is used to solve many problems, including:</p>
+      <ul>
+        <li>Scheduling algorithms</li>
+        <li>String algorithms (e.g. sequence alignment)</li>
+        <li>Graph algorithms (e.g. shortest path algorithm)</li>
+        <li>Graphical models (e.g. Viterbi algorithm)</li>
+        <li>Bioinformatics (e.g. lattice models)</li>
+      </ul>
+      <p>Additionally, DP uses full-width backups, which can be a computationally expensive process. For every Bellman backup (using synchronous or asynchronous algorithms), every successor state and action are considered using the knowledge of the MDP transitions and reward function. Due to this, DP is effective for medium-sized problems (a couple of million states). Unfortunately, for larger MDPs, DP suffers what is known as <span class="med">Bellman's curse of dimensionality</span>. The curse relates to an exponential growth of the number of states, given the number of state variables \(n = |S|\), which can be very computationally expensive for a single backup.</p>
+      <p>As an alternative, when using large MDPs, we can use <span class="med">sample backups</span>. Sample backups take a sample of rewards and transitions \(〈S,A,R,S'〉\), instead of a reward function \(\mathcal{R}\) and the transition dynamics \(\mathcal{P}\). They can be advantageous for breaking the curse of dimensionality, setting a constant cost of backups that are independent on \(n = |S|\). Also, in model-free algorithms, it removes the requirement to know the model of the environment.</p>
+    </div><!-- .col -->
+</div><!-- #what -->
+
+<div id="policy-iteration" class="row">
+    <div class="col-12">
+        <h2>Policy Iteration</h2>
+        <p>Policy Iteration is both a combination of Policy Evaluation and Policy Improvement. To gain an intuitive understanding of each concept, I have divided this section into three parts.</p>
+        <div id="policy-evaluation" class="row">
+            <div class="col-12">
+                <h3>Policy Evaluation</h3>
+                <p>Policy Evaluation focuses on evaluating a fixed policy \(v_\pi\), and is used to solve the <span class="med">prediction problem</span>. Given an MDP \(〈S,\mathcal{A},\mathcal{P},\mathcal{R},\gamma〉\) and a policy \(\pi\), we use the <span class="med">Bellman Expectation Equation</span> and convert it into an iterative update to use it as a mechanism that evaluates the policy.</p>
+                <div class="row">
+                    <div class="col-11 text-center">
+                    <p>
+                        \(\begin{equation}
+                        v_1 \rightarrow v_2 \rightarrow \cdots \rightarrow v_\pi
+                        \end{equation}\)
+                    </p>
+                    </div>
+                    <div class="col-1 text-end">
+                    <p>(2.1.1)</p>
+                    </div>
+                </div>
+                <p>Equation 2.1.1 starts with a value function \(v_1\), representing a vector of all states within the MDP, where the values are initialized to an arbitrary value (e.g. 0). Next, we perform a one-step look-ahead using the Bellman Expectation Equation that creates a new value function \(v_2\). Iterating over this process multiple times, we eventually generate a <span class="med">true</span> value function \(v_\pi\). This process is formally known as <span class="med">synchronous backups</span>.</p>
+                <p>Taking the values of the first value function, we consider all the states in the MDP \(s \in S\) and create a new one \(v_k(s')\) at the next iteration \(k+1\), where \(s'\) represents a successor state of \(s\), mathematically expressed in equation 2.1.2.</p>
+                <div class="row">
+                    <div class="col-11 text-center">
+                    <p>
+                        \(\begin{equation}
+                        v_{k+1}(s) = \sum\limits_{a \in A} \pi(a|s) \left(\mathcal{R}^a_s + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{ss'} v_k(s') \right)
+                        \end{equation}\)
+                    </p>
+                    <p>
+                        \(\begin{equation}
+                        v_{k+1} = \mathcal{R}^\pi + \gamma \mathcal{P}^\pi v^k
+                        \end{equation}\)
+                    </p>
+                    </div>
+                    <div class="col-1 text-end">
+                    <p>(2.1.2)</p>
+                    </div>
+                </div>
+                <p>For example, we have an environment of a small grid world of 16 squares, where two squares are terminal states (shaded), and the remaining are non-terminal states \(S = \lbrace 1,2,\cdots,14 \rbrace \).</p>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <img class="img-fluid d-block mx-auto" src="/assets/imgs/wiki/rl-dp-gridworld.png" alt="Gridworld">
+                        <p class="figure-label">Figure 2.1.1 Grid world environment example.</p>
+                    </div><!-- .col -->
+                </div><!-- .row -->
+                <p>The environment consists of the following rules:</p>
+                <ul>
+                    <li>The non-terminal states return -1 reward at each transition made by the agent.</li>
+                    <li>The agent can take one of four actions \(A = \lbrace north, east, south, west \rbrace\).</li>
+                    <li>The actions must follow a uniform random policy (equation 2.1.3).</li>
+                    <li>Actions taken that would take the agent off the grid leave its state unchanged.</li>
+                    <li>The environment uses an undiscounted episodic MDP \((\gamma = 1)\).</li>
+                    <li>If the agent reaches a terminal state, it ends the episode.</li>
+                </ul>
+                <div class="row">
+                    <div class="col-11 text-center">
+                        <p>
+                        \(\begin{equation}
+                        \pi(n|\cdot) = \pi(e|\cdot) = \pi(s|\cdot) = \pi(w|\cdot) = 0.25
+                        \end{equation}\)
+                        </p>
+                    </div>
+                    <div class="col-1 text-end">
+                        <p>(2.1.3)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <img class="img-fluid d-block mx-auto" src="/assets/imgs/wiki/rl-dp-gridworld-policies.png" alt="Gridworld policies">
+                        <p class="figure-label">Figure 2.1.2 A Random Policy and Greedy Policy for \(v_k\), displaying the rewards received that the agent obtains when entering a given state and the directions it would take to achieve it.</p>
+                    </div><!-- .col -->
+                </div><!-- .row -->
+                <p>Figure 2.1.2 starts with \(k = 0\), where we initialise the policy states to 0. Next, we apply the Bellman Expectation Equation \(k = 1\) and consider the old values in \(k = 0\) to generate new ones. Using the equation again, we create \(k = 2\), a slightly better policy. The process is repeated for many iterations until the true value function has been reached, denoted by \(k = \infty\). The example used shows the importance of value functions - they help determine better policies over multiple iterations.</p>
+            </div><!-- .col -->
+        </div><!-- #policy-evaluation -->
+    </div><!-- .col -->
+</div><!-- #policy-iteration -->
+
+<div id="policy-improvement" class="row">
+    <div class="col-12">
+      <h3>Policy Improvement</h3>
+      <p>It's possible to build on top of Policy Evaluation with an improvement stage, known as Policy Improvement. <span class="med">Policy Improvement</span> is an approach used to find the best possible policy within a given MDP using a feedback process, where \(\pi' \ge \pi\).</p>
+      <p>Suppose we have a value function \(v_\pi\) for an arbitrary deterministic policy \(\pi\). How do we know if this is the best policy? We can use what is known as a <span class="med">policy improvement theorem</span> to identify this, highlighted in equation 2.2.1.</p>
+      <div class="row">
+        <div class="col-11 text-center">
+          <p>
+            \(\begin{equation}
+            q_\pi(s, \pi'(s)) \ge v_\pi(s)
+            \end{equation}\)
+          </p>
+        </div>
+        <div class="col-1 text-end">
+          <p>(2.2.1)</p>
+        </div>
+      </div>
+      <p>Using a pair of deterministic policies, \(\pi\) and \(\pi'\), (original and changed, respectively) we can use the theorem to compare the policies and determine the best one. To improve this policy to \(\pi'\), we can use a <span class="med">greedy policy</span> (equation 2.2.2) which takes the best action an agent can take within a given state. This policy only reflects the short-term by performing a one-step look-ahead for \(v_\pi\).</p>
+      <div class="row">
+        <div class="col-11 text-center">
+          <p>
+            \(\begin{equation}
+            \pi'(s) = {arg\max\limits_{a \in A}} \; q_\pi(s, a)
+            \end{equation}\)
+          </p>
+        </div>
+        <div class="col-1 text-end">
+          <p>(2.2.2)</p>
+        </div>
+      </div>
+      <p>By construction, the greedy policy meets the conditions of the policy improvement theorem, providing confidence that its policy is as good or better than the original policy. However, if the new greedy policy \(\pi'\) is as good, but not better than the old policy \(\pi\), then \(v_\pi = v_\pi'\).</p>
+    </div><!-- .col -->
+</div><!-- #policy-improvement -->
+
+<div id="policy-iter2" class="row">
+    <div class="col-12">
+      <h3>Policy Iteration</h3>
+      <p>Now that we have seen how to evaluate and improve a policy, we can combine them together to create <span class="med">Policy Iteration</span>. Given a policy\(\pi\), we first <span class="med">evaluate</span> the policy using a value function (equation 2.3.1) and then <span class="med">improve</span> it by acting greedily towards the value function (equation 2.3.2).</p>
+      <div class="row">
+        <div class="col-11 text-center">
+          <p>
+            \(\begin{equation}
+            v_\pi(s) = \mathbb{E}[R_{t+1} + \gamma R_{t+2} + \cdots \; | \; S_t = s]
+            \end{equation}\)
+          </p>
+        </div>
+        <div class="col-1 text-end">
+          <p>(2.3.1)</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-11 text-center">
+          <p>
+            \(\begin{equation}
+            \pi' = greedy(v_\pi)
+            \end{equation}\)
+          </p>
+        </div>
+        <div class="col-1 text-end">
+          <p>(2.3.2)</p>
+        </div>
+      </div>
+      <p>By continuing to improve our policy we can yield even better results and thus obtain a sequence of monotonically improving policies and value functions (equation 2.3.3).</p>
+      <div class="row">
+        <div class="col-11 text-center">
+          <p>
+            \(\begin{equation}
+            \pi_0 \xrightarrow{E} v_{\pi_0} \xrightarrow{I} \pi_1 \xrightarrow{E} v_{\pi_1} \xrightarrow{I} \pi_2 \xrightarrow{E} \cdots \xrightarrow{I} \pi_* \xrightarrow{E} v_*
+            \end{equation}\)
+          </p>
+        </div>
+        <div class="col-1 text-end">
+          <p>(2.3.3)</p>
+        </div>
+      </div>
+      <p>In equation 2.3.3, \(E\) denotes a policy evaluation and \(I\) denotes a policy improvement. Each policy is guaranteed to be a strict improvement over the previous one unless they are already optimal.</p>
+      <p>In the Policy Evaluation example, the grid world environment was solved within a few iterations. However, in larger environments it can take many evaluations and improvement iterations to converge to an optimal policy. While this method can be slow, it is effective because we will <span class="med">always</span> reach an optimal policy \(\pi*\).</p>
+      <p>When improvements stop, we have achieved the optimal policy \(\pi*\) and satisfied the Bellman optimality equation (equation 2.3.4). Therefore, \(v_\pi(s) = v_*(s)\) for all states in the state space \(S\).</p>
+      <div class="row">
+        <div class="col-11 text-center">
+          <p>
+            \(\begin{equation}
+            v_\pi(s) = \max\limits_{a \in A} \; q_\pi(s, a)
+            \end{equation}\)
+          </p>
+        </div>
+        <div class="col-1 text-end">
+          <p>(2.3.4)</p>
+        </div>
+      </div>
+      <p>Additionally, it is possible to extend Policy Iteration to include an early stopping condition. Rather than having the policy converge to a true value function (which would require an infinite number of iterations), we can stop the iterations when there are minor updates to the value function, indicating that the policy is close to true convergence. Typically, this is handled by a small positive number \(\theta\) set by the user.</p>
+    </div><!-- .col -->
+</div><!-- #policy-iter2 -->
+
+<div id="value-iteration" class="row">
+    <div class="col-12">
+        <h2>Value Iteration</h2>
+        <p>A drawback to policy iteration is that each of its iterations involve policy evaluation, which requires multiple sweeps through the state space. <span class="med">Value Iteration</span> is a special case of policy iteration, where policy evaluation is stopped after just one sweep of the state space. By converting the Bellman Optimality Equation (equation 3.1) into an update rule, where updates are applied iteratively, we can create the value iteration algorithm.</p>
+        <div class="row">
+            <div class="col-11 text-center">
+            <p>
+                \(\begin{equation}
+                v_*(s) \leftarrow \max\limits_{a \in A} \mathcal{R}^a_s + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{ss'} v_*(s')
+                \end{equation}\)
+            </p>
+            </div>
+            <div class="col-1 text-end">
+                <p>(3.1)</p>
+            </div>
+        </div>
+        <p>Intuitively, value iteration starts at the terminal state of an MDP and works backwards to determine the optimal path to that state, creating the optimal policy \(\pi_*\). At each iteration \(k+1\), for all states in the state space, we update \(v_{k+1}(s)\) from a successor state \(v_k(s')\) until we receive the optimal value function (equation 3.2).</p>
+        <div class="row">
+            <div class="col-11 text-center">
+            <p>
+                \(\begin{equation}
+                v_1 \rightarrow v_2 \rightarrow \cdots \rightarrow v_*
+                \end{equation}\)
+            </p>
+            </div>
+            <div class="col-1 text-end">
+                <p>(3.2)</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <img class="img-fluid d-block mx-auto" src="/assets/imgs/wiki/rl-dp-value-iteration.png" alt="Value Iteration grid world example">
+                <p class="figure-label">Figure 3.1 A grid world example using value iteration.</p>
+            </div><!-- .col -->
+        </div><!-- .row -->
+        <p>Figure 3.1 expresses an example of a 4x4 grid world MDP that uses value iteration to solve it. The environments rules are the same as the Policy Evaluation example but with one terminal state (shaded square). In \(v_1\), we initialise all states to 0. Next, we perform the Bellman optimality update equation iteratively (equations 3.3 and 3.4). As the agent moves further from the goal state, the reward for each state is decreased by -1 until the optimal policy \(\pi_*\) is achieved at the seventh iteration.</p>
+        <div class="row">
+            <div class="col-11 text-center">
+                <p>
+                \(\begin{equation}
+                v_{k+1}(s) = \max\limits_{a \in A} \left(\mathcal{R}^a_s + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{ss'} v_k(s') \right)
+                \end{equation}\)
+                </p>
+            </div>
+            <div class="col-1 text-end">
+                <p>(3.3)</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-11 text-center">
+                <p>
+                \(\begin{equation}
+                v_{k+1} = \max\limits_{a \in A} \mathcal{R}^a + \gamma \mathcal{P}^a v_k
+                \end{equation}\)
+                </p>
+            </div>
+            <div class="col-1 text-end">
+                <p>(3.4)</p>
+            </div>
+        </div>
+    </div><!-- .col -->
+</div><!-- #value-iteration -->
+
+<div id="algorithms-table" class="row">
+    <div class="col-12">
+      <h2>Algorithms Table</h2>
+      <div class="wp-block-table">
+        <table>
+          <thead>
+            <tr>
+              <td>Type of Planning Problem</td>
+              <td>Bellman Equation</td>
+              <td>Algorithm</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Prediction</td>
+              <td>Expectation</td>
+              <td>Iterative Policy Evaluation</td>
+            </tr>
+            <tr>
+              <td>Control</td>
+              <td>Expectation + Greedy Policy Improvement</td>
+              <td>Policy Iteration</td>
+            </tr>
+            <tr>
+              <td>Control</td>
+              <td>Optimality</td>
+              <td>Value Iteration</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>When considering these algorithms for state-value functions \(v_\pi(s)\) or \(v_*(s)\), the complexity is \(O(mn^2)\) per iteration, where \(m\) is actions and \(n\) is states. For action-value functions \(q_\pi(s,a)\) or \(q_*(s,a)\), the complexity is \(O(m^2n^2)\) per iteration.</p>
+    </div><!-- .col -->
+</div><!-- #algorithms-table -->
+
+<div id="async-dp" class="row">
+    <div class="col-12">
+      <h2>Asynchronous Dynamic Programming</h2>
+      <p>The algorithms explained within this article focus on using <span class="med">synchronous</span> backups, which require sweeps over the entire state space of the MDP. If the state space is large, a single sweep can be computationally expensive.</p>
+      <p><span class="med">Asynchronous DP</span> algorithms are in-place iterative algorithms that perform in systematic sweeps of the state space. Compared to synchronous algorithms, they back up the values of states individually in any order, proceeding with available state values. This approach can significantly reduce the computational overhead of the algorithm, and like with synchronous algorithms, it guarantees convergence to optimal values.</p>
+      <p>There are three crucial methods to asynchronous DP that assist in selecting the states to update:</p>
+      <ul>
+        <li>In-place dynamic programming</li>
+        <li>Prioritised sweeping</li>
+        <li>Real-time dynamic programming</li>
+      </ul>
+  
+      <div id="in-place" class="row">
+        <div class="col-12">
+          <h3>In-Place Dynamic Programming</h3>
+          <p>For this method, we will focus on a specific algorithm: value iteration. First, let us consider synchronous value iteration. These algorithms store two copies of its value function for all states in the state space (equation 4.1.1), an old version and a new version, where the old one is updated to the new one.</p>
+          <div class="row">
+            <div class="col-11 text-center">
+              <p>
+                \(\begin{equation}
+                v_{new}(s) \rightarrow \max\limits_{a \in A} \left(\mathcal{R}^a_s + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{ss'} \; v_{old}(s') \right)
+                \end{equation}\)
+              </p>
+              <p>
+                \(\begin{equation}
+                v_{old}(s) \rightarrow v_{new}(s)
+                \end{equation}\)
+              </p>
+            </div>
+            <div class="col-1 text-end">
+              <p>(4.1.1)</p>
+            </div>
+          </div>
+          <p>Comparatively, in-place value iteration only stores one copy of the value function for all states in the state space (equation 4.1.2), making it more computationally efficient.</p>
+          <div class="row">
+            <div class="col-11 text-center">
+              <p>
+                \(\begin{equation}
+                v(s) \rightarrow \max\limits_{a \in A} \left(\mathcal{R}^a_s + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{ss'} \; v(s') \right)
+                \end{equation}\)
+              </p>
+            </div>
+            <div class="col-1 text-end">
+              <p>(4.1.2)</p>
+            </div>
+          </div>
+        </div>
+      </div><!-- #in-place -->
+  
+      <div id="priority" class="row">
+        <div class="col-12">
+          <h3>Prioritised Sweeping</h3>
+          <p>Prioritised sweeping provides a measure of importance for each state within a state space. Using the magnitude of the Bellman error to guide state selection (equation 4.2.1), we create storage that acts as a priority queue that determines which states are more important than others.</p>
+          <div class="row">
+            <div class="col-11 text-center">
+              <p>
+                \(\begin{equation}
+                \left| \max\limits_{a \in A} \left(\mathcal{R}^a_s + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{ss'} \; v(s') \right) \right|
+                \end{equation}\)
+              </p>
+            </div>
+            <div class="col-1 text-end">
+              <p>(4.2.1)</p>
+            </div>
+          </div>
+          <p>This method requires knowledge of reverse dynamics (its predecessor's states) and uses the information to prioritise the states with the largest remaining Bellman error. The values of some states can be backed up several times before others are once. However, to converge correctly, every state is backed up at some point.</p>
+        </div>
+      </div><!-- #priority -->
+  
+      <div id="real-time" class="row">
+        <h3>Real-Time Dynamic Programming</h3>
+        <p>The final method focuses on choosing states relevant to the agent (ones it has visited) to solve a given MDP. By running an iterative DP algorithm, while the agent experiences the MDP, we can retrieve live samples of information. In doing this, we can use the agent's experiences to guide the selection of states so that they are relevant to the agent.</p>
+        <p>After each time-step within the algorithm, we receive \(S_t, A_t, R_{t+1}\). We can back up the state \(S_t\) and perform an in-place calculation (equation 4.3.1) to identify the most relevant state.</p>
+        <div class="row">
+          <div class="col-11 text-center">
+            <p>
+              \(\begin{equation}
+              v(S_t) \rightarrow \max\limits_{a \in A} \left(\mathcal{R}^a_{S_t} + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{S_t s'} \; v(s') \right)
+              \end{equation}\)
+            </p>
+          </div>
+          <div class="col-1 text-end">
+            <p>(4.3.1)</p>
+          </div>
+        </div>
+      </div><!-- #real-time -->
+    </div><!-- .col -->
+</div><!-- #async-dp -->
+
+<div id="references" class="row">
+    <div class="col-12">
+        <h2>References</h2>
+        <p>RL Course by David Silver (2015) - <a href="https://www.youtube.com/watch?v=Nd1-UUMVfz4&amp;list=PLqYmG7hTraZBiG_XpjnPrSNw-1XQaM_gB">Lecture 3: Planning by Dynamic Programming</a></p>
+        <p>Book by Richard S. Sutton and Andrew G. Barto (2018) - <a href="https://mitpress.mit.edu/books/reinforcement-learning-second-edition">Reinforcement Learning: An Introduction, 2nd Edition</a></p>
+        <p>RL Course by Udacity (2021) - <a href="https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893">Deep Reinforcement Learning Nanodegree</a></p>
+        <p>Article by Moustafa Alzantot (2017) - <a href="https://medium.com/@m.alzantot/deep-reinforcement-learning-demysitifed-episode-2-policy-iteration-value-iteration-and-q-978f9e89ddaa">Deep Reinforcement Learning Demysitifed (Episode 2) - Policy Iteration, Value Iteration, and Q-Learning</a></p>
+    </div><!-- .col -->
+</div><!-- #references -->
