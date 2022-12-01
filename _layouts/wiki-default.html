@@ -10,7 +10,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-auto title">
-                            <h2>{{ page.title }} {{ page.type }}s</h2>
+                            <h2>{{ page.title }} {{ page.type | capitalize }}s</h2>
                         </div><!-- .title -->
                     </div><!-- .row -->
                 </div><!-- .container -->
@@ -31,9 +31,9 @@
             </div><!-- .container -->
         </section><!-- #description -->
 
-        {%- if page.type == 'Topic' -%}
+        {%- if page.type == 'topic' -%}
             {%- include wiki-topics.html -%}
-        {%- elsif page.type == 'Article' -%}
+        {%- elsif page.type == 'article' -%}
             {%- include wiki-articles.html -%}
         {%- endif -%}
         {%- include footer.html -%}
