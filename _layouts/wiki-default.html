@@ -33,7 +33,7 @@
 
         {%- if page.type == 'topic' -%}
             {%- include wiki-topics.html -%}
-        {%- elsif page.type == 'article' -%}
+        {%- else -%}
             {%- include wiki-articles.html -%}
         {%- endif -%}
         {%- include footer.html -%}
