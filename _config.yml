@@ -16,14 +16,9 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:title
-  wiki:
-    output: true
-    permalink: /:collection/:title
   wiki_categories:
     output: true
-    collections_dir: /_wiki/categories
-    permalink: /:collection/:title
+    permalink: /wiki/:title
   wiki_topics:
     output: true
-    collections_dir: /_wiki/topics
-    permalink: /:collection/:title
+    permalink: /:title
