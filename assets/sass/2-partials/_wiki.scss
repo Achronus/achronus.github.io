@@ -1,52 +1,49 @@
 // WIKI PAGE
 #articles {
   @include remMarginBot(50px);
-  .catalogue {
-    .row {
-      .article-item {
-        @include remMarginBot(20px);
-        .content {
-          .description {
-            .parent-tag {
-              .icon {
-                display: flex;
-                align-items: center;
-                @include remFont(24px);
-                svg {
-                  color: #fff;
-                  background-color: $dark-blue;
-                  border-radius: 50%;
-                  width: 1.85rem;
-                  height: 1.85rem;
-                  @include remPadAll(8px);
-                }
-              }
-              .tag-text {
-                p {
-                  @include remMargin(0px, 0px);
-                  &.title {
-                    font-weight: 400;
-                  }
-                }
-              }
-            }
-            .text {
-              @include remMarginTop(10px);
-              @include remPadAll(5px);
+  .article-item {
+    @include remMarginBot(20px);
+    .content {
+      .description {
+        .parent-tag {
+          .icon {
+            display: flex;
+            align-items: center;
+            @include remFont(24px);
+            svg {
+              color: #fff;
+              background-color: $dark-blue;
+              border-radius: 50%;
+              width: 1.85rem;
+              height: 1.85rem;
+              @include remPadAll(8px);
             }
           }
-          &:hover {
-            .description {
-              .cta {
-                svg {
-                  color: $black;
-                  transition: $base-transition;
-                }
+          .tag-text {
+            p {
+              @include remMargin(0px, 0px);
+              &.title {
+                font-weight: 400;
               }
+            }
+          }
+        }
+        .text {
+          @include remMarginTop(10px);
+          @include remPadAll(5px);
+        }
+      }
+      &:hover {
+        .description {
+          .cta {
+            svg {
+              color: $black;
+              transition: $base-transition;
             }
           }
         }
       }
     }
   }
+
 }

@@ -37,7 +37,7 @@ layout: default
             {%- assign sorted = site.wiki_categories | sort -%}
             {%- for category in sorted -%}
             <div class="article-item col-md-6 col-xl-4">
-                <a href="https://acius.co.uk/article_type/reinforcement-learning/">
+                <a href="{{ category.url }}">
                     <div class="content">
                         <div class="description">
                             {%- for site_tag in site.tags -%}
@@ -55,7 +55,7 @@ layout: default
                             {%- endfor -%}
                             <div class="text">
                                 <h2>{{ category.title }}</h2>
-                                <p>{{ category.excerpt }}</p>
+                                <p>{{ category.desc }}</p>
                                 <div class="row">
                                     <div class="offset-6 col-6 cta text-end">
                                         <i class="fas fa-arrow-alt-circle-right"></i>
