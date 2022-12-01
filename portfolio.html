@@ -7,7 +7,8 @@ layout: default
 <section id="portfolio">
     <div class="container">
         <div class="row">
-            {%- for project in site.portfolio reversed -%}
+            {%- assign sorted = site.portfolio | sort: 'date' | reverse -%}
+            {%- for project in sorted -%}
             <div class="col-md-6 col-xl-4 project-item">
                 <div class="content">
                     <a href="{{ project.url }}">
