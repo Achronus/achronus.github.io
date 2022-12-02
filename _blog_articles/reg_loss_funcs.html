@@ -1,0 +1,44 @@
+---
+title: Regression Loss Functions
+desc: Loss (cost) functions in regression analysis, represented by the error term or residual \(\epsilon\), provide a measure of accuracy between the model's predicated and their actual values, identifying the model's credibility.
+img_url: reg-loss-funcs.jpg
+date: 07/02/2022
+tag: supervised
+topic: regression
+type: article
+permalink: /blog/regression/:title
+layout: single-page
+---
+<p>Loss (cost) functions in regression analysis, represented by the error term or residual \(\epsilon\), provide a measure of accuracy between the model's predicated and their actual values, identifying the model's credibility. Each metrics purpose helps to optimise a model's performance to obtain better results.</p>
+<p>In regression, there are five commonly used metrics: Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), R-Squared (R2) and Adjusted R-Squared.</p>
+
+<h2>Mean Absolute Error (MAE)</h2>
+<p>MAE measures the average magnitude of the errors in a set of continuous predictions without considering their direction. It takes the average over the test samples relative to the absolute differences between the predicted values and real observations. MAE is a linear score, causing all individual differences to be weighted equally and is more robust to outliers as it does not penalise errors as extremely as MSE or RMSE.</p>
+{%- include single_parts/equation.html text="MAE = \dfrac{1}{n} \sum\limits_{i=1}^N |y_i - \hat{y}_i|" index="1.1" -%}
+
+<h2>Mean Squared Error (MSE)</h2>
+<p>MSE measures the average squared difference between the predictions and target values. The squared difference penalises small and large error values providing an over-estimation of the model's performance.</p>
+{%- include single_parts/equation.html text="MSE = \dfrac{1}{n} \sum\limits_{i=1}^N (y_i - \hat{y}_i)^2" index="1.2" -%}
+
+<h2>Root Mean Squared Error (RMSE)</h2>
+<p>RMSE is a quadratic scoring rule that measures the average magnitude of the predictions error. It uses the square root of the MSE and gives a relatively high weight to large errors, making it useful for when these errors are undesirable.</p>
+{%- include single_parts/equation.html text="RMSE = \sqrt{\dfrac{1}{n} \sum_\limits{i=1}^N (y_i - \hat{y}_i)^2}" index="1.3" -%}
+<p>MAE and RMSE are commonly used together to diagnose the variation between the predictions and true values. RMSE will always be larger or equal to the MAE. The greater distance between them, the larger variance in the individual errors in the sample. However, if RMSE = MAE, the errors have the same magnitude.</p>
+
+<h2>R-Squared \((R^2)\)</h2>
+<p>The coefficient of determination \((R^2)\) evaluates the scatter of the data points around a fitted regression line. Ranging between \([0, 1]\), a value of \(1\) explains that all the variation in the predictions is around the mean (close to the line). While \(0\) represents no variation around the mean. Higher \(R^2\) values represent small differences between the observed and fitted data, which is what we aim to achieve.</p>
+{%- include single_parts/equation.html text="R^2 = 1 - \dfrac{RSS}{TSS}" index="1.4" -%}
+<p>In equation 2.4, \(RSS\) is the explained variation (residual sum of squares), and \(TSS\) is the total variation (total sum of squares). Equations 1.5 and 1.6 highlights the residual sum of squares and total sum of squares, respectively. \(\hat{y}\) represents the model predicted observations, and \(\hat{y}\) is the mean of the actual values.</p>
+{%- include single_parts/equation.html text="RSS = \sum\limits_{i=1}^N (y_i - \hat{y}_i)^2" index="1.5" -%}
+{%- include single_parts/equation.html text="TSS = \sum\limits_{i=1}^N (y_i - \bar{y})^2" index="1.6" -%}
+<p>Unfortunately, there are two limitations of \(R^2\). Firstly, it cannot determine whether the coefficient estimate and predictions are biased, requiring individual assessment of residual plots. Secondly, it cannot indicate whether a regression model is adequate for the dataset. For example, it is possible to have a robust model with a low \(R^2\), which is common in some fields such as psychology - human behaviour is harder to predict than physical processes.</p>
+
+<h2>Adjusted R-Squared</h2>
+<p>Adjusted \(R^2\) is a modified version of \(R^2\) that incorporates multiple independent variables. The standard \(R^2\) tends to increase when new predictors are added to the model, leading to unwarranted overfitting. Adjusted \(R^2\) helps avoid this problem by providing a metric for new variables to determine if they truly benefit the model. Like its predecessor, the value ranges between \([0, 1]\).</p>
+{%- include single_parts/equation.html text="R^2_{adj} = 1 - \dfrac{(1-R^2)(N-1)}{N-k-1}" index="1.7" -%}
+<p>Equation 1.7 highlights its formula, where \(N\) is the number of samples and \(k\) is the number of independent variables.</p>
+
+<h2>References</h2>
+<p>Article by Raghav Agrawal (2021) - <a href="https://www.analyticsvidhya.com/blog/2021/05/know-the-best-evaluation-metrics-for-your-regression-model/">Know The Best Evaluation Metrics for Your Regression Model</a></p>
+<p>Article by JJ (2016) - <a href="https://medium.com/human-in-a-machine-world/mae-and-rmse-which-metric-is-better-e60ac3bde13d">MAE and RMSE - Which Metric Is Better?</a></p>
+<p>Article by Minitab (2013) - <a href="https://blog.minitab.com/en/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit">Regression Analysis: How Do I Interpret R-Squared and Assess the Goodness-of-Fit?</a></p>
