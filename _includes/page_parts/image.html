@@ -1,5 +1,5 @@
 {%- for image in site.static_files -%}
     {%- if image.path contains include.url -%}
-        <img class="img-fluid {{ include.classes }}" src="{{ image.path}}/{{ include.url }}" alt="{{ include.alt }}" />
+        <img class="img-fluid {{ include.classes }}" src="{{ image.path}}" alt="{{ include.alt }}" />
     {%- endif -%}
 {%- endfor -%}
