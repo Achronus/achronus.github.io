@@ -1,0 +1,13 @@
+<div class="img-container">
+    <div class="row">
+        {%- assign image_details = include.details | split: ' | ' -%}
+        {%- for details in image_details -%}
+            {%- assign url = details | split: ', ' | first -%}
+            {%- assign alt = details | split: ', ' | last -%}
+            <div class="col-auto">
+                {%- include page_parts/image.html url=url alt=alt classes='d-block mx-auto' -%}
+            </div>
+        {%- endfor -%}
+        <p class="figure-label">{{ include.label }}</p>
+    </div><!-- .row -->
+</div><!-- #img-container -->

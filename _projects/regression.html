@@ -8,79 +8,40 @@ layout: single-page
 github_url: https://github.com/Achronus/Portfolio/tree/master/ml/regression_analysis
 date: 01/07/2021
 ---
-<div id="project" class="row">
-    <div class="col-12">
-        <h2>What is the Project?</h2>
-        <p>Regression Analysis is one of the fundamental techniques used in Supervised Learning and is essential in statistical modelling. It provides a reliable way of identifying the relationship between a dependent variable (outcome) and one or more independent variables (predictors).</p>
-        <p>Within this project, we focus on analysing city-cycle fuel consumption in miles per gallon (MPG). The data is stored within a CSV file called <code class="inline">car_data</code>, containing 406 data points and 9 variables. The variable list is as follows: <code class="inline">MPG</code>, <code class="inline">cylinders</code>, <code class="inline">displacement</code>, <code class="inline">horsepower</code>, <code class="inline">weight</code>, <code class="inline">acceleration</code>, <code class="inline">modelYear</code>, <code class="inline">origin</code>, and <code class="inline">carName</code>.</p>
-        <p>Using the MATLAB programming language, the implementation provides a statistical analysis of the data without the help of built-in functions. The program has been divided into four files, each covering a single component: data pre-processing, statistical analysis, regression analysis, and the visualisation of the results.</p>
-    </div><!-- .col -->
-</div><!-- #project -->
+<h2>What is the Project?</h2>
+<p>Regression Analysis is one of the fundamental techniques used in Supervised Learning and is essential in statistical modelling. It provides a reliable way of identifying the relationship between a dependent variable (outcome) and one or more independent variables (predictors).</p>
+<p>Within this project, we focus on analysing city-cycle fuel consumption in miles per gallon (MPG). The data is stored within a CSV file called <code class="inline">car_data</code>, containing 406 data points and 9 variables. The variable list is as follows: <code class="inline">MPG</code>, <code class="inline">cylinders</code>, <code class="inline">displacement</code>, <code class="inline">horsepower</code>, <code class="inline">weight</code>, <code class="inline">acceleration</code>, <code class="inline">modelYear</code>, <code class="inline">origin</code>, and <code class="inline">carName</code>.</p>
+<p>Using the MATLAB programming language, the implementation provides a statistical analysis of the data without the help of built-in functions. The program has been divided into four files, each covering a single component: data pre-processing, statistical analysis, regression analysis, and the visualisation of the results.</p>
 
-<div id="processing" class="row">
-    <div class="col-12">
-    <h2>Data Pre-Processing</h2>
-        <p>The first step of the project involved reviewing the data and handling any missing entries. The process starts by iterating over each row of data, storing it into a table called <code class="inline">car_data</code>, and then assigned its respective data type (double or string). With the data successfully imported into MATLAB, we can now begin handling the missing entries. There are a total of 14 missing values, 8 for MPG and 6 for horsepower.</p>
-        <p>Handling missing data isn't always easy. Swalin (2018) explains that there are three common reasons for missing data entries:</p>
-        <ul>
-            <li><span class="med">Missing at random (MAR)</span> - there is a slight relation to the observed data.</li>
-            <li><span class="med">Missing completely at random (MCAR)</span> - there is no relation to any of the data.</li>
-            <li><span class="med">Missing not at random (MNAR)</span> - the missing values depend on hypothetical values (e.g. not revealing your income) or other variable values.</li>
-        </ul>
-        <p>When handling MAR and MCAR data, values can be freely deleted or imputed. However, when working with MNAR data, removing the observations can lead to bias in the model. The 14 entries that are missing fall into the first two categories, allowing for modification. Due to the small size of the dataset, I implemented the imputation method using the respective columns mean value. With only 406 data points, there is a limit to the amount of training data available and losing 14 entries could negatively impact the model's results.</p>
-    </div><!-- .col -->
-</div><!-- #processing -->
+<h2>Data Pre-Processing</h2>
+<p>The first step of the project involved reviewing the data and handling any missing entries. The process starts by iterating over each row of data, storing it into a table called <code class="inline">car_data</code>, and then assigned its respective data type (double or string). With the data successfully imported into MATLAB, we can now begin handling the missing entries. There are a total of 14 missing values, 8 for MPG and 6 for horsepower.</p>
+<p>Handling missing data isn't always easy. Swalin (2018) explains that there are three common reasons for missing data entries:</p>
+<ul>
+    <li><span class="med">Missing at random (MAR)</span> - there is a slight relation to the observed data.</li>
+    <li><span class="med">Missing completely at random (MCAR)</span> - there is no relation to any of the data.</li>
+    <li><span class="med">Missing not at random (MNAR)</span> - the missing values depend on hypothetical values (e.g. not revealing your income) or other variable values.</li>
+</ul>
+<p>When handling MAR and MCAR data, values can be freely deleted or imputed. However, when working with MNAR data, removing the observations can lead to bias in the model. The 14 entries that are missing fall into the first two categories, allowing for modification. Due to the small size of the dataset, I implemented the imputation method using the respective columns mean value. With only 406 data points, there is a limit to the amount of training data available and losing 14 entries could negatively impact the model's results.</p>
   
-<div id="stats" class="row">
-    <div class="col-12">
-        <h2>Analysis</h2>
-        <p>The analysis focuses on four independent variables: <code class="inline">mpg</code>, <code class="inline">horsepower</code>, <code class="inline">weight</code>, and <code class="inline">acceleration</code>, and covers five critical statistics: mean, median, minimum value, maximum value, and the standard deviation (std).</p>
-        <p>The results for each variable are stored within a table called <code class="inline">statistics</code>, found in figure 3.1, providing an insight into the scope of the data. When comparing the variables, it is clear that weight has the widest spread of data.</p>
-        <div class="img-container">
-            <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/reg-stats.png" alt="Statistics table">
-            <p class="img-caption">Figure 3.1. Statistics table</p>
-        </div>
-        <p>Taking this one step further, we can visualise the data using box plots (figure 3.2). Box plots provide a clear indication of the distribution and skewness of the data. It provides a visual representation of outliers in the data (circles), the maximum and minimum values (top and bottom lines, respectively), the medium (red line), the upper (Q3) and lower (Q1) quartiles, represented by the top and bottom of the box, respectively, and lastly the interquartile range (IQR) reflected by the height of the box.</p>
-        <div class="img-container">
-            <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/reg-boxplots.png" alt="Box plots">
-            <p class="img-caption">Figure 3.2. Box plots of each variable</p>
-        </div>
-        <p>Using the box plots, we can immediately identify that horsepower and acceleration have a lot of outliers. Also, three of the four variables (MPG, weight, and horsepower) have a greater spread of higher values when compared to their medians.</p>
-        <p>These statistics are not the only method for gaining an understanding of our data. We can also use a correlation matrix (figure 3.3) to identify the relationship between variables. Figure 3.3 provides the results of the Pearson correlation coefficient, which measures the linear association between variables, where the value range is between <code class="inline">-1</code> to <code class="inline">+1</code>. The metric provides three extremes: <code class="inline">-1</code>, <code class="inline">0</code>, and <code class="inline">+1</code>.</p>
-        <ul>
-            <li><code class="inline">-1</code> provides a perfect negative linear correlation</li>
-            <li><code class="inline">0</code> states there is no linear correlation, and,</li>
-            <li><code class="inline">+1</code> is a perfect positive linear correlation</li>
-        </ul>
-        <p>A positive correlation signifies that the variables are moving in the <span style="font-weight: 500;">same</span> direction. Similarly, a negative correlation states that the variables are moving in the <span style="font-weight: 500;">opposite</span> direction.</p>
-        <div class="img-container">
-            <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/reg-cm.png" alt="Correlation Matrix">
-            <p class="img-caption">Figure 3.3. Correlation matrix</p>
-        </div>
-        <p>Reviewing the correlation table, it is clear that <code class="inline">acceleration</code> isn't as highly correlated (positive or negatively) as the other three variables. <code class="inline">Weight</code> has the highest negative correlation with <code class="inline">MPG</code> and the highest positive correlation with <code class="inline">horsepower</code>. However, <code class="inline">MPG</code> also has a high negative correlation with <code class="inline">horsepower</code> and has a medium positive correlation with <code class="inline">acceleration</code>. Some of the correlations are visualised in the regression graphs in figures 3.4.</p>
-        <div class="row">
-            <div class="col-6">
-                <div class="img-container">
-                    <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/reg-plot1.png" alt="Acceleration vs MPG">
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="img-container">
-                    <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/reg-plot2.png" alt="Horsepower vs MPG">
-                </div>
-            </div>
-        </div>
-        <div class="img-container">
-            <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/reg-plot3.png" alt="Weight vs Horsepower">
-            <p class="img-caption">Figure 3.4. Linear regressions that show comparsions between select variables</p>
-        </div>
-        <p>Overall, the regression graphs show the relationship between select variables from the correlation matrix. In the first graph, we compare the acceleration against the MPG, which shows that the data is widely spread apart with a slight positive correlation around the central points. In the second and third graphs, comparing horsepower vs MPG and then against weight, there is a clear negative and positive correlation between the two.</p>
-    </div><!-- .col -->
-</div><!-- #stats -->
-  
-<div id="references" class="row">
-    <div class="col-12">
-        <h2>References</h2>
-        <p>Swalin, A. (2018) How to Handle Missing Data. <span style="font-style: italic;">Towards Data Science.</span> Available from <a href="https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4">https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4</a>.</p>
-    </div><!-- .col -->
-</div><!-- #references -->
+
+<h2>Analysis</h2>
+<p>The analysis focuses on four independent variables: <code class="inline">mpg</code>, <code class="inline">horsepower</code>, <code class="inline">weight</code>, and <code class="inline">acceleration</code>, and covers five critical statistics: mean, median, minimum value, maximum value, and the standard deviation (std).</p>
+<p>The results for each variable are stored within a table called <code class="inline">statistics</code>, found in figure 3.1, providing an insight into the scope of the data. When comparing the variables, it is clear that weight has the widest spread of data.</p>
+{%- include single_parts/image.html url='reg-stats.png' alt='Statistics table' label='Figure 3.1. Statistics table.' -%}
+<p>Taking this one step further, we can visualise the data using box plots (figure 3.2). Box plots provide a clear indication of the distribution and skewness of the data. It provides a visual representation of outliers in the data (circles), the maximum and minimum values (top and bottom lines, respectively), the medium (red line), the upper (Q3) and lower (Q1) quartiles, represented by the top and bottom of the box, respectively, and lastly the interquartile range (IQR) reflected by the height of the box.</p>
+{%- include single_parts/image.html url='reg-boxplots.png' alt='Box plots' label='Figure 3.2. Box plots of each variable.' -%}
+<p>Using the box plots, we can immediately identify that horsepower and acceleration have a lot of outliers. Also, three of the four variables (MPG, weight, and horsepower) have a greater spread of higher values when compared to their medians.</p>
+<p>These statistics are not the only method for gaining an understanding of our data. We can also use a correlation matrix (figure 3.3) to identify the relationship between variables. Figure 3.3 provides the results of the Pearson correlation coefficient, which measures the linear association between variables, where the value range is between <code class="inline">-1</code> to <code class="inline">+1</code>. The metric provides three extremes: <code class="inline">-1</code>, <code class="inline">0</code>, and <code class="inline">+1</code>.</p>
+<ul>
+    <li><code class="inline">-1</code> provides a perfect negative linear correlation</li>
+    <li><code class="inline">0</code> states there is no linear correlation, and,</li>
+    <li><code class="inline">+1</code> is a perfect positive linear correlation</li>
+</ul>
+<p>A positive correlation signifies that the variables are moving in the <span style="font-weight: 500;">same</span> direction. Similarly, a negative correlation states that the variables are moving in the <span style="font-weight: 500;">opposite</span> direction.</p>
+{%- include single_parts/image.html url='reg-cm.png' alt='Correlation Matrix' label='Figure 3.3. Correlation matrix.' -%}
+<p>Reviewing the correlation table, it is clear that <code class="inline">acceleration</code> isn't as highly correlated (positive or negatively) as the other three variables. <code class="inline">Weight</code> has the highest negative correlation with <code class="inline">MPG</code> and the highest positive correlation with <code class="inline">horsepower</code>. However, <code class="inline">MPG</code> also has a high negative correlation with <code class="inline">horsepower</code> and has a medium positive correlation with <code class="inline">acceleration</code>. Some of the correlations are visualised in the regression graphs in figures 3.4.</p>
+{%- include single_parts/multi_image.html details='reg-plot1.png, Acceleration vs MPG | reg-plot2.png, Horsepower vs MPG | reg-plot3.png, Weight vs Horsepower' label='Figure 3.4. Linear regressions that show comparsions between select variables.' -%}
+<p>Overall, the regression graphs show the relationship between select variables from the correlation matrix. In the first graph, we compare the acceleration against the MPG, which shows that the data is widely spread apart with a slight positive correlation around the central points. In the second and third graphs, comparing horsepower vs MPG and then against weight, there is a clear negative and positive correlation between the two.</p> 
+
+<h2>References</h2>
+<p>Swalin, A. (2018) How to Handle Missing Data. <span style="font-style: italic;">Towards Data Science.</span> Available from <a href="https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4">https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4</a>.</p>

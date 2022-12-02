@@ -1,0 +1,6 @@
+{%- for image in site.static_files -%}
+    {%- if image.path contains include.url -%}
+        <img class="img-fluid d-block mx-auto" src="{{ image.path}}" alt="{{ include.alt }}" />
+        <p class="figure-label">{{ include.label }}</p>
+    {%- endif -%}
+{%- endfor -%}

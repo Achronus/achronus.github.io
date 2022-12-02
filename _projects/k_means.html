@@ -8,137 +8,52 @@ layout: single-page
 github_url: https://github.com/Achronus/Portfolio/tree/master/ml/k_means_clustering
 date: 03/07/2021
 ---
-<div id="project" class="row">
-    <div class="col-12">
-        <h2>What is the Project?</h2>
-        <p>Cluster analysis is a form of exploratory data analysis used to find patterns within data by splitting them into clusters. The clusters form homogeneous groups of data based on a given distance function.</p>
-        <p>K-Means Clustering is one method used in cluster analysis, which takes unlabelled data and combines data points into distinct groups. Being one of the simplest clustering algorithms, it provides a great opportunity for understanding the theory and practice of clustering algorithms.</p>
-        <p>Throughout this project, we create the K-Means clustering algorithm without the help of any Python libraries, using a dataset of 300 data points representing different dog breeds. The project aims to divide the small dataset into its respective dog breeds based on four distinct traits: <code class="inline">height</code>, <code class="inline">tail length</code>, <code class="inline">leg length</code>, and <code class="inline">nose circumference</code>.</p>
-    </div><!-- .col -->
-</div><!-- #project -->
+<h2>What is the Project?</h2>
+<p>Cluster analysis is a form of exploratory data analysis used to find patterns within data by splitting them into clusters. The clusters form homogeneous groups of data based on a given distance function.</p>
+<p>K-Means Clustering is one method used in cluster analysis, which takes unlabelled data and combines data points into distinct groups. Being one of the simplest clustering algorithms, it provides a great opportunity for understanding the theory and practice of clustering algorithms.</p>
+<p>Throughout this project, we create the K-Means clustering algorithm without the help of any Python libraries, using a dataset of 300 data points representing different dog breeds. The project aims to divide the small dataset into its respective dog breeds based on four distinct traits: <code class="inline">height</code>, <code class="inline">tail length</code>, <code class="inline">leg length</code>, and <code class="inline">nose circumference</code>.</p>
 
-<div id="components" class="row">
-    <div class="col-12">
-        <h2>Components of the Algorithm</h2>
-        <p>Before creating the K-Means Clustering algorithm, we first need to understand its process and one core component, the centroid. Centroids are unique data points representing the centre of a given cluster. When considered a metric, they reflect the mean value of all the data points around it, specific to its group. They are at the heart of the algorithm and are essential to its implementation, as seen in the following process:</p>
-        <ol>
-            <li>Specify \(k\) clusters</li>
-            <li>Select a random number of centroids \(c\) from the dataset</li>
-            <li>Calculate the distance between the centroids and all other data points</li>
-            <li>Assign each data point to the closest centroid</li>
-            <li>Compute the average of each cluster and set it as a new centroid</li>
-            <li>Repeat steps 2 to 5 until the centroids are static</li>
-        </ol>
-        <p>Some of the steps within the algorithm are straightforward and do not need further explanation. As such, we will only discuss two required factors of the algorithm: distance and objective functions.</p>
-        <div id="distance" class="row">
-            <div class="col-12">
-                <h3>Distance Functions</h3>
-                <p>Distance functions measure the difference between two points, in our case, data points (\(x\)) and centroids (\(c\)). There are many distance functions available, such as Euclidean, Manhattan, Person Correlation and Spearman Correlation. Due to the simplicity of the K-Means algorithm, we use the Euclidean distance between two vectors, the dataset and the centroids (equation 2.1).</p>
-                <div class="row">
-                    <div class="col-11 text-center">
-                      <p>
-                        \(\begin{equation}
-                        d(x, c) = \sqrt{(x_x - c_x)^2 + (x_y - c_y)^2}
-                        \end{equation}\)
-                      </p>
-                    </div>
-                    <div class="col-1 text-end">
-                      <p>(2.1)</p>
-                    </div>
-                </div>  
-                <p>The formula compares the distance between a data point (\(x\)) and a centroid (\(c\)) via their \(x\) and \(y\) coordinates. These differences are then squared, summed together, and lastly, we square root the result. The metric provides a method for assigning our clusters using the minimum distances between each centroid and all data points in the dataset.</p>
-            </div><!-- .col -->
-        </div><!-- #distance -->
+<h2>Components of the Algorithm</h2>
+<p>Before creating the K-Means Clustering algorithm, we first need to understand its process and one core component, the centroid. Centroids are unique data points representing the centre of a given cluster. When considered a metric, they reflect the mean value of all the data points around it, specific to its group. They are at the heart of the algorithm and are essential to its implementation, as seen in the following process:</p>
+<ol>
+    <li>Specify \(k\) clusters</li>
+    <li>Select a random number of centroids \(c\) from the dataset</li>
+    <li>Calculate the distance between the centroids and all other data points</li>
+    <li>Assign each data point to the closest centroid</li>
+    <li>Compute the average of each cluster and set it as a new centroid</li>
+    <li>Repeat steps 2 to 5 until the centroids are static</li>
+</ol>
+<p>Some of the steps within the algorithm are straightforward and do not need further explanation. As such, we will only discuss two required factors of the algorithm: distance and objective functions.</p>
 
-        <div id="objective" class="row">
-            <div class="col-12">
-                <h3>Objective Functions</h3>
-                <p>Objective functions are types of loss/cost function used to maximize or minimize a numerical value. In clustering algorithms, we want to reduce the variance (sum of squared distances) between each cluster of data. The smaller the variation, the higher the similarities between the data points in their group. In the project, the objective function uses the formula denoted in equation 2.2.</p>
-                <div class="row">
-                    <div class="col-11 text-center">
-                      <p>
-                        \(\begin{equation}
-                        J = \sum\limits^{k}_{j=i} \sum\limits^{n}_{i=1} d(x_i, c_j)
-                        \end{equation}\)
-                      </p>
-                    </div>
-                    <div class="col-1 text-end">
-                      <p>(2.2)</p>
-                    </div>
-                </div>
-                <p>Equation 2.2 iterates over a given number of clusters (\(k\)) and the total number of data points (\(n\)) in the dataset. It continues by calculating the distance between each data point (\(x_i\)) and the centroid of each cluster (\(c_j\)). Lastly, the differences are summed, forming the loss value. Notice how the objective function uses the distance function \(d(x_i, c_j)\) to calculate the range between points.</p>
-            </div><!-- .col -->
-        </div><!-- #objective -->
-    </div><!-- .col -->
-</div><!-- #components -->
+<h3>Distance Functions</h3>
+<p>Distance functions measure the difference between two points, in our case, data points (\(x\)) and centroids (\(c\)). There are many distance functions available, such as Euclidean, Manhattan, Person Correlation and Spearman Correlation. Due to the simplicity of the K-Means algorithm, we use the Euclidean distance between two vectors, the dataset and the centroids (equation 2.1).</p>
+{%- include single_parts/equation.html text='d(x, c) = \sqrt{(x_x - c_x)^2 + (x_y - c_y)^2}' index='2.1' -%}
+<p>The formula compares the distance between a data point (\(x\)) and a centroid (\(c\)) via their \(x\) and \(y\) coordinates. These differences are then squared, summed together, and lastly, we square root the result. The metric provides a method for assigning our clusters using the minimum distances between each centroid and all data points in the dataset.</p>
 
-<div id="stats" class="row">
-    <div class="col-12">
-        <h2>Analysis</h2>
-        <p>After training the model, we used the same dataset to understand the patterns it had found. For plotting convenience, we compare the differences between <code class="inline">height</code> vs <code class="inline">tail length</code> and <code class="inline">height</code> vs <code class="inline">leg length</code> using two and three clusters.</p>
-        <div class="row" id="two-clusters">
-            <div class="col-12">
-                <h3>Two Clusters</h3>
-                <div class="img-container">
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/k-means-2-clusters-left.png" alt="Height vs Tail Length (2 clusters)">
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/k-means-2-clusters-right.png" alt="Height vs Leg Length (2 clusters)">
-                        </div>
-                    </div>
-                    <p class="img-caption">Figure 3.1. The results for the K-Means Clustering algorithm with two clusters, comparing height vs tail length (left) and height vs leg length (right).</p>
-                </div>
-                <p>Figure 3.1 depicts the comparisons between the two clusters. In the first image (left), we compare the <code class="inline">height</code> against the <code class="inline">tail length</code>. The results show that the algorithm has categorised the data into low height with medium to long-tail lengths (red) and medium to tall dogs with small to medium tail lengths (blue). </p>
-                <p>In the second image (right), we compare the <code class="inline">height</code> against the <code class="inline">leg length</code>. The first cluster (red) has detected a correlation between the smallest to medium height and small leg lengths, and the second cluster (blue) indicates that dogs with longer legs are more likely to be taller.</p>
-                <p>Notice how some of the data points look like they are incorrectly classified. However, this isn't the case. We trained the dataset on four features, and the graphs can only display two of them at once. Unfortunately, it's difficult to visualise data in higher dimensions and can make diagrams hard to read, so instead, we focus on a smaller portion of variables.</p>
-            </div>
-        </div><!-- #two-clusters -->
+<h3>Objective Functions</h3>
+<p>Objective functions are types of loss/cost function used to maximize or minimize a numerical value. In clustering algorithms, we want to reduce the variance (sum of squared distances) between each cluster of data. The smaller the variation, the higher the similarities between the data points in their group. In the project, the objective function uses the formula denoted in equation 2.2.</p>
+{%- include single_parts/equation.html text='J = \sum\limits^{k}_{j=i} \sum\limits^{n}_{i=1} d(x_i, c_j)' index='2.2' -%}
+<p>Equation 2.2 iterates over a given number of clusters (\(k\)) and the total number of data points (\(n\)) in the dataset. It continues by calculating the distance between each data point (\(x_i\)) and the centroid of each cluster (\(c_j\)). Lastly, the differences are summed, forming the loss value. Notice how the objective function uses the distance function \(d(x_i, c_j)\) to calculate the range between points.</p>
 
-        <div class="row" id="three-clusters">
-            <div class="col-12">
-                <h3>Three Clusters</h3>
-                <div class="img-container">
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/k-means-3-clusters-left.png" alt="Height vs Tail Length (3 clusters)">
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/k-means-3-clusters-right.png" alt="Height vs Leg Length (3 clusters)">
-                        </div>
-                    </div>
-                    <p class="img-caption">Figure 3.2. The results for the K-Means Clustering algorithm with three clusters, comparing height vs tail length (left) and height vs leg length (right).</p>
-                </div>
-                <p>In the three cluster examples (figure 3.2), we identify a better separation of dog breeds when compared to the two cluster examples. The first image (left) states medium-sized dogs are more likely to have longer tails (red). It continues with a second cluster (green), indicating that as the length of a dog's tail grows, so does its height. Interestingly, the blue clump contradicts the green one, identifying that large dogs will only have medium tail sizes.</p>
-                <p>In the second image (right), as the dog's height increases, so does the dog's leg length. The graph reveals a positive correlation between the two variables, best reflected through the three clusters: small (red), medium (green), and large (blue).</p>
-            </div>
-        </div><!-- #three-clusters -->
+<h2>Analysis</h2>
+<p>After training the model, we used the same dataset to understand the patterns it had found. For plotting convenience, we compare the differences between <code class="inline">height</code> vs <code class="inline">tail length</code> and <code class="inline">height</code> vs <code class="inline">leg length</code> using two and three clusters.</p>
 
-        <div class="row" id="error-trends">
-            <div class="col-12">
-                <h3>Error Trends</h3>
-                <div class="img-container">
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/k-means-2-clusters-error.png" alt="Error Trend Line (2 clusters)">
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/k-means-3-clusters-error.png" alt="Error Trend Line (3 clusters)">
-                        </div>
-                    </div>
-                    <p class="img-caption">Figure 3.3. The graphs represent the error trend line for two and three clusters, respectively. They show the differences between the number of training iterations on the x-axis and the aggregated distance between each cluster on the y-axis.</p>
-                </div>
-                <p>Lastly, we discuss the error trend lines for the cluster variants (figure 3.3) to understand how the model performs during training. The two graphs are very similar, one for two clusters and the other for three, respectively. They compare the training iterations against the aggregated distance between each cluster during the iteration (objective function loss).</p>
-                <p>Notice how they show a decreasing trend in the error as the algorithm converges to optimality, indicating a robust model. Surprisingly, an additional cluster only increases the iteration count by two.</p>
-            </div><!-- .col -->
-        </div><!-- #error-trends -->
-    </div><!-- .col -->
-</div><!-- #stats -->
+<h3>Two Clusters</h3>
+{%- include single_parts/multi_image.html details='k-means-2-clusters-left.png, Height vs Tail Length (2 clusters) | k-means-2-clusters-right.png, Height vs Leg Length (2 clusters)' label='Figure 3.1. The results for the K-Means Clustering algorithm with two clusters, comparing height vs tail length (left) and height vs leg length (right).' -%}
+<p>Figure 3.1 depicts the comparisons between the two clusters. In the first image (left), we compare the <code class="inline">height</code> against the <code class="inline">tail length</code>. The results show that the algorithm has categorised the data into low height with medium to long-tail lengths (red) and medium to tall dogs with small to medium tail lengths (blue). </p>
+<p>In the second image (right), we compare the <code class="inline">height</code> against the <code class="inline">leg length</code>. The first cluster (red) has detected a correlation between the smallest to medium height and small leg lengths, and the second cluster (blue) indicates that dogs with longer legs are more likely to be taller.</p>
+<p>Notice how some of the data points look like they are incorrectly classified. However, this isn't the case. We trained the dataset on four features, and the graphs can only display two of them at once. Unfortunately, it's difficult to visualise data in higher dimensions and can make diagrams hard to read, so instead, we focus on a smaller portion of variables.</p>
 
-<div id="refs" class="row">
-    <div class="col-12">
-        <h2>References</h2>
-        <p>Dabbura, I. (2018) <span style="font-style: italic;">K-means Clustering: Algorithm, Applications, Evaluation Methods, and Drawbacks.</span> Towards Data Science. Available from <a href="https://towardsdatascience.com/k-means-clustering-algorithm-applications-evaluation-methods-and-drawbacks-aa03e644b48a">https://towardsdatascience.com/k-means-clustering-algorithm-applications-evaluation-methods-and-drawbacks-aa03e644b48a</a></p>
-    </div><!-- .col -->
-</div><!-- #refs -->
+<h3>Three Clusters</h3>
+{%- include single_parts/multi_image.html details='k-means-3-clusters-left.png, Height vs Tail Length (3 clusters) | k-means-3-clusters-right.png, Height vs Leg Length (3 clusters)' label='Figure 3.2. The results for the K-Means Clustering algorithm with three clusters, comparing height vs tail length (left) and height vs leg length (right).' -%}
+<p>In the three cluster examples (figure 3.2), we identify a better separation of dog breeds when compared to the two cluster examples. The first image (left) states medium-sized dogs are more likely to have longer tails (red). It continues with a second cluster (green), indicating that as the length of a dog's tail grows, so does its height. Interestingly, the blue clump contradicts the green one, identifying that large dogs will only have medium tail sizes.</p>
+<p>In the second image (right), as the dog's height increases, so does the dog's leg length. The graph reveals a positive correlation between the two variables, best reflected through the three clusters: small (red), medium (green), and large (blue).</p>
+
+<h3>Error Trends</h3>
+{%- include single_parts/multi_image.html details='k-means-2-clusters-error.png, Error Trend Line (2 clusters) | k-means-3-clusters-error.png, Error Trend Line (3 clusters)' label='Figure 3.3. The graphs represent the error trend line for two and three clusters, respectively. They show the differences between the number of training iterations on the x-axis and the aggregated distance between each cluster on the y-axis.' -%}
+<p>Lastly, we discuss the error trend lines for the cluster variants (figure 3.3) to understand how the model performs during training. The two graphs are very similar, one for two clusters and the other for three, respectively. They compare the training iterations against the aggregated distance between each cluster during the iteration (objective function loss).</p>
+<p>Notice how they show a decreasing trend in the error as the algorithm converges to optimality, indicating a robust model. Surprisingly, an additional cluster only increases the iteration count by two.</p>
+
+
+<h2>References</h2>
+<p>Dabbura, I. (2018) <span style="font-style: italic;">K-means Clustering: Algorithm, Applications, Evaluation Methods, and Drawbacks.</span> Towards Data Science. Available from: <a href="https://towardsdatascience.com/k-means-clustering-algorithm-applications-evaluation-methods-and-drawbacks-aa03e644b48a">https://towardsdatascience.com/k-means-clustering-algorithm-applications-evaluation-methods-and-drawbacks-aa03e644b48a</a></p>

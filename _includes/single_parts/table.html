@@ -1,0 +1,26 @@
+<div class="wp-block-table">
+    <table>
+        <thead>
+            <tr>
+                {%- assign header = include.head | split: ', ' -%}
+                {%- for head_item in header %}
+                    <td>{{ head_item }}</td>
+                {%- endfor -%}
+            </tr>
+        </thead>
+        <tbody>
+            {%- assign body = include.body | split: ' | ' -%}
+            {%- for body_item in body -%}
+            <tr>
+                {%- assign body_text = body_item | split: ', ' -%}
+                {%- for text in body_text -%}
+                    <td>{{ text }}</td>
+                {%- endfor -%}
+            </tr>
+            {%- endfor -%}
+        </tbody>
+    </table>
+</div><!-- .wp-block-table -->
+{%- if include.label -%}
+    <p class="figure-label">{{ include.label }}</p>
+{%- endif -%}

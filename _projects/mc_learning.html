@@ -8,68 +8,52 @@ layout: single-page
 github_url: https://github.com/Achronus/Portfolio/tree/master/rl/monte_carlo
 date: 14/09/2021
 ---
-<div id="project" class="row">
-    <div class="col-12">
-        <h2>What is the Project?</h2>
-        <p>Monte-Carlo (MC) Learning is an alternative method to Dynamic Programming (DP), which solves <span class="med">known</span> Markov Decision Processes (MDPs). MC Learning is instead used to estimate value functions and discover optimal policies for <span class="med">unknown</span> MDPs. For more information on MC Learning, refer to the <a href="/blog/model-free/monte-carlo-prediction">Monte-Carlo Prediction</a> and <a href="/blog/model-free/monte-carlo-control">Monte-Carlo Control</a> articles.</p>
-        <p>To understand how MC Learning works, the project focuses on the casino card game Blackjack that uses <a href="https://gym.openai.com/envs/Blackjack-v0/">OpenAI Gym's environment</a> and is separated into two sections: prediction and control. Prediction focuses on estimating the value functions and control discovers the optimal policies.</p>
-    </div><!-- .col -->
-</div><!-- #project -->
+<h2>What is the Project?</h2>
+<p>Monte-Carlo (MC) Learning is an alternative method to Dynamic Programming (DP), which solves <span class="med">known</span> Markov Decision Processes (MDPs). MC Learning is instead used to estimate value functions and discover optimal policies for <span class="med">unknown</span> MDPs. For more information on MC Learning, refer to the <a href="/blog/model-free/monte-carlo-prediction">Monte-Carlo Prediction</a> and <a href="/blog/model-free/monte-carlo-control">Monte-Carlo Control</a> articles.</p>
+<p>To understand how MC Learning works, the project focuses on the casino card game Blackjack that uses <a href="https://gym.openai.com/envs/Blackjack-v0/">OpenAI Gym's environment</a> and is separated into two sections: prediction and control. Prediction focuses on estimating the value functions and control discovers the optimal policies.</p>
 
-<div id="environment" class="row">
-    <div class="col-12">
-        <h2>The Environment</h2>
-        <p>Blackjack is a popular casino card game, where the user aims to obtain cards that sum as close to, or equal to, a numerical value of <code class="inline">21</code>, without exceeding it. Naturally, the game is formulated as an episodic finite MDP. Full details of the rules of the environment are highlighted below:</p>
-        <p>The player plays against a fixed dealer, where:</p>
-        <ul>
-            <li>Face cards (Jack, Queen, King) have the point value of <code class="inline">10</code></li>
-            <li>Aces can either count as <code class="inline">11</code> or <code class="inline">1</code>, and is called 'usable' at <code class="inline">11</code></li>
-            <li>The game uses an infinite deck (with card replacements), preventing card tracking</li>
-            <li>The game starts with the player and dealer having one face up and one face down card</li>
-        </ul>
-        <p>The player has two actions, hit and stick, where:</p>
-        <ul>
-            <li><code class="inline">STICK = 0</code>: keep the hand they currently have and move to dealers turn</li>
-            <li><code class="inline">HIT = 1</code>: request additional cards until they decide to stop</li>
-        </ul>
-        <p>The player busts if they exceed <code class="inline">21</code> (loses). After the player sticks, the dealer reveals their facedown card, and draws until their sum is <code class="inline">17</code> or greater. If the dealer goes bust the player wins. If neither the player nor the dealer busts, the outcome (win, lose, draw) is decided by whose sum is closest to <code class="inline">21</code>.</p>
-        <p>Reward scores:</p>
-        <ul>
-            <li>Win = <code class="inline">+1</code></li>
-            <li>Draw = <code class="inline">0</code></li>
-            <li>Lose = <code class="inline">-1</code></li>
-        </ul>
-        <p>The observation of the environment is a tuple of 3 items:</p>
-        <ul>
-            <li>The players current sum <code class="inline">(0, 1, ..., 31)</code></li>
-            <li>The dealer's one showing card <code class="inline">(1, ..., 10)</code></li>
-            <li>An indicator that determines the player holding a usable ace <code class="inline">(no=0, yes=1)</code></li>
-        </ul>
-        <p>The player makes decisions based on (total of 200 states):</p>
-        <ul>
-            <li>Their current sum when between 12 - 21</li>
-            <li>The dealer's one showing card (ace - 10)</li>
-            <li>Whether the dealer has a usable ace</li>
-        </ul>
-    </div><!-- .col -->
-</div><!-- #environment -->
+<h2>The Environment</h2>
+<p>Blackjack is a popular casino card game, where the user aims to obtain cards that sum as close to, or equal to, a numerical value of <code class="inline">21</code>, without exceeding it. Naturally, the game is formulated as an episodic finite MDP. Full details of the rules of the environment are highlighted below:</p>
+<p>The player plays against a fixed dealer, where:</p>
+<ul>
+    <li>Face cards (Jack, Queen, King) have the point value of <code class="inline">10</code></li>
+    <li>Aces can either count as <code class="inline">11</code> or <code class="inline">1</code>, and is called 'usable' at <code class="inline">11</code></li>
+    <li>The game uses an infinite deck (with card replacements), preventing card tracking</li>
+    <li>The game starts with the player and dealer having one face up and one face down card</li>
+</ul>
+<p>The player has two actions, hit and stick, where:</p>
+<ul>
+    <li><code class="inline">STICK = 0</code>: keep the hand they currently have and move to dealers turn</li>
+    <li><code class="inline">HIT = 1</code>: request additional cards until they decide to stop</li>
+</ul>
+<p>The player busts if they exceed <code class="inline">21</code> (loses). After the player sticks, the dealer reveals their facedown card, and draws until their sum is <code class="inline">17</code> or greater. If the dealer goes bust the player wins. If neither the player nor the dealer busts, the outcome (win, lose, draw) is decided by whose sum is closest to <code class="inline">21</code>.</p>
+<p>Reward scores:</p>
+<ul>
+    <li>Win = <code class="inline">+1</code></li>
+    <li>Draw = <code class="inline">0</code></li>
+    <li>Lose = <code class="inline">-1</code></li>
+</ul>
+<p>The observation of the environment is a tuple of 3 items:</p>
+<ul>
+    <li>The players current sum <code class="inline">(0, 1, ..., 31)</code></li>
+    <li>The dealer's one showing card <code class="inline">(1, ..., 10)</code></li>
+    <li>An indicator that determines the player holding a usable ace <code class="inline">(no=0, yes=1)</code></li>
+</ul>
+<p>The player makes decisions based on (total of 200 states):</p>
+<ul>
+    <li>Their current sum when between 12 - 21</li>
+    <li>The dealer's one showing card (ace - 10)</li>
+    <li>Whether the dealer has a usable ace</li>
+</ul>
 
-<div id="results" class="row">
-    <div class="col-12">
-        <h2>Solving the Environment</h2>
-        <div id="prediction" class="row">
-            <div class="col-12">
-                <h3>Prediction</h3>
-                <p>MC Prediction provides a method for estimating value functions for unknown MDPs, enabling two methods for policy evaluation: first-visit and every-visit. Programmatic implementations are housed on <a href="https://github.com/Achronus/Portfolio/tree/master/rl/monte_carlo">GitHub</a>. They both follow a limited policy based on the following rules:</p>
-                <ul>
-                    <li><code class="inline">Agent card sum &gt; 18</code>: take STICK action with 80% probability</li>
-                    <li><code class="inline">Agent card sum &lt;= 18</code>: take HIT action with 80% probability</li>
-                </ul>
-                <img class="img-fluid d-block mx-auto" src="/assets/imgs/portfolio/mc-prediction-results.png" alt="Prediction Results">
-                <p class="figure-label">Figure 1.1. Monte-Carlo Prediction results for a player with and without a usable ace.</p>
-                <p>Both methods achieved the results highlighted in figure 1.1, where the algorithms performed <code class="inline">500,000 episodes</code> with a <code class="inline">gamma of 1.0</code> (no discounted return). The figure shows the difference in return (state value) when the agent's sum is between <code class="inline">10 - 21</code> and the dealer's sum is between <code class="inline">1 - 10</code>.</p>
-                <p>If the colour is dark-blue, the reward achieved is closer to <code class="inline">-1</code> (player lose), and when it is dark-red, it is closer to <code class="inline">+1</code> (player win). Whether the player has a usable ace or no usable ace, the estimated results are similar. For example, when the player's current sum is low <code class="inline">(10 - 12)</code>, they have a higher likelihood of winning because of the greater chance of receiving cards that will get the agent closer to <code class="inline">21</code>.</p>
-            </div><!-- .col -->
-        </div><!-- #prediction -->
-    </div><!-- .col -->
-</div><!-- #results -->
+<h2>Solving the Environment</h2>
+<h3>Prediction</h3>
+<p>MC Prediction provides a method for estimating value functions for unknown MDPs, enabling two methods for policy evaluation: first-visit and every-visit. Programmatic implementations are housed on <a href="https://github.com/Achronus/Portfolio/tree/master/rl/monte_carlo">GitHub</a>. They both follow a limited policy based on the following rules:</p>
+<ul>
+    <li><code class="inline">Agent card sum &gt; 18</code>: take STICK action with 80% probability</li>
+    <li><code class="inline">Agent card sum &lt;= 18</code>: take HIT action with 80% probability</li>
+</ul>
+{%- include single_parts/image.html url='mc-prediction-results.png' alt='Prediction Results' label='Figure 1.1. Monte-Carlo Prediction results for a player with and without a usable ace.' -%}
+<p>Both methods achieved the results highlighted in figure 1.1, where the algorithms performed <code class="inline">500,000 episodes</code> with a <code class="inline">gamma of 1.0</code> (no discounted return). The figure shows the difference in return (state value) when the agent's sum is between <code class="inline">10 - 21</code> and the dealer's sum is between <code class="inline">1 - 10</code>.</p>
+<p>If the colour is dark-blue, the reward achieved is closer to <code class="inline">-1</code> (player lose), and when it is dark-red, it is closer to <code class="inline">+1</code> (player win). Whether the player has a usable ace or no usable ace, the estimated results are similar. For example, when the player's current sum is low <code class="inline">(10 - 12)</code>, they have a higher likelihood of winning because of the greater chance of receiving cards that will get the agent closer to <code class="inline">21</code>.</p>
+

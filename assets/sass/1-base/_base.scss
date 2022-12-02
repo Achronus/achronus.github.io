@@ -50,6 +50,7 @@ p {
   &.figure-label {
     font-style: italic;
     text-align: center;
+    @include remPadTopBot(10px);
   }
 }
 
@@ -79,14 +80,6 @@ p {
       border: 1px solid rgba(25, 146, 216, 0.1);
       background-color: rgba(241, 252, 254, 0.3);
     }
-  }
-}
-
-.img-container {
-  .img-caption {
-    font-style: italic;
-    text-align: center;
-    @include remPadTopBot(10px);
   }
 }
 
@@ -186,34 +179,6 @@ a {
 
 ul, ol {
   margin-left: 0;
-}
-
-.container, .container-fluid {
-  .tag {
-    font-family: $rubik;
-    color: #fff;
-    font-weight: 300;
-    @include remFont(14px);
-    background-color: $dark-blue;
-    display: inline-block;
-    text-transform: capitalize;
-    @include remPad(5px, 10px);
-    @include remMarginBot(5px);
-    svg {
-      color: #fff;
-      @include remMarginRight(2px);
-    }
-    &:not(.tag.date) {
-      &:hover {
-        color: #fff;
-        background-color: #242424;
-        transition: $base-transition;
-        svg {
-          color: #fff;
-        }
-      }
-    }
-  }
 }
 
 .code-snippet {
