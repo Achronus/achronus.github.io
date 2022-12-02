@@ -10,23 +10,16 @@ id: about-page
         <div class="row">
             <div class="col-12 col-md-6 text-center">
                 <div class="text">
-                    <p>I was raised in the small town of Colchester, where my programming adventure started during an apprenticeship. Focusing on front-end development and assisting in creating full-fledged WordPress websites, I found my love for problem-solving and building applications from the ground up.</p>
-                    <p>After 4 years, I craved something new and moved away from web development. Pursing new career options, I enrolled in the <span class="blue">University of Lincoln</span> to obtain my BSc degree in <span class="blue">Computer Science</span>. In between assignments, I began taking online <span class="blue">Udacity</span> and <span class="blue">Udemy</span> courses, where I discovered a passion for <span class="blue">Machine Learning</span> and <span class="blue">AI</span>.</p>
-                    <p>I continued my journey through an MSc degree in <span class="blue">Machine Learning and Autonomous Systems</span> at the <span class="blue">University of Bath</span> and am proceeding to follow my passion of becoming a Machine Learning Engineer.</p>
-                    <p>Personally, I love programming <img src="/assets/imgs/icons/code.png" alt="code icon"> and playing chess <img src="/assets/imgs/icons/chess.png" alt="chess icon">, and enjoy listening to music <img src="/assets/imgs/icons/spotify.png" alt="spotify icon"> or watching a movie <img src="/assets/imgs/icons/movies.png" alt="movie ticket icon"> when relaxing.</p>
+                    {%- include page_content/about.html -%}
                 </div><!-- text -->
             </div><!-- col -->
             <div class="col-12 col-md-6 text-center">
                 <div class="portrait">
-                    <img src="/assets/imgs/me.jpg" alt="me">
+                    {%- include page_parts/image.html url="me.jpg" alt="me" -%}
                 </div><!-- portrait -->
                 <div class="social-icons icon-border">
-                    <a class="btn btn-primary" href="{{ site.linkedin_url }}" role="button">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a class="btn btn-primary" href="{{ site.github_url }}" role="button">
-                        <i class="fab fa-github"></i>
-                    </a>
+                    {%- include page_parts/social-btn.html name="linkedin" url=site.linkedin_url -%}
+                    {%- include page_parts/social-btn.html name="github" url=site.github_url -%}
                 </div><!-- social-icons -->
             </div><!-- col -->
         </div><!-- row -->
@@ -41,7 +34,7 @@ id: about-page
             {%- for activity in site.activities -%}
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="title text-center text-md-start">
-                    <img src="{{ activity.img_url }}" alt="{{ activity.header }}">
+                    {%- include page_parts/image.html url=activity.img_url alt=activity.header %}
                     <h2>{{ activity.header }}</h2>
                 </div><!-- title -->
                 <div class="text text-center text-md-start mt-4 mb-5 mb-md-0">

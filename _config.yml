@@ -6,18 +6,23 @@ github_url: 'https://github.com/Achronus'
 
 about_page_url: 'about'
 portfolio_page_url: 'portfolio'
-wiki_page_url: 'wiki'
+blog_page_url: 'blog'
+
+root_img_url: '/assets/imgs'
+icon_img_url: '/assets/imgs/icons'
+project_img_url: '/assets/imgs/projects'
+blog_img_url: '/assets/imgs/blog'
 
 collections:
   activities:
     output: true
   tags:
     output: true
-  portfolio:
+  projects:
     output: true
     permalink: /:collection/:title
-  wiki_topics:
+  blog_topics:
     output: true
-    permalink: /wiki/:title
-  wiki_articles:
+    permalink: /blog/:title
+  blog_articles:
     output: true

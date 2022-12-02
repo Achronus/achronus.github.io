@@ -1,15 +1,15 @@
-<!-- WIKI ARTICLES
+<!-- ARTICLES
 ============================================================================== -->
 <section id="articles">
     <div class="container">
         <div class="row">
-            {%- assign sorted = site.wiki_articles | sort: 'date' | reverse -%}
+            {%- assign sorted = site.blog_articles | sort: 'date' | reverse -%}
             {%- for article in sorted -%}
                 {%- if article.topic == page.slug -%}
                 <div class="project-item col-md-6 col-xl-4">
                     <div class="content">
                         <a href="{{ article.url }}">
-                            <img class="img-fluid" src="{{ article.img_url }}" alt="{{ article.title }}">
+                            {%- include page_parts/image.html url=article.img_url alt=article.title -%}
                         </a>
                         <div class="description">
                         <a href="{{ article.url }}">

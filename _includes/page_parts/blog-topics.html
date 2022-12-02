@@ -1,9 +1,9 @@
-<!-- WIKI TOPICS
+<!-- TOPICS
 ============================================================================== -->
 <section id="articles">
     <div class="container">
         <div class="row">
-            {%- assign sorted = site.wiki_topics | sort -%}
+            {%- assign sorted = site.blog_topics | sort -%}
             {%- for item in sorted -%}
             <div class="article-item col-md-6 col-xl-4">
                 <a href="{{ item.url }}">

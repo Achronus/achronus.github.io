@@ -17,7 +17,7 @@
             </section><!-- #intro -->
         </section><!-- #top-page -->
 
-        {%- include breadcrumbs.html -%}
+        {%- include page_parts/breadcrumbs.html -%}
 
         <!-- DESCRIPTION
         ============================================================================== -->
@@ -32,9 +32,9 @@
         </section><!-- #description -->
 
         {%- if page.type == 'topic' -%}
-            {%- include wiki-topics.html -%}
+            {%- include page_parts/blog-topics.html -%}
         {%- else -%}
-            {%- include wiki-articles.html -%}
+            {%- include page_parts/blog-articles.html -%}
         {%- endif -%}
         {%- include footer.html -%}
     </body>

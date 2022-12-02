@@ -25,17 +25,13 @@ layout: homepage
                 </div> <!-- .row -->
                 <div class="row">
                     <div class="col-md-auto social-icons mt-5 text-center text-md-start">
-                        <a class="btn btn-primary linkedin-btn" href="{{ site.linkedin_url }}" role="button">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a class="btn btn-primary github-btn" href="{{ site.github_url }}" role="button">
-                            <i class="fab fa-github"></i>
-                        </a>
+                        {%- include page_parts/social-btn.html name="linkedin" url=site.linkedin_url -%}
+                        {%- include page_parts/social-btn.html name="github" url=site.github_url -%}
                     </div><!-- .social-icons-->
                 </div><!-- .row -->
             </div><!-- .col -->
             <div class="col-auto col-md-6 graphic">
-                <img class="img-fluid" src="/assets/imgs/banner.png" alt="banner">
+                {%- include page_parts/image.html url='banner.png' alt='banner' -%}
             </div><!-- .col -->
         </div><!-- .row -->
 

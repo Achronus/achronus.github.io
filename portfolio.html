@@ -7,12 +7,12 @@ layout: default
 <section id="portfolio">
     <div class="container">
         <div class="row">
-            {%- assign sorted = site.portfolio | sort: 'date' | reverse -%}
+            {%- assign sorted = site.projects | sort: 'date' | reverse -%}
             {%- for project in sorted -%}
             <div class="project-item col-md-6 col-xl-4">
                 <div class="content">
                     <a href="{{ project.url }}">
-                        <img class="img-fluid" src="{{ project.img_url }}" alt="{{ project.title }}">
+                        {%- include page_parts/image.html url=project.img_url alt=project.title -%}
                     </a>
                     <div class="description">
                         <a href="{{ project.url }}">

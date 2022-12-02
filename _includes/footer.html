@@ -5,15 +5,11 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-6 footer-text align-self-center text-center text-md-start mb-3 mb-md-0">
-            <p>&copy; 2022 All Rights Reserved. Created by me.</p>
+            <p>&copy; {{ site.footer_text }}</p>
           </div> <!-- footer-text -->
           <div class="col-sm-12 col-md-6 social-icons text-center text-md-end">
-            <a class="btn btn-primary" href="{{ site.linkedin_url }}" role="button">
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a class="btn btn-primary" href="{{ site.github_url }}" role="button">
-                <i class="fab fa-github"></i>
-              </a>
+            {%- include page_parts/social-btn.html name="linkedin" url=site.linkedin_url -%}
+            {%- include page_parts/social-btn.html name="github" url=site.github_url -%}
           </div><!-- social-icons -->
         </div><!-- row -->
         <div id="back-to-top">
