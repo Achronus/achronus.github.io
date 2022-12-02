@@ -11,9 +11,11 @@ layout: default
             {%- for project in sorted -%}
             <div class="project-item col-md-6 col-xl-4">
                 <div class="content">
-                    <a href="{{ project.url }}">
-                        {%- include page_parts/image.html url=project.img_url alt=project.title -%}
-                    </a>
+                    <div class="img-container">
+                        <a href="{{ project.url }}">
+                            {%- include page_parts/image.html url=project.img_url alt=project.title -%}
+                        </a>
+                    </div><!-- .img-container -->
                     <div class="description">
                         <a href="{{ project.url }}">
                             <div class="row">     

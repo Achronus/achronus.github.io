@@ -8,9 +8,11 @@
                 {%- if article.topic == page.slug -%}
                 <div class="project-item col-md-6 col-xl-4">
                     <div class="content">
-                        <a href="{{ article.url }}">
-                            {%- include page_parts/image.html url=article.img_url alt=article.title -%}
-                        </a>
+                        <div class="img-container">
+                            <a href="{{ article.url }}">
+                                {%- include page_parts/image.html url=article.img_url alt=article.title -%}
+                            </a>
+                        </div><!-- .img-container -->
                         <div class="description">
                         <a href="{{ article.url }}">
                             <div class="text">
