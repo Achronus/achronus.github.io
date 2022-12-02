@@ -8,10 +8,7 @@ about_page_url: 'about'
 portfolio_page_url: 'portfolio'
 blog_page_url: 'blog'
 
-root_img_url: '/assets/imgs'
-icon_img_url: '/assets/imgs/icons'
-project_img_url: '/assets/imgs/projects'
-blog_img_url: '/assets/imgs/blog'
+footer_text: '2022 All Rights Reserved. Created by me.'
 
 collections:
   activities:
