@@ -9,336 +9,148 @@ type: article
 permalink: /blog/rl_intro/:title
 layout: single-page
 ---
-<div id="characteristics" class="row">
-    <div class="col-12">
-        <h2>Characteristics of Reinforcement Learning</h2>
-        <div class="row">
-            <div class="col-12 text-center">
-                <img class="img-fluid d-block mx-auto" src="/assets/imgs/blog/rl-disciplines.png" alt="RL Disciplines">
-                <p class="figure-label">Figure 1.1. Disciplines of RL</p>
-            </div><!-- .col -->
-        </div><!-- .row -->
-        <p>RL encompasses a wide range of fields, causing it to exhibit different characteristics when compared against other ML paradigms. These characteristics include:</p>
-        <ol>
-            <li>Algorithms that require no supervision and only contain a reward signal.</li>
-            <li>Uses agents that interact with their environment by taking actions based on the subsequent data it receives.</li>
-            <li>Agents must take multiple actions in their environment before identifying if the reward received is positive or negative, providing a delayed feedback loop.</li>
-            <li>The steps taken are sequential, making it clear which actions the agent should take based on the given reward.</li>
-            <li>Time plays a critical role in how the agents perform.</li>
-            <li>RL algorithms don't use independent and identically distributed (i.i.d) data. Instead, agents must use a sequence of actions that correlate with each other.</li>
-        </ol>
-        <p>These characteristics allow RL to be used in a wide range of applications, such as robotics for industrial automation, controlling drones and aircraft, manage investment portfolios, control power stations, or even be used to optimise chemical reactions.</p>
-    </div><!-- .col -->
-</div><!-- #characteristics -->
+<h2>Characteristics of Reinforcement Learning</h2>
+{%- include single_parts/image.html url='rl-disciplines.png' alt='RL Disciplines' label='Figure 1.1. Disciplines of RL.' -%}
+<p>RL encompasses a wide range of fields, causing it to exhibit different characteristics when compared against other ML paradigms. These characteristics include:</p>
+<ol>
+    <li>Algorithms that require no supervision and only contain a reward signal.</li>
+    <li>Uses agents that interact with their environment by taking actions based on the subsequent data it receives.</li>
+    <li>Agents must take multiple actions in their environment before identifying if the reward received is positive or negative, providing a delayed feedback loop.</li>
+    <li>The steps taken are sequential, making it clear which actions the agent should take based on the given reward.</li>
+    <li>Time plays a critical role in how the agents perform.</li>
+    <li>RL algorithms don't use independent and identically distributed (i.i.d) data. Instead, agents must use a sequence of actions that correlate with each other.</li>
+</ol>
+<p>These characteristics allow RL to be used in a wide range of applications, such as robotics for industrial automation, controlling drones and aircraft, manage investment portfolios, control power stations, or even be used to optimise chemical reactions.</p>
 
-<div id="how-it-works" class="row">
-    <div class="col-12">
-        <h2>How Reinforcement Learning Works</h2>
-        <p>RL assists in solving many real-world problems by using agents, a component that decides what actions to take within a given environment. Each agent has one goal based on the following reward hypothesis:</p>
-        <p class="quote">"All goals can be described by the maximisation of expected cumulative reward."</p>
-        <p>For an agent to achieve this goal they must <span class="med">select actions to maximise total future reward</span>. While this seems simple, it can be difficult as the actions taken may have long term consequences. Additionally, if the reward the agents obtain is delayed, the positive or negative impact of the action won't become clear until a subset of actions has been taken. Because of this, agents may be required to sacrifice immediate reward to gain more long-term reward in the future. The reward discussed is a scalar feedback signal, denoted by \(R_t\), that indicates how well an agent is doing at a given timestep \(t\).</p>
-        <p>Additionally, RL can be used in a wide range of applications, such as robotics for industrial automation, controlling drones and aircraft, control power stations, manage investment portfolios, or even be used to optimise chemical reactions.</p>
-        <p>An RL algorithm has two main components: the <span class="med">agent</span> and the <span class="med">environment</span>. The agent represents an AI system, and the environment represents a specific type of world, such as a game board.</p>
-        <p>These components have three primary signals: a <span class="med">state</span>, <span class="med">action</span>, and <span class="med">reward</span>. Each one provides a unique use. The state signal acts as a snapshot of the current state of the environment. The action signal is the action that the agent takes during each timestep of the environment. And lastly, the reward signal provides feedback to the agent based on the previous action taken within the environment.</p>
-        <div class="row">
-            <div class="col-12 text-center">
-                <img class="img-fluid d-block mx-auto" src="/assets/imgs/blog/rl-process-simple.jpg" alt="RL process cycle">
-                <p class="figure-label">Figure 1.2. RL process cycle</p>
-            </div><!-- .col -->
-        </div><!-- .row -->
-        <p>Figure 1.2 represents a typical RL algorithm with both the agent and environment. The cycle starts with the agent receiving the first frame of the environment, state \(S_0\), where the agent then takes an action \(A_0\). After this, the environment transitions to a new state, \(S_1\), and returns a positive or negative reward \(R_1\) to the agent. This process repeats until a termination condition is met. In this example, the output would be a sequence of state, action, reward, and next state: \([S_0, A_0, R_1, S_1]\).</p>
-        <p>For simplicity and to solidify our understanding, let's break this down into a list. At each timestep \(t\), the agent either:</p>
-        <ul>
-            <li>Executes an action in the environment \(A_t\)</li>
-            <li>Receives an observation from the environment \(O_t\)</li>
-            <li>Or, receives a scalar reward from the environment \(R_t\)</li>
-        </ul>
-        <p>While the environment either:</p>
-        <ul>
-            <li>Recieves an action from the agent \(A_t\)</li>
-            <li>Emits an observation to the agent \(O_t\)</li>
-            <li>Or, emits a scalar reward to the agent \(R_t\)</li>
-        </ul>
-    </div><!-- .col -->
-</div><!-- #how-it-works -->
+<h2>How Reinforcement Learning Works</h2>
+<p>RL assists in solving many real-world problems by using agents, a component that decides what actions to take within a given environment. Each agent has one goal based on the following reward hypothesis:</p>
+<p class="quote">"All goals can be described by the maximisation of expected cumulative reward."</p>
+<p>For an agent to achieve this goal they must <span class="med">select actions to maximise total future reward</span>. While this seems simple, it can be difficult as the actions taken may have long term consequences. Additionally, if the reward the agents obtain is delayed, the positive or negative impact of the action won't become clear until a subset of actions has been taken. Because of this, agents may be required to sacrifice immediate reward to gain more long-term reward in the future. The reward discussed is a scalar feedback signal, denoted by \(R_t\), that indicates how well an agent is doing at a given timestep \(t\).</p>
+<p>Additionally, RL can be used in a wide range of applications, such as robotics for industrial automation, controlling drones and aircraft, control power stations, manage investment portfolios, or even be used to optimise chemical reactions.</p>
+<p>An RL algorithm has two main components: the <span class="med">agent</span> and the <span class="med">environment</span>. The agent represents an AI system, and the environment represents a specific type of world, such as a game board.</p>
+<p>These components have three primary signals: a <span class="med">state</span>, <span class="med">action</span>, and <span class="med">reward</span>. Each one provides a unique use. The state signal acts as a snapshot of the current state of the environment. The action signal is the action that the agent takes during each timestep of the environment. And lastly, the reward signal provides feedback to the agent based on the previous action taken within the environment.</p>
+{%- include single_parts/image.html url='rl-process-simple.jpg' alt='RL Process Cycle' label='Figure 2.1. RL process cycle.' -%}
+<p>Figure 2.1 represents a typical RL algorithm with both the agent and environment. The cycle starts with the agent receiving the first frame of the environment, state \(S_0\), where the agent then takes an action \(A_0\). After this, the environment transitions to a new state, \(S_1\), and returns a positive or negative reward \(R_1\) to the agent. This process repeats until a termination condition is met. In this example, the output would be a sequence of state, action, reward, and next state: \([S_0, A_0, R_1, S_1]\).</p>
+<p>For simplicity and to solidify our understanding, let's break this down into a list. At each timestep \(t\), the agent either:</p>
+<ul>
+    <li>Executes an action in the environment \(A_t\)</li>
+    <li>Receives an observation from the environment \(O_t\)</li>
+    <li>Or, receives a scalar reward from the environment \(R_t\)</li>
+</ul>
+<p>While the environment either:</p>
+<ul>
+    <li>Recieves an action from the agent \(A_t\)</li>
+    <li>Emits an observation to the agent \(O_t\)</li>
+    <li>Or, emits a scalar reward to the agent \(R_t\)</li>
+</ul>
 
-<div id="history-and-states" class="row">
-    <div class="col-12">
-      <h2>History and States</h2>
-      <p>As seen in the figure 1.2 example, RL agents use a sequence of observations, actions, and rewards called <span class="med">history</span> to store all the observable variables up to time \(t\), denoted by equation 1.</p>
-      <div class="row">
-        <div class="col-11 text-center">
-          <p>
-            \(\begin{equation}
-            H_t = A_1, O_1, R_1, ..., A_t, O_t, R_t
-            \end{equation}\)
-          </p>
-        </div>
-        <div class="col-1 text-end">
-          <p>(1)</p>
-        </div>
-      </div>
-      <p>The action the agent takes next depends on the observable history. Similarly, the environment also reviews the observable history to select the next observation/reward based on the agent's action. Unfortunately, because the history contains everything that has happened up to a given timestep, it can be very computationally expensive to look through. Instead, <span class="med">states</span> are used, providing a summary of information to determine what happens next. Formally, states are a function of the history, denoted in equation 2.</p>
-      <div class="row">
-        <div class="col-11 text-center">
-          <p>
-            \(\begin{equation}
-            S_t = f(H_t)
-            \end{equation}\)
-          </p>
-        </div>
-        <div class="col-1 text-end">
-          <p>(2)</p>
-        </div>
-      </div>
-      <div id="state-types" class="row">
-        <div class="col-12">
-          <h3>Types of States</h3>
-          <p>Typical use cases for states involve only looking at the last observation of the history. With this in mind, there are three types of states: environment, agent, and information.</p>
-          <p>The environment state, denoted by \(S_t^e\), is the environment's private representation used to determine what observation/reward is picked next. This state is only visible by the environment and cannot be seen by the agent.</p>
-          <p>The agent state, denoted by \(S_t^a\), is the agent's internal representation of the world around it. This state is used to capture exactly what the agent has seen and done so far, which is then used to determine the agent's next action. Additionally, this is the information that is used by RL algorithms to successfully train the agents, which can be any function of history, using the same formula in equation 2.</p>
-          <p>The information state, or Markov state, denoted by \(O_t\), contains all the useful information from the history. In order for a state \(S_t\) to be Markov, the probability of the next state, \(S_{t+1}\), conditioned against the state the agent is in, \(S_t\), must be equal to the probability of the next state compared against all of the previous states. This is denoted in equation 3.</p>
-          <div class="row">
-            <div class="col-11 text-center">
-              <p>
-                \(\begin{equation}
-                \mathbb{P}[S_{t+1} | S_t] = \mathbb{P}[S_{t+1} | S_1, ..., S_t]
-                \end{equation}\)
-              </p>
-            </div>
-            <div class="col-1 text-end">
-              <p>(3)</p>
-            </div>
-          </div>
-          <p>A Markov state is extremely powerful because it only requires the latest state, providing a sufficient statistic of all future states. The remaining history cannot provide any additional information on what happens in the future, making them redundant when using a Markov state, so it is beneficial to remove them to increase computational resources. With this in mind, a Markov state can be simplified from equation 3 to equation 4.</p>
-          <div class="row">
-            <div class="col-11 text-center">
-              <p>
-                \(\begin{equation}
-                H_{1:t} \rightarrow S_t \rightarrow H_{t+1:\infty}
-                \end{equation}\)
-              </p>
-            </div>
-            <div class="col-1 text-end">
-              <p>(4)</p>
-            </div>
-          </div>
-        </div><!-- .col -->
-      </div><!-- #state-types -->
-    </div><!-- .col -->
-</div><!-- #history-and-states -->
 
-<div id="environments" class="row">
-    <div class="col-12">
-      <h2>Types of Environments</h2>
-      <p>Another critical component to RL algorithms is the type of environment used. There are two main types: fully observable and partially observable.</p>
-      <div id="fully" class="row">
-        <div class="col-12">
-          <h3>Fully Observable</h3>
-          <p>Fully observable environments allow agents to directly observe the environment state, giving them the ability to see everything that the environment sees. This type of environment is identified mathematically within equation 5.</p>
-          <div class="row">
-            <div class="col-11 text-center">
-              <p>
-                \(\begin{equation}
-                O_t = S_t^a = S_t^e
-                \end{equation}\)
-              </p>
-            </div>
-            <div class="col-1 text-end">
-              <p>(5)</p>
-            </div>
-          </div>
-          <p>This type of environment representation is the main formalism for RL, known as a <span class="med">Markov Decision Process (MDP)</span>. MDPs are extremely powerful and crucial to most RL algorithms but are unfortunately out of the scope of this article.</p>
-          <p>On the other hand, it is also crucial to understand that not every problem can be fully observable, which requires a different type of environment, one that is partially observable.</p> 
-        </div><!-- .col -->
-      </div><!-- #fully -->
-      <div id="partially" class="row">
-        <div class="col-12">
-          <h3>Partially Observable</h3>
-          <p>Partially observable environments provide agents with the ability to indirectly observe the environment state, where they only provide the agents with information relevant to the required task. For example, a robot that uses a camera to see and must localize itself within its environment or a poker-playing agent can only observe its cards own cards and the public cards visible to all players on the table.</p>
-          <p>These types of environments are known as partially observable <span class="med">Markov decision processes (POMDPs)</span>, mathematically represented in equation 6.</p>
-          <div class="row">
-            <div class="col-11 text-center">
-              <p>
-                \(\begin{equation}
-                S_t^a \neq S_t^e
-                \end{equation}\)
-              </p>
-            </div>
-            <div class="col-1 text-end">
-              <p>(6)</p>
-            </div>
-          </div>
-          <p>For these environments to successfully solve problems, their agents are required to construct their own state representation \(S_t^a\) of the environment around them. For example:</p>
-          <ul>
-            <li>The agent could remember everything it has seen: \(S_t^a = H_t\)</li>
-            <li>Build beliefs of the environment state using a Bayesian approach: \(S_t^a = (\mathbb{P}[S_t^e = s^1], ..., \mathbb{P}[S_t^e = s^n])\)</li>
-            <li>Use a Recurrent Neural Network: \(S_t^a = \sigma(S_{t-1}^a W_s + O_t W_o)\)</li>
-          </ul>
-        </div><!-- .col -->
-      </div><!-- #partially -->
-    </div><!-- .col -->
-</div><!-- #environments -->
+<h2>History and States</h2>
+<p>As seen in the figure 2.1 example, RL agents use a sequence of observations, actions, and rewards called <span class="med">history</span> to store all the observable variables up to time \(t\), denoted by equation 2.1.</p>
+{%- include single_parts/equation.html text='H_t = A_1, O_1, R_1, ..., A_t, O_t, R_t' index='2.1' -%}
+<p>The action the agent takes next depends on the observable history. Similarly, the environment also reviews the observable history to select the next observation/reward based on the agent's action. Unfortunately, because the history contains everything that has happened up to a given timestep, it can be very computationally expensive to look through. Instead, <span class="med">states</span> are used, providing a summary of information to determine what happens next. Formally, states are a function of the history, denoted in equation 2.2.</p>
+{%- include single_parts/equation.html text='S_t = f(H_t)' index='2.2' -%}
 
-<div id="components" class="row">
-    <div class="col-12">
-      <h2>Components of a Reinforcement Learning Agent</h2>
-      <p>Agents act as the controller of RL algorithms and are fundamental in their success. In this section, we will explore the main components of RL agents.</p>
-      <p>Every RL agent has three main components: a policy, value function, and, optionally, a model.</p>
-      <div id="policy" class="row">
-        <div class="col-12">
-          <h3>Policy</h3>
-          <p>A policy represents the agent's brain in the form of a function, determining how the agent make its decisions to select its actions during each timestep. An agent's goal is to find the optimal policy \(\pi^*\) to maximize the expected return during each state and action pair. Policies come in two forms:</p>
-          <ul>
-            <li><span class="med">Deterministic</span> - follows a given function that takes in a state \(s\) to get some action \(a\), denoted in equation 7. This type of policy acts as a map from state to action.</li>
-          </ul>
-          <div class="row">
-            <div class="col-11 text-center">
-              <p>
-                \(\begin{equation}
-                a = \pi(s)
-                \end{equation}\)
-              </p>
-            </div>
-            <div class="col-1 text-end">
-              <p>(7)</p>
-            </div>
-          </div>
-          <ul>
-            <li><span class="med">Stochastic</span> - allows an agent to make random exploratory decisions to see more of the state space by taking the probability of a particular action, conditioned on a given state, denoted in equation 8. This type of policy provides a probability distribution over a set of actions for a given state.</li>
-          </ul>
-          <div class="row">
-            <div class="col-11 text-center">
-              <p>
-                \(\begin{equation}
-                \pi(a \; | \; s) = \mathbb{P}[A = a \; | \; S = s]
-                \end{equation}\)
-              </p>
-            </div>
-            <div class="col-1 text-end">
-              <p>(8)</p>
-            </div>
-          </div>
-        </div><!-- .col -->
-      </div><!-- #policy -->
-      <div id="value-function" class="row">
-        <div class="col-12">
-          <h3>Value Function</h3>
-          <p>A value function is a prediction of future reward used to evaluate the effectiveness of each future state. Therefore, this function assists in selecting the best action for each state, denoted in equation 9. Value functions use a discount rate \(\gamma\) between 0 and 1, where a value close to 0 encourages agents to care more about long term reward, and a number close to 1 incentivizes them to care more about short term reward.</p>
-          <div class="row">
-            <div class="col-11 text-center">
-              <p>
-                \(\begin{equation}
-                v_\pi(s) = \mathbb{E}_{\pi}[R_t + \gamma R_{t+1} + \gamma^2 R_{t+2} \; + \; ... \; | \; S_t = s]
-                \end{equation}\)
-              </p>
-            </div>
-            <div class="col-1 text-end">
-              <p>(9)</p>
-            </div>
-          </div>
-        </div><!-- .col -->
-      </div><!-- #value-function -->
-      <div id="model" class="row">
-        <div class="col-12">
-          <h3>Model</h3>
-          <p>A model is an optional component representing the agent's view of how the environment works, where it tries to foresee what will happen next. Models have two parts: transitions \(\mathcal{P}\) that predict the next state and rewards \(\mathcal{R}\) that anticipate the next immediate reward. Both have mathematical representations, denoted in equation 10.</p>
-          <div class="row">
-            <div class="col-11 text-center">
-              <p>
-                \(\begin{equation}
-                  \mathcal{P}_{ss'}^{a} = \mathbb{P}[S' = s' \; | \; S = s, A = a]
-                \end{equation}\)
-              </p>
-              <p>
-                \(\begin{equation}
-                  \mathcal{R}_{s}^{a} = \mathbb{E}[R \; | \; S = s,  A = a]
-                \end{equation}\)
-              </p>
-            </div>
-            <div class="col-1 align-self-center text-end">
-              <p>(10)</p>
-            </div>
-          </div>
-        </div><!-- .col -->
-      </div><!-- #model -->
-      <p>\(\mathcal{P}_{ss'}^{a}\) represents a state transition model that identifies the probability of being in the next state given the previous state and action and \(\mathcal{R}_s^a\) symbolizes a reward model that explains the expected reward given the current state and action.</p>
-    </div><!-- .col -->
-</div><!-- #components -->
+<h3>Types of States</h3>
+<p>Typical use cases for states involve only looking at the last observation of the history. With this in mind, there are three types of states: environment, agent, and information.</p>
+<p>The environment state, denoted by \(S_t^e\), is the environment's private representation used to determine what observation/reward is picked next. This state is only visible by the environment and cannot be seen by the agent.</p>
+<p>The agent state, denoted by \(S_t^a\), is the agent's internal representation of the world around it. This state is used to capture exactly what the agent has seen and done so far, which is then used to determine the agent's next action. Additionally, this is the information that is used by RL algorithms to successfully train the agents, which can be any function of history, using the same formula in equation 2.2.</p>
+<p>The information state, or Markov state, denoted by \(O_t\), contains all the useful information from the history. In order for a state \(S_t\) to be Markov, the probability of the next state, \(S_{t+1}\), conditioned against the state the agent is in, \(S_t\), must be equal to the probability of the next state compared against all of the previous states. This is denoted in equation 2.3.</p>
+{%- include single_parts/equation.html text='\mathbb{P}[S_{t+1} | S_t] = \mathbb{P}[S_{t+1} | S_1, ..., S_t]' index='2.3' -%}
+<p>A Markov state is extremely powerful because it only requires the latest state, providing a sufficient statistic of all future states. The remaining history cannot provide any additional information on what happens in the future, making them redundant when using a Markov state, so it is beneficial to remove them to increase computational resources. With this in mind, a Markov state can be simplified from equation 2.3 to equation 2.4.</p>
+{%- include single_parts/equation.html text='H_{1:t} \rightarrow S_t \rightarrow H_{t+1:\infty}' index='2.4' -%}
 
-<div id="categories" class="row">
-    <div class="col-12">
-      <h2>Categories of RL Agents</h2>
-      <p>When creating an RL algorithm, it's crucial to understand what type of agents are required to complete the task at hand. Unfortunately, there isn't a universal agent that solves every problem. Instead, agents are divided into two main areas that contain individual sub-categories. There are seven total sub-categories, which can be combined using various combinations to solve different problems. Typically, an agent uses one sub-category from each of the main areas.</p>
-      <div id="model-cat" class="row">
-        <div class="col-12">
-          <h3>Model-Free vs Model-Based</h3>
-          <p>The first area includes model-free and model-based agents. Both of these use either a policy or a value function with or without a model. More specifically:</p>
-          <ul>
-            <li><span class="med">Model-free</span> agents do not build a model of their environment or contain rewards. Instead, they directly connect observations/states to actions.</li>
-            <li><span class="med">Model-based</span> agents, however, rely on the model of the environment to predict the next state and reward. These agents will either know the model perfectly or learn it explicitly.</li>
-          </ul>
-        </div><!-- .col -->
-      </div><!-- #model-cat -->
-      <div id="func-cat" class="row">
-        <div class="col-12">
-          <h3>Value-Based vs Policy-Based vs Actor-Critic</h3>
-          <p>The second area focuses on the functionality of the agents, which can be either: value-based, policy-based or actor-critic, where:</p>
-          <ul>
-            <li><span class="med">Value-based</span> agents have no policy but a value function.</li>
-            <li><span class="med">Policy-based</span> agents have a policy but no value function.</li>
-            <li>And, <span class="med">Actor-Critic</span> agents use both a policy and a value function.</li>
-          </ul>
-        </div><!-- .col -->
-      </div><!-- #func-cat -->
-      <div id="policy-cat" class="row">
-        <div class="col-12">
-          <h3>On-Policy vs Off-Policy</h3>
-          <p>The third area focuses on the type of policy improvement/evaluation method an agent uses. These can be either be on-policy or off-policy:</p>
-          <ul>
-            <li><span class="med">On-Policy</span> methods evaluate or improve a policy via the <span style="font-style: italic;">latest learned version</span> of that policy.</li>
-            <li><span class="med">Off-Policy</span> methods evaluate or improve a policy using a <span style="font-style: italic;">different data source</span> produced by a separate policy from the target one.</li>
-          </ul>
-        </div><!-- .col -->
-      </div><!-- #policy-cat -->
-    </div><!-- .col -->
-</div><!-- #categories -->
 
-<div id="challenges" class="row">
-    <div class="col-12">
-      <h2>Challenges of Reinforcement Learning</h2>
-      <p>RL has its own level of challenges when creating agents that can successfully navigate an environment. Specifically, there are three sets: learning and planning, the exploration and exploitation trade-off, and prediction and control.</p>
-      <div id="learning-planning" class="row">
-        <div class="col-12">
-          <h3>Learning &amp; Planning</h3>
-          <p>The <span class="med">learning problem</span> is where agents are initially unaware of the environment around them and requires them to become familiar with it by interacting with it. Through continuous interactions, the agent improves its policy and begins to maximise its cumulative reward.</p>
-          <p>The <span class="med">planning problem</span> provides the agent with a model of the environment, allowing it to know all its rules. Instead of interacting with the environment, the agent performs computations on the model, without external interaction, to improve its policy.</p>
-          <p>While both are different problem sets, they can be linked together. First, the agent learns how the environment works and then plans the best way to solve it.</p>
-        </div><!-- .col -->
-      </div><!-- #learning-planning -->
-      <div id="explore-vs-exploit" class="row">
-        <div class="col-12">
-          <h3>Exploration vs Exploitation Trade-off</h3>
-          <p>For an RL agent to be effective, it must find a balance between exploration and exploitation. <span class="med">Exploration</span> involves the agent discovering more of the environment by trying random actions to learn more about the environment. While exploring, it substitutes rewards that it knows about to see if there are even greater rewards. <span class="med">Exploitation</span>, however, focuses on the agent abusing the known information to maximise its immediate reward.</p>
-        </div><!-- .col -->
-      </div><!-- #explore-vs-exploit -->
-      <div id="prediction-and-control" class="row">
-        <div class="col-12">
-          <h3>Prediction &amp; Control</h3>
-          <p>The prediction and control problems are the final set of distinctions that are important in RL algorithms. <span class="med">Prediction</span> involves the evaluation of how well the agent performs in future states, given the current policy. For example, if an agent was to walk forward, how much reward would it receive?</p>
-          <p>Comparatively, the <span class="med">control problem</span> focuses on finding the optimal policy to gain the most future reward. For example, which direction should the agent walk to get the most reward? Typically, the prediction problem is solved first to solve the control problem.</p>
-        </div><!-- .col -->
-      </div><!-- #prediction-and-control -->
-    </div><!-- .col -->
-</div><!-- #challenges -->
+<h2>Types of Environments</h2>
+<p>Another critical component to RL algorithms is the type of environment used. There are two main types: fully observable and partially observable.</p>
 
-<div id="references" class="row">
-    <div class="col-12">
-        <h2>References</h2>
-        <p>RL Course by David Silver (2015) - <a href="https://www.youtube.com/watch?v=2pWv7GOvuf0&amp;list=PLqYmG7hTraZBiG_XpjnPrSNw-1XQaM_gB">Lecture 1: Introduction to Reinforcement Learning</a></p>
-        <p>Book by Richard S. Sutton and Andrew G. Barto (2018) - <a href="https://mitpress.mit.edu/books/reinforcement-learning-second-edition">Reinforcement Learning: An Introduction, 2nd Edition</a></p>
-        <p>Book by Maxim Lapan (2020) - <a href="https://www.packtpub.com/product/deep-reinforcement-learning-hands-on-second-edition/9781838826994">Deep Reinforcement Learning Hands-On, Second Edition</a></p>
-        <p>RL Course by Udacity (2021) - <a href="https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893">Deep Reinforcement Learning Nanodegree</a></p>
-        <p>YouTube Video by Thomas Simonini (2020) - <a href="https://www.youtube.com/watch?v=q0BiUn5LiBc&amp;list=PLQLZ37V8CnUTqDCCGfjgYss_7lhj2ugcH">Introduction to Deep Reinforcement Learning</a></p>
-    </div><!-- .col -->
-</div><!-- #references -->
+<h3>Fully Observable</h3>
+<p>Fully observable environments allow agents to directly observe the environment state, giving them the ability to see everything that the environment sees. This type of environment is identified mathematically within equation 3.1.</p>
+{%- include single_parts/equation.html text='O_t = S_t^a = S_t^e' index='3.1' -%}
+<p>This type of environment representation is the main formalism for RL, known as a <span class="med">Markov Decision Process (MDP)</span>. MDPs are extremely powerful and crucial to most RL algorithms but are unfortunately out of the scope of this article.</p>
+<p>On the other hand, it is also crucial to understand that not every problem can be fully observable, which requires a different type of environment, one that is partially observable.</p> 
+
+<h3>Partially Observable</h3>
+<p>Partially observable environments provide agents with the ability to indirectly observe the environment state, where they only provide the agents with information relevant to the required task. For example, a robot that uses a camera to see and must localize itself within its environment or a poker-playing agent can only observe its cards own cards and the public cards visible to all players on the table.</p>
+<p>These types of environments are known as partially observable <span class="med">Markov decision processes (POMDPs)</span>, mathematically represented in equation 3.2.</p>
+{%- include single_parts/equation.html text='S_t^a \neq S_t^e' index='3.2' -%}
+<p>For these environments to successfully solve problems, their agents are required to construct their own state representation \(S_t^a\) of the environment around them. For example:</p>
+<ul>
+<li>The agent could remember everything it has seen: \(S_t^a = H_t\)</li>
+<li>Build beliefs of the environment state using a Bayesian approach: \(S_t^a = (\mathbb{P}[S_t^e = s^1], ..., \mathbb{P}[S_t^e = s^n])\)</li>
+<li>Use a Recurrent Neural Network: \(S_t^a = \sigma(S_{t-1}^a W_s + O_t W_o)\)</li>
+</ul>
+
+<h2>Components of a Reinforcement Learning Agent</h2>
+<p>Agents act as the controller of RL algorithms and are fundamental in their success. In this section, we will explore the main components of RL agents.</p>
+<p>Every RL agent has three main components: a policy, value function, and, optionally, a model.</p>
+
+<h3>Policy</h3>
+<p>A policy represents the agent's brain in the form of a function, determining how the agent make its decisions to select its actions during each timestep. An agent's goal is to find the optimal policy \(\pi^*\) to maximize the expected return during each state and action pair. Policies come in two forms:</p>
+<ul>
+    <li><span class="med">Deterministic</span> - follows a given function that takes in a state \(s\) to get some action \(a\), denoted in equation 4.1. This type of policy acts as a map from state to action.</li>
+</ul>
+{%- include single_parts/equation.html text='a = \pi(s)' index='4.1' -%}
+<ul>
+    <li><span class="med">Stochastic</span> - allows an agent to make random exploratory decisions to see more of the state space by taking the probability of a particular action, conditioned on a given state, denoted in equation 4.2. This type of policy provides a probability distribution over a set of actions for a given state.</li>
+</ul>
+{%- include single_parts/equation.html text='\pi(a \; | \; s) = \mathbb{P}[A = a \; | \; S = s]' index='4.2' -%}
+
+<h3>Value Function</h3>
+<p>A value function is a prediction of future reward used to evaluate the effectiveness of each future state. Therefore, this function assists in selecting the best action for each state, denoted in equation 9. Value functions use a discount rate \(\gamma\) between 0 and 1, where a value close to 0 encourages agents to care more about long term reward, and a number close to 1 incentivizes them to care more about short term reward.</p>
+{%- include single_parts/equation.html text='v_\pi(s) = \mathbb{E}_{\pi}[R_t + \gamma R_{t+1} + \gamma^2 R_{t+2} \; + \; ... \; | \; S_t = s]' index='4.3' -%}
+
+<h3>Model</h3>
+<p>A model is an optional component representing the agent's view of how the environment works, where it tries to foresee what will happen next. Models have two parts: transitions \(\mathcal{P}\) that predict the next state and rewards \(\mathcal{R}\) that anticipate the next immediate reward. Both have mathematical representations, denoted in equation 4.4 and 4.5.</p>
+{%- include single_parts/equation.html text="\mathcal{P}_{ss'}^{a} = \mathbb{P}[S' = s' \; | \; S = s, A = a]" index='4.4' -%}
+{%- include single_parts/equation.html text='\mathcal{R}_{s}^{a} = \mathbb{E}[R \; | \; S = s,  A = a]' index='4.5' -%}
+
+<p>\(\mathcal{P}_{ss'}^{a}\) represents a state transition model that identifies the probability of being in the next state given the previous state and action and \(\mathcal{R}_s^a\) symbolizes a reward model that explains the expected reward given the current state and action.</p>
+
+<h2>Categories of RL Agents</h2>
+<p>When creating an RL algorithm, it's crucial to understand what type of agents are required to complete the task at hand. Unfortunately, there isn't a universal agent that solves every problem. Instead, agents are divided into two main areas that contain individual sub-categories. There are seven total sub-categories, which can be combined using various combinations to solve different problems. Typically, an agent uses one sub-category from each of the main areas.</p>
+
+<h3>Model-Free vs Model-Based</h3>
+<p>The first area includes model-free and model-based agents. Both of these use either a policy or a value function with or without a model. More specifically:</p>
+<ul>
+    <li><span class="med">Model-free</span> agents do not build a model of their environment or contain rewards. Instead, they directly connect observations/states to actions.</li>
+    <li><span class="med">Model-based</span> agents, however, rely on the model of the environment to predict the next state and reward. These agents will either know the model perfectly or learn it explicitly.</li>
+</ul>
+
+<h3>Value-Based vs Policy-Based vs Actor-Critic</h3>
+<p>The second area focuses on the functionality of the agents, which can be either: value-based, policy-based or actor-critic, where:</p>
+<ul>
+    <li><span class="med">Value-based</span> agents have no policy but a value function.</li>
+    <li><span class="med">Policy-based</span> agents have a policy but no value function.</li>
+    <li>And, <span class="med">Actor-Critic</span> agents use both a policy and a value function.</li>
+</ul>
+
+<h3>On-Policy vs Off-Policy</h3>
+<p>The third area focuses on the type of policy improvement/evaluation method an agent uses. These can be either be on-policy or off-policy:</p>
+<ul>
+    <li><span class="med">On-Policy</span> methods evaluate or improve a policy via the <span style="font-style: italic;">latest learned version</span> of that policy.</li>
+    <li><span class="med">Off-Policy</span> methods evaluate or improve a policy using a <span style="font-style: italic;">different data source</span> produced by a separate policy from the target one.</li>
+</ul>
+
+<h2>Challenges of Reinforcement Learning</h2>
+<p>RL has its own level of challenges when creating agents that can successfully navigate an environment. Specifically, there are three sets: learning and planning, the exploration and exploitation trade-off, and prediction and control.</p>
+
+<h3>Learning & Planning</h3>
+<p>The <span class="med">learning problem</span> is where agents are initially unaware of the environment around them and requires them to become familiar with it by interacting with it. Through continuous interactions, the agent improves its policy and begins to maximise its cumulative reward.</p>
+<p>The <span class="med">planning problem</span> provides the agent with a model of the environment, allowing it to know all its rules. Instead of interacting with the environment, the agent performs computations on the model, without external interaction, to improve its policy.</p>
+<p>While both are different problem sets, they can be linked together. First, the agent learns how the environment works and then plans the best way to solve it.</p>
+
+<h3>Exploration vs Exploitation Trade-off</h3>
+<p>For an RL agent to be effective, it must find a balance between exploration and exploitation. <span class="med">Exploration</span> involves the agent discovering more of the environment by trying random actions to learn more about the environment. While exploring, it substitutes rewards that it knows about to see if there are even greater rewards. <span class="med">Exploitation</span>, however, focuses on the agent abusing the known information to maximise its immediate reward.</p>
+
+<h3>Prediction & Control</h3>
+<p>The prediction and control problems are the final set of distinctions that are important in RL algorithms. <span class="med">Prediction</span> involves the evaluation of how well the agent performs in future states, given the current policy. For example, if an agent was to walk forward, how much reward would it receive?</p>
+<p>Comparatively, the <span class="med">control problem</span> focuses on finding the optimal policy to gain the most future reward. For example, which direction should the agent walk to get the most reward? Typically, the prediction problem is solved first to solve the control problem.</p>
+
+<h2>References</h2>
+<p>RL Course by David Silver (2015) - <a href="https://www.youtube.com/watch?v=2pWv7GOvuf0&list=PLqYmG7hTraZBiG_XpjnPrSNw-1XQaM_gB">Lecture 1: Introduction to Reinforcement Learning</a></p>
+<p>Book by Richard S. Sutton and Andrew G. Barto (2018) - <a href="https://mitpress.mit.edu/books/reinforcement-learning-second-edition">Reinforcement Learning: An Introduction, 2nd Edition</a></p>
+<p>Book by Maxim Lapan (2020) - <a href="https://www.packtpub.com/product/deep-reinforcement-learning-hands-on-second-edition/9781838826994">Deep Reinforcement Learning Hands-On, Second Edition</a></p>
+<p>RL Course by Udacity (2021) - <a href="https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893">Deep Reinforcement Learning Nanodegree</a></p>
+<p>YouTube Video by Thomas Simonini (2020) - <a href="https://www.youtube.com/watch?v=q0BiUn5LiBc&list=PLQLZ37V8CnUTqDCCGfjgYss_7lhj2ugcH">Introduction to Deep Reinforcement Learning</a></p>
+
