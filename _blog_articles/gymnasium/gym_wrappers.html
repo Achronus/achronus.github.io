@@ -1,0 +1,93 @@
+---
+title: Gymnasium - Wrappers & Monitors
+desc: This article is the third and final article in a three-part series that focuses on the core components of the Gymnasium library, covering wrappers and monitors.
+img_url: rl-gym-wraps.png
+date: 03/12/2022
+tag: rl
+topic: gymnasium
+type: article
+permalink: /blog/gymnasium/:title
+layout: single-page
+---
+<p>This article is the third and final in a three-part series that focuses on the core components of the Gymnasium library. <a href="https://farama.org/projects">Gymnasium</a> is a Python library developed and maintained by <a href="https://openai.com">OpenAI</a>, where its purpose is to house a rich collection of environments for Reinforcement Learning (RL) experiments using a unified interface.</p>
+<p>If you have only just started your journey with the Gymnasium framework, the official Gymnasium <a href="https://gymnasium.farama.org/">documentation</a> is a great place to start. However, the information it offers is limited. The articles in this series aim to expand this information and provide a deeper understanding of each of the four components Gymnasium offers. In this article, we focus on <span class="med">Wrappers & Monitors</span>.</p>
+
+<h2>Wrappers</h2>
+<p>Wrappers are a method to modularly extend an RL environment's functionality while keeping the original classes separate. Given an environment with a set of observations, a wrapper can provide the ability to accumulate the observations within a replay buffer and output the agent's \(N\) last observations without editing the original class.</p>
+<p>Typically, wrappers are "wrapped" around an existing environment and add extra functionality. Gymnasium provides a framework for these situations using the <code>Wrapper</code> class.</p>
+
+{%- include single_parts/image.html url="wrapper-class-hierarchy.png" alt="Wrapper class hierarchy" label="Figure 1.1 Wrapper classes hierarchy." -%}
+
+<p>There are two sets of locations for wrappers on the Gymnasium GitHub repository. The first is in the <a href="https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/core.py">core.py</a> file, which contains the main template wrappers, all of which are discussed in this section. The second is inside the <a href="https://github.com/Farama-Foundation/Gymnasium/tree/main/gymnasium/wrappers">wrappers folder</a> that houses a wide variety of utility wrappers for different environment requirements and highlights the following quick tips for creating wrappers:</p>
+    <ul>
+      <li>Remember to use <code>super().__init__(env)</code> to override the wrapper's <code>__init__()</code> function.</li>
+      <li>Inner environments are accessible with <code>self.unwrapped</code>.</li>
+      <li>Previous environment layers are accessed using <code>self.env</code>.</li>
+      <li>The variables <code>metadata</code>, <code>action_space</code>, <code>observation_space</code>, <code>reward_range</code>, and <code>spec</code> are copied to <code>self</code> from the previous environment.</li>
+      <li>Wrapped classes require at least one of the following functions: <code>__init__(self, env)</code>, <code>step</code>, <code>reset</code>, <code>render</code>, <code>close</code>, or <code>seed</code>.</li>
+      <li>A wrapped (layered) function requires an input from the previous layer (<code>self.env</code>) and/or the inner layer (<code>self.unwrapped</code>).</li>
+</ul>
+<p>The <code>Wrapper</code> class inherits from the <code>Env</code> class, where it accepts a single parameter - the instance of the <code>Env</code> class to wrap. The <code>Wrapper</code> class has three child classes that allow filtration of the environments core information. The child wrappers are the <code>ObservationWrapper</code>, <code>RewardWrapper</code>, and <code>ActionWrapper</code>.</p>
+<p>Each wrapper has a unique version of the <code>reset()</code> and <code>step(action)</code> functions found in the Env class. Both of these functions are explained in more detail in the <a href="/blog/gymnasium/gym_envs">Gymnasium - Environments</a> article. Furthermore, each child wrapper requires an additional class function, highlighted within their respective sections below.</p>
+
+<h3>ObservationWrapper</h3>
+<p>The <code>ObservationWrapper</code> is a wrapper that focuses on observations. It requires a single function <code>observation(obs)</code>, where the <code>obs</code> argument is a single observation from the wrapped environment. The observation is passed through the function and updated, based on the developer's requirements, and returned by the function. </p>
+
+<h3>RewardWrapper</h3>
+<p>Like the <code>ObservationWrapper</code>, <code>RewardWrapper</code> requires a single function, <code>reward(rew)</code>. However, this function focuses on agent rewards, not observations. The <code>rew</code> argument is a single reward value that gets updated within the function and then returned by it.</p>
+
+<h3>ActionWrapper</h3>
+<p>The last child wrapper, <code>ActionWrapper</code>, focuses on the third critical component to RL algorithms, actions. Similar to the others, it requires a single function <code>action(act)</code>. The act argument is a single agent action that passes through the function, is updated, and then returned.</p>
+<p>For instance, imagine a situation where we want to amend the stream of actions sent by the agent and change them so that with a probability of 10%, the current action is replaced with a random one. Using this approach, the agent will explore the environment more, assisting in solving the exploration/exploitation problem. In practice, the example would look like the following:</p>
+
+<pre><code><span class="keyword">import</span> gym
+<span class="keyword">import</span> random
+<span class="keyword">from</span> typing <span class="keyword">import</span> TypeVar
+
+Action = <span class="class">TypeVar</span>(<span class="long-comment">'Action'</span>)
+
+<span class="keyword">class</span> <span class="class">RandomActionWrapper</span>(<span class="class">gym.ActionWrapper</span>):
+    <span class="long-comment">"""A basic ActionWrapper representation for including random actions."""</span>
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>, env: <span class="class">gym.Env</span>, epsilon: <span class="keyword">float</span> = <span class="number">0.1</span>) -> <span class="keyword">None</span>:
+    <span class="keyword">super</span>().<span class="function">__init__</span>(env)
+    <span class="keyword">self</span>.epsilon = epsilon
+
+<span class="keyword">def</span> <span class="function">action</span>(<span class="keyword">self</span>, action: Action) -> Action:
+    <span class="long-comment">"""
+    Handles the agent action functionality. Accepts a current action 
+    and returns a random action if a random value is less than self.epsilon, 
+    otherwise, the current action is taken.
+    """</span>
+    <span class="keyword">if</span> <span class="class">random</span>.<span class="function">random</span>() < <span class="keyword">self</span>.epsilon:
+        <span class="keyword">return</span> <span class="keyword">self</span>.env.action_space.<span class="function">sample</span>()
+    <span class="keyword">return</span> action</code></pre>
+
+<h2>Monitors</h2>
+<p>The <code>Monitor</code> class is implemented like a <code>Wrapper</code> class and is used to write information about the agent's performance into a file. Monitors are useful for reviewing an agent's life inside of its environment. In total, there are eight parameters available for the <code>Monitor</code> class. Two are required and the remaining six are optional. The parameters are:</p>
+<ul>
+    <li><code>env</code> - an <code>Env</code> class object denoting the type of environment to monitor.</li>
+    <li><code>directory</code> - a string value containing a non-created directory name for storing the monitor information.</li>
+</ul>
+<p>While the six optional arguments are as follows:</p>
+<ul>
+    <li><code>video_callable</code> - accepts the parameters <code>[function, None, False]</code>. If a custom function is provided, it must take in the index of an episode and output a Boolean, indicating whether a video is recorded for the current episode. The default value is <code>None</code>, which assigns the variable to the monitor's <code>capped_cubic_video_schedule(episode_id)</code> function. The parameter can be set to <code>False</code> to disable video recording.</li>
+    <li><code>force</code> - a Boolean value that works in conjunction with the <code>directory</code> argument, which has a default value of false. If set to true, all existing training data within the given direction gets deleted, and a prefix of "openaigym" is applied to each file.</li>
+    <li><code>resume</code> - a Boolean value that is set to false by default. If set to true, the training data already in the given <code>directory</code> is retained and merged with the new data.</li>
+    <li><code>write_upon_reset</code> - a Boolean value set to false by default. When set to true, the monitor will write the manifest (JSON) file on each reset. Warning: this can be computationally expensive.</li>
+    <li><code>uid</code> - a string value representing a unique id, used as part of the suffix for the JSON file. If the <code>uid</code> is <code>None</code>, one is generated automatically using <code>os.getpid()</code>.</li>
+    <li><code>mode</code> - a string value that is set to <code>None</code> by default. The parameter accepts <code>[evaluation, training]</code> as values to help distinguish between varying episodes when reviewing the results.</li>
+</ul>
+<p>Additionally, there are two components required for the <code>Monitor</code> class. The first is the <span class="med">FFmpeg</span> utility for converting captured observations into an output video file. If the utility isn't available, <code>Monitor</code> will raise an exception.</p>
+<p>The second component required is a method for video recording, allowing the monitor to take screenshots of the window drawn by the environment. The recommended approach is to use an <span class="med">Xvfb</span> virtual display, a 'virtual' graphical display, where its full name is <span class="med">X11 virtual framebuffer</span>. Xvfb starts a virtual graphical display server and forces the program to draw inside of it.</p>
+<p>Using Linux, a standard set of commands to install and run xvfb is seen below:</p>
+
+<pre rel="terminal"><code><span class="keyword">sudo apt install</span> xvfb python-opengl ffmpeg
+<span class="keyword">xvfb-run -s</span> "-screen 0 640x480x24" python filename.py</code></pre>
+
+<p>Creating a <code>Monitor</code> instance using the Gymnasium library can be easily created via the following:</p>
+<pre rel="python"><code><span class="class">gym</span>.<span class="class">wrappers</span>.<span class="class">Monitor</span>(env, <span class="string">"recording"</span>)</code></pre>
+
+<h2>References</h2>
+<p>Book by Maxim Lapan (2020) - <a href="https://www.packtpub.com/product/deep-reinforcement-learning-hands-on-second-edition/9781838826994">Deep Reinforcement Learning Hands-On, Second Edition</a></p>
+<p>Gymnasium Codebase (2022) - <a href="https://github.com/Farama-Foundation/Gymnasium">GitHub</a></p>
+<p>Article by Ayoosh Kathuria (2021) - <a href="https://blog.paperspace.com/getting-started-with-openai-gym/">Getting Started with OpenAI Gym: The Basic Building Blocks</a></p>

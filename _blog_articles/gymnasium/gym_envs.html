@@ -1,0 +1,64 @@
+---
+title: Gymnasium - Environments
+desc: This article is the second of a three-part series that focuses on the core components of the Gymnasium library, covering environments.
+img_url: rl-gym-envs.png
+date: 02/12/2022
+tag: rl
+topic: gymnasium
+type: article
+permalink: /blog/gymnasium/:title
+layout: single-page
+---
+<p>This article is the second of a three-part series that focuses on the core components of the Gym library. <a href="https://farama.org/projects">Gymnasium</a> is a Python library developed and maintained by <a href="https://openai.com">OpenAI</a>, where its purpose is to house a rich collection of environments for Reinforcement Learning (RL) experiments using a unified interface.</p>
+<p>If you have only just started your journey with the Gymnasium framework, the official Gymnasium <a href="https://gymnasium.farama.org/">documentation</a> is a great place to start. However, the information it offers is limited. The articles in this series aim to expand this information and provide a deeper understanding of each of the four components Gymnasium offers. In this article, we focus on <span class="med">Environments</span>.</p>
+
+
+<h2>Environments</h2>
+<p>The <code>Env</code> class is the main building block for Gym and works for both partially and fully-observed environments, providing arbitrary behind-the-scenes dynamics. A list of environments can be found in the <a href="https://github.com/Farama-Foundation/Gymnasium/tree/main/gymnasium/envs">envs folder</a> on the Gym GitHub repository. The class has three attributes:</p>
+<ul>
+    <li><code>action_space</code> - a space object corresponding to the possible actions an agent can take. The action space isn't limited to a type of space object, allowing the actions to be discrete, continuous, or a combination of both.</li>
+    <li><code>observation_space</code> - a space object corresponding to the environment observations that are provided to the agent. Like the action space, this isn't limited to a type of space object. Observations can be as simple as a list of state, reward, and next state to a multi-dimensional tensor containing colour images.</li> 
+    <li><code>reward_range</code> - a tuple defining the minimum and maximum possible reward values the agent can receive. Defaults to <code>[-inf, +inf]</code>.</li>
+</ul>
+
+<p>Every Gym environment has a unique name consisting of the environment name followed by a v with a version number (<code>EnvironmentName-vN</code>). An <code>Env</code> class can be created using the Gymnasium package with the <code>make(env_name)</code> function.</p>
+<p> A basic example for creating an environment can be found on the official <a href="https://gymnasium.farama.org/tutorials/environment_creation/">Gymnasium documentation</a>. Additionally, the <code>Env</code> class has five functions: <code>step(action)</code>, <code>reset()</code>, <code>render(mode)</code>, <code>close()</code>, and <code>seed(seed)</code>.</p>
+
+<h3>Step</h3>
+<p>The <code>step(action)</code> function is the central piece of any environment. It accepts an action provided by the agent used to run one timestep of the environment's dynamics, divided into four stages:</p>
+<ul>
+    <li>Firstly, we tell the environment which action to execute on the next step.</li>
+    <li>Next, we retrieve the new observation from the environment after the performed action.</li>
+    <li>Thirdly, we obtain the reward that the agent has gained during the current timestep.</li>
+    <li>And lastly, we obtain a Boolean value that determines if the episode has ended.</li>
+</ul>
+<p>Once these stages have concluded, <code>step(action)</code> returns a tuple of (<code>observation</code>, <code>reward</code>, <code>done</code>, <code>info</code>). Each component returned has a unique type and meaning. These are as follows:</p>
+<ul>
+    <li><code>observation (object)</code> - an array or matrix with an agent's observation data for the current timestep of the environment.</li>
+    <li><code>reward (float)</code> - a floating-point number containing the amount of reward returned after the previous action.</li>
+    <li><code>done (boolean)</code> - a Boolean indicator to identify if the episode has ended. If true, the episode has ended, and further <code>step(action)</code> calls will return undefined results.</li>
+    <li><code>info (dict)</code> - a dictionary containing auxiliary diagnostic information. The information can help to debug the algorithm but is rarely used in agent training. It is common and acceptable to ignore this information in most RL algorithms.</li>
+</ul>
+
+<h3>Reset</h3>
+<p>The <code>reset()</code> function is used to reset the environment to its initial state (first state) and returns an object of the initial environment observation. After each episode, use this function to reset the RL environment.</p>
+
+<h3>Render</h3>
+<p>The <code>render(mode)</code> function is an optional function takes one of three parameters - <code>human</code>, <code>rgb_array</code>, or <code>ansi</code>. Each parameter provides different ways to render the environment. Each parameters functionality is detailed below:</p>
+<ul>
+<li><code>human</code> - renders the environment display (or terminal) into a human-readable format, and is set as the functions default value.</li>
+<li><code>rgb_array</code> - provides an n-dimensional array with the shape (x, y, 3), representing the RGB (red, green, blue) values for an x-by-y pixel image, suitable for turning into a video.</li>
+<li><code>ansi</code> - outputs a string (str) or StringIO.StringIO containing a terminal-style text representation.</li>
+</ul>
+
+<h3>Close</h3>
+<p>The <code>close()</code> function performs any necessary clean-up of the environment, such as terminating the program once completed or during automatic garbage collection.</p>
+
+<h3>Seed</h3>
+<p>The <code>seed(seed)</code> function sets the seed for the environment's random number generators and helps to reproduce results. Generally, some environments will use multiple pseudorandom number generators.</p>
+<p>Thus, it is recommended that all seeds are managed within this function to avoid accidental conflicts. The function returns a list of the seeds used in the environment's random number generators, where the first value is the "main" seed (typically the provided seed).</p>
+
+<h2>References</h2>
+<p>Book by Maxim Lapan (2020) - <a href="https://www.packtpub.com/product/deep-reinforcement-learning-hands-on-second-edition/9781838826994">Deep Reinforcement Learning Hands-On, Second Edition</a></p>
+<p>Gymnasium Codebase (2022) - <a href="https://github.com/Farama-Foundation/Gymnasium">GitHub</a></p>
+        
