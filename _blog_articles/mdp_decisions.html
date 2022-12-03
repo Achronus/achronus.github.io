@@ -1,0 +1,151 @@
+---
+title: MDPs Part 3 - Understanding Decisions
+desc: This article is the third and final in a three-part series on the core components of Markov Decision Processes (MDPs), focusing on decisions (actions).
+img_url: rl-mdp.png
+date: 07/02/2022
+tag: rl
+topic: rl_intro
+type: article
+permalink: /blog/rl_intro/:title
+layout: single-page
+---
+<p>This article is the third and final in a three-part series on the core components of Markov Decision Processes (MDPs), focusing on decisions (actions). If you missed the first article on Markov Processes (MPs), please find it <a href="/blog/rl_intro/mdp_process">here</a>, and for the second article on Markov Reward Processes (MRPs), click <a href="/blog/rl_intro/mdp_rewards">here</a>.</p>
+
+<h2>Markov Decision Process (MDP)</h2>
+<p>Now that we understand MRPs, we can add the final piece of the puzzle, decisions (actions) to create MDPs. MDPs are an environment in which all states are Markov, designed to describe the agent/environment interaction setting. MDPs are defined as an extension of the MRP tuple with the addition of actions \(〈S, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma〉\), where:</p>
+<ul>
+<li>\(S\) - a finite set of states.</li>
+<li>\(\mathcal{A}\) - a finite set of actions.</li>
+<li>\(\mathcal{P}\) - a state transition probability matrix, \(\mathcal{P}_{ss'}^a = \mathbb{P}[S_{t+1} = s' \; | \; S_t = s, A_t = a]\)</li>
+<li>\(\mathcal{R}\) - a reward function, \(\mathcal{R}_s^a = \mathbb{E}[R_{t+1} \; | \; S_t = s, A_t = a]\)</li>
+<li>\(\gamma\) - a discount rate, \(\gamma \in [0,1]\)</li>
+</ul>
+<p>For example (figure 1.1), we can examine a simplified version of the office worker MRP. Here we can see that each line has a corresponding action assigned to it, rather than a probability, providing more control on what path to take when manoeuvring around the MDP.</p>
+
+{%- include single_parts/image.html url="rl-mdp.png" alt="MDP example" label="Figure 1.1. Office worker MDP." -%}
+
+<p>Using MDPs, an agent can focus on completing the reward hypothesis - finding the best path to maximize its cumulative reward. However, to do this the agent requires a policy.</p>
+<p>Additionally, it is sometimes required to model an MDP as an MRP or MP. Fortunately, this is extremely simple to do. For example, given an MDP \(\mathcal{M} = 〈S, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma〉\) and a policy \(\pi\), we can:</p>
+<ul>
+    <li>Take a sample sequence of states \(S_1, S_2, \cdots\) to obtain a Markov chain (MP) \(〈S, \mathcal{P}^\pi〉\).</li>
+    <li>Or, take a sample sequence of states and rewards \(S_1, R_2, S_2, \cdots\) to obtain an MRP \(〈S, \mathcal{P}^\pi, \mathcal{R}^\pi, \gamma〉\).</li>
+</ul>
+<p>This distinction is performed through taking the average of the transition dynamics \(\mathcal{P}^\pi\) and the reward function \(\mathcal{R}^\pi\) over a given policy where:</p>
+
+{%- include single_parts/equation.html text="\mathcal{P}^\pi_{s,s'} = \sum\limits_{a \in A} \pi(a|s) \; \mathcal{P}^a_{s,s'}" index="1.1" -%}
+{%- include single_parts/equation.html text="\mathcal{R}^\pi_{s} = \sum\limits_{a \in A} \pi(a|s) \; \mathcal{R}^a_{s}" index="1.2" -%}
+
+<h3>Policies</h3>
+<p>Policies are used to define the behaviour of RL agents by helping them choose which action to take in their environment. A policy \(\pi\) can be either: stochastic or deterministic.</p>
+<p>In <span class="med">stochastic policies</span> (equation 1.1.1), a probability distribution over a set of actions is used for every possible state, allowing agents to select actions within a state based on a probability for a given action. This type of policy is the most common and can help agents explore their environment in the early stages of policy development.</p>
+{%- include single_parts/equation.html text="\pi(a|s) = \mathbb{P}[A_t = a \; | \; S_t = s]" index="1.1.1" -%}
+<p>On the other hand, <span class="med">deterministic policies</span> (equation 1.1.2) map states to actions, preventing uncertainty when taking actions.</p>
+{%- include single_parts/equation.html text="\pi(s) = a" index="1.1.2" -%}
+<p>Policies depend on the current state (not the history), hence the requirement of the Markov property. Because of this, policies must be <span class="med">stationary</span> (time-independent) to provide identical functionality throughout every timestep.</p>
+
+<h3>Value Functions</h3>
+<p>As seen before in MRPs, value functions represent how good a state is for an agent to be in it. In an MDP, there are two types of value functions: state-value and action-value.</p>
+<p>A <span class="med">state-value function \(v_\pi(s)\)</span> is similar to the value function seen in the MRP in the previous article, but this one includes a policy to enable agent decision-making. Its formal definition is the expected return starting from state \(s\) and then following the policy \(\pi\) expressed in equation 1.2.1.</p>
+{%- include single_parts/equation.html text="v_\pi(s) = \mathbb{E}_\pi[G_t \; | \; S_t = s]" index="1.2.1" -%}
+<p>Correspondingly, an <span class="med">action-value function \(q_\pi(s,a)\)</span> is the expected return starting from state \(s\), while taking an action \(a\), and then following the policy \(\pi\), formulated in equation 1.2.2.</p>
+{%- include single_parts/equation.html text="q_\pi(s, a) = \mathbb{E}_\pi[G_t \; | \; S_t = s, A_t = a]" index="1.2.2" -%}
+<p>Adding the policy \(\pi\) to these value functions changes the them slightly to express how good it is to be in state \(s\) (and action \(a\), if an action-value function) when following that policy.</p>
+
+<h3>Bellman Expectation Equation (BEE)</h3>
+<p>With these two value functions, new Bellman equations can be created, called <span class="med">Bellman Expectation Equations (BEEs)</span>. As seen in the MRP article, the value functions can be decomposed into the immediate reward plus the discounted value of the successor state. The state-value and action-value function variants are highlighted in equations 1.3.1 and 1.3.2, respectively.</p>
+
+{%- include single_parts/equation.html text="v_\pi(s) = \mathbb{E}_\pi[R_{t+1} + \gamma v_\pi(S_{t+1}) \; | \; S_t = s]" index="1.3.1" -%}
+{%- include single_parts/equation.html text="q_\pi(s, a) = \mathbb{E}_\pi[R_{t+1} + \gamma q_\pi(S_{t+1}, A_{t+1}) \; | \; S_t = s, A_t = a]" index="1.3.2" -%}
+
+<p>Using backup diagrams, we can gain a deeper understanding of both of these equations, seen in figure 1.3.1.</p>
+{%- include single_parts/multi_image.html details="bee-backup1.png, Bellman Expectation backup diagram 1 | bee-backup2.png, Bellman Expectation backup diagram 2" label="Figure 1.3.1. Backup diagrams for the two Bellman Expectation Equation components." -%}
+<p>The diagram on the left represents one part of the BEE with a one-step look-ahead. Given some state \(s\), there is some probability that we take one of two actions. For each one of those actions, there is an action-value (Q-value) associated, defining how good that action is to take within the state \(s\). By taking the average of those Q-values, we can determine the value of being in that state, seen mathematically in equation 1.3.3. Notice how there is a clear relationship between both of these functions.</p>
+{%- include single_parts/equation.html text="v_\pi(s) = \sum\limits_{a \in A} \pi(a|s) \; q_\pi(s, a)" index="1.3.3" -%}
+
+<p>Similarly, the diagram on the right represents another part of the BEE, also following a one-step look-ahead. Given an action \(a\), there is a chance that we will end up in one of two states \(s'\). By taking the average of these states, plus an immediate reward, we can determine the effectiveness of taking that action within each given state, mathematically defined in equation 1.3.4.</p>
+{%- include single_parts/equation.html text="q_\pi(s, a) = \mathcal{R}^a_s + \gamma \sum\limits_{s' \in S'} \mathcal{P}^a_{ss'} \; v_\pi(s')" index="1.3.4" -%}
+
+<p>Both diagrams in figure 1.3.1 are combinable to define a complete depiction of the state-value and action-value functions, outlined in figure 1.3.2. These new depictions present new equations that highlight a recursive relationship between the state-value function and itself and the action-value function and itself. Using them, we can solve MDPs.</p>
+
+{%- include single_parts/multi_image.html details="bee-full-backup1.png, Bellman expectation full backup 1 | bee-full-backup2.png, Bellman expectation full backup 2" label="Figure 1.3.2. Complete backup diagram representations for the state-value (left) and action-value (right) Bellman Expectation Equations." -%}
+
+<p>As before in figure 1.3.1, the diagram on the left (in figure 1.3.2) focuses on BEE for the state-value function \(v_\pi(s)\), which determines the effectiveness of being in a particular state \(s\) by using a two-step look-ahead. First, we consider all the possible actions to take, based on a probability-weighted by our policy, and then consider how the environment responds to those actions, represented by successor states \(s'\). With this information, we average over our policy and the transition probabilities, plus an immediate reward, to determine the effectiveness of the given state, mathematically described in equation 1.3.5.</p>
+{%- include single_parts/equation.html text="v_\pi(s) = \sum\limits_{a \in A} \pi(a|s) \left(\mathcal{R}_s^a + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{ss'} \; v_\pi(s')\right)" index="1.3.5" -%}
+
+<p>Equally, the diagram on the right (in figure 1.3.2) focuses on the BEE for the action-value function \(q_\pi(s,a)\). Given an action \(a\), we can determine its effectiveness based on a two-step look-ahead. Taking the inverse of the state-value function, we consider all the possible states \(s'\) that we can move to, and then from that state, we select any action \(a'\) to take, weighted with a probability based on our policy. Again, we average these items together to provide a metric that determines how effective a particular action is following the given policy, expressed in equation 1.3.6.</p>
+{%- include single_parts/equation.html text="q_\pi(s, a) = \mathcal{R}^a_s + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{ss'} \sum\limits_{a' \in A} \pi(a'|s') \; q_\pi(s', a')" index="1.3.6" -%}
+
+<p>In all of these cases, the simple idea behind the BEEs is that the value function at the current timestep is equal to the immediate reward plus the value function of the next timestep.</p>
+<p>Lastly, it is useful to understand that the BEE can be expressed through a matrix format, similar to the one outlined in the MRP article, such that:</p>
+
+{%- include single_parts/equation.html text="v_\pi = \mathcal{R}^\pi + \gamma \mathcal{P}^\pi v_\pi" index="1.3.7" -%}
+{%- include single_parts/equation.html text="v_\pi = (I - \gamma \mathcal{P}^\pi)^{-1} \; \mathcal{R}^\pi" index="1.3.8" -%}
+
+<h2>Optimal Components</h2>
+<h3>Value Functions</h3>
+<p>To find the best performance in an MDP and solve them, we use what is known as an <span class="med">optimal value function</span>. These types of value functions are the maximum value function over all policies generated within an environment. The formulas for both <span class="med">state-value</span> and<span class="med"> action-value</span> are denoted below, respectively.</p>
+{%- include single_parts/equation.html text="v_*(s) = \max\limits_{\pi} v_\pi(s)" index="2.1.1" -%}
+{%- include single_parts/equation.html text="q_*(s, a) = \max\limits_{\pi} q_\pi(s, a)" index="2.1.2" -%}
+<p>The * indicates the value function that provides the maximum possible reward extractable from the system, making it the best possible version within a system.</p>
+
+<h3>Policy</h3>
+<p>Optimal policies present the best behaviour an agent can have within a given environment. To find them, we define a partial ordering over all policies. Given two policies, \(\pi\) and \(\pi'\), the policy \(\pi\) is defined as superior or equal to policy \(\pi'\) if and only if its expected return is greater than or equal to that of \(\pi'\) for all states in an MDPs state space. Mathematically:</p>
+
+{%- include single_parts/equation.html text="\pi \ge \pi' \; {if} \; and \; only \; {if} \; v_\pi(s) \ge v_{\pi'}(s) \; for \; all \; s \in S" index="2.2.1" -%}
+
+<p>It's important to understand that there will always be at least one policy greater than or equal to all other policies, called the <span class="med">optimal policy \(\pi_*\)</span>. This policy is the one that we are aiming to achieve.</p>
+<p>An optimal policy \(\pi_*\) can be divided into two components:</p>
+<ul>
+    <li>An optimal first action \(A_*\)</li>
+    <li>And an optimal policy from a successor state \(S'\)</li>
+</ul>
+<p>For any MDP, the following theorem provides the perfect summary for optimal policies:</p>
+<ul>
+    <li>There exists an optimal policy \(\pi_*\) that is better than or equal to all other policies, \(\pi_* \ge \pi, \forall \pi\)</li>
+    <li>All optimal policies achieve the optimal value function, \(v_{\pi_*}(s) = v_*(s)\)</li>
+    <li>All optimal policies achieve the optimal action-value function, \(q_{\pi_*}(s,a) = q_*(s,a)\)</li>
+</ul>
+<p>Furthermore, it is possible to achieve more than one optimal policy. However, this doesn't matter. All optimal policies provide the maximum achievable reward for that MDP.</p>
+<p>An optimal policy can be found by maximising over \(q_*(s,a)\), where:</p>
+
+{%- include single_parts/equation.html text="\pi_*(a|s) = \left\{\begin{array}{@{} l c @{}} 1 & if \; a = {\arg\max\limits_{a \in A}} \; q_*(s,a) \\ 0 & otherwise \end{array}\right." index="2.2.2" -%}
+
+<p>Equation 11 explains that in every state, we select an action \(a\) with a probability of 1 that maximizes \(q_*\) and in turn, gives us the maximum possible reward. Interestingly, MDPs will always have a deterministic optimal policy, and equation 2.2.2 is one example of this.</p>
+
+<h3>Bellman Optimality Equation (BOE)</h3>
+<p>Once \(q_*\) has been achieved, the MDP is solved. So how exactly do we get to \(q_*\)? We use what is known as the <span class="med">Bellman Optimality Equation (BOEs)</span>. These equations are the same as the BEEs, but instead of taking the average, we take the maximum (best) action value that an agent can take.</p>
+<p>Similar to BEEs, we can use backup diagrams to gain a deeper understanding of BOEs, seen in figure 1.4.</p>
+
+{%- include single_parts/multi_image.html details="boe-backup1.png, Bellman Optimality backup 1 | boe-backup2.png, Bellman Optimality backup 2" label="Figure 2.3.1. Backup diagrams for the two Bellman Optimality Equation components." -%}
+
+<p>Examining the first diagram in figure 2.3.1 (left), representing one part of the BOE, we perform a one-step look-ahead to identify the optimal value within a given state \(s\). From this state, one of two actions are taken. These actions are then compared, and the one with a greater Q-value is selected, achieving the BOE mathematically expressed in equation 2.3.1.</p>
+{%- include single_parts/equation.html text="v_*(s) = \max\limits_{a} q_*(s,a)" index="2.3.1" -%}
+
+<p>Likewise, the second diagram in figure 2.3.1 (right) representing another part of the BOE, which also performs a one-step look-ahead. Given an action \(a\) in some state \(s\), we consider two possible successor states \(s'\). Taking the average over each of the probabilities for entering those states, multiplied by the optimal value of being in that state, plus an immediate reward, provides the optimal Q-value for the given state-action pair, mathematically represented in equation 2.3.2.</p>
+{%- include single_parts/equation.html text="q_*(s, a) = \mathcal{R}^a_s + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{ss'} v_*(s')" index="2.3.2" -%}
+
+<p>Combining both functions, we create a recursive relationship between \(v_*\) and itself and \(q_*\) and itself. To best represent this, we use more backup diagrams, highlighted in figure 1.5, that create solvable equations.</p>
+
+{%- include single_parts/multi_image.html details="boe-full-backup1.png, Bellman Optimality full backup 1 | boe-full-backup2.png, Bellman Optimality full backup 2" label="Figure 2.3.2. Complete backup diagram representations for the state-value (left) and action-value (right) Bellman Optimality Equations." -%}
+
+<p>Analysing the first diagram in figure 2.3.2 (left), representing the BOE for the state-value function \(v_*(s)\), we perform a two-step look-ahead. From a given state \(s\), we look at the actions we can take and select the best action value. Next, we look at the successor states \(s'\) of all possible actions and calculate the average probability of entering those states. Multiplying this average by each one's optimal value plus the reward of the best action value, determines the effectiveness of the given state \(s\), expressed in equation 2.3.4.</p>
+{%- include single_parts/equation.html text="v_*(s) = \max\limits_{a} \mathcal{R}^a_s + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{ss'} v_*(s')" index="2.3.4" -%}
+
+<p>Reviewing the second diagram in figure 2.3.2 (right), representing the BOE for the action-value function \(q_*(s, a)\), we also perform a two-step look-ahead. First, an action \(a\) is taken within some state \(s\), where the environment moves the agent into a successor state \(s'\) based on some probability. Next, we take the average of the probabilities of reaching each successor state and then examine the new optimal actions \(a'\) to take. From these optimal actions, we select the maximum (best) action value. Taking the best action values reward, we multiply it by the averaged probability values, plus an immediate reward, to calculate the effectiveness of taking the initial action within its given state, mathematically displayed in 2.3.5.</p>
+{%- include single_parts/equation.html text="q_*(s, a) = \mathcal{R}^a_s + \gamma \sum\limits_{s' \in S} \mathcal{P}^a_{ss'} \max\limits_{a'} q_*(s', a')" index="2.3.5" -%}
+
+<p>Moreover, solving BOEs can be challenging due to their non-linearity and lack of possession of a closed-form solution, requiring them to be solved through iterative methods, such as value iteration, policy iteration, Q-learning, and Sarsa.</p>
+
+<h2>Series Conclusion</h2>
+<p>In this series, we've taken a step-by-step approach to understand Markov Decision Processes (MDPs). Firstly, we started by learning the foundation of MDPs by discussing Markov Processes (Markov Chains) and the use of state transition matrices. Next, we added rewards and discussed Markov Reward Processes (MRPs) and how they introduce the concept of return, value functions, and the Bellman equation.</p> 
+<p>Lastly, we added the final component to MDPs - decisions (actions). Additionally, we introduced the concept of policies and how decisions play a critical part in MDPs when combined with value functions and the Bellman equation. Thanks for reading!</p>
+
+<h2>References</h2>
+<p>RL Course by David Silver (2015) - <a href="https://www.youtube.com/watch?v=lfHX2hHRMVQ&list=PLqYmG7hTraZBiG_XpjnPrSNw-1XQaM_gB">Lecture 2: Markov Decision Process</a></p>
+<p>Book by Richard S. Sutton and Andrew G. Barto (2018) - <a href="https://mitpress.mit.edu/books/reinforcement-learning-second-edition">Reinforcement Learning: An Introduction, 2nd Edition</a></p>
+<p>Book by Maxim Lapan (2020) - <a href="https://www.packtpub.com/product/deep-reinforcement-learning-hands-on-second-edition/9781838826994">Deep Reinforcement Learning Hands-On, Second Edition</a></p>
+<p>Book by Micheal Lanham (2020) - <a href="https://www.packtpub.com/product/hands-on-reinforcement-learning-for-games/9781839214936">Hands-On Reinforcement Learning for Games</a></p>
+<p>RL Course by Udacity (2021) - <a href="https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893">Deep Reinforcement Learning Nanodegree</a></p>
+<p>Article by Mohammad Ashraf (2021) - <a href="https://becomesentient.com/markove-decision-processes/">Reinforcement Learning Demystified: Markov Decision Processes (Part 1)</a></p>
+<p>Article by Mohammad Ashraf (2021) - <a href="https://becomesentient.com/bellman-equations/">Reinforcement Learning Demystified: Markov Decision Processes (Part 2)</a></p>
+<p>Article by Blackburn (2019) - <a href="https://towardsdatascience.com/reinforcement-learning-markov-decision-process-part-2-96837c936ec3">Reinforcement Learning: Bellman Equation and Optimality (Part 2)</a></p>

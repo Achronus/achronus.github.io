@@ -13,8 +13,14 @@
             {%- for body_item in body -%}
             <tr>
                 {%- assign body_text = body_item | split: ', ' -%}
+                {%- assign counter = 1 -%}
                 {%- for text in body_text -%}
-                    <td>{{ text }}</td>
+                    {%- if include.bold_first_col and counter == 1 -%}
+                        <td style="font-weight: 500;">{{ text }}</td>
+                    {%- else -%}
+                        <td>{{ text }}</td>
+                    {%- endif -%}
+                    {%- assign counter = counter | plus: 1 -%}
                 {%- endfor -%}
             </tr>
             {%- endfor -%}

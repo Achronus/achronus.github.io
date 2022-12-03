@@ -1,5 +1,5 @@
 <div class="img-container">
-    <div class="row">
+    <div class="row img-center">
         {%- assign image_details = include.details | split: ' | ' -%}
         {%- for details in image_details -%}
             {%- assign url = details | split: ', ' | first -%}
