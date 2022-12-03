@@ -46,6 +46,10 @@
   padding: calculateRem($size1) calculateRem($size2);
 }
 
+@mixin remPadAllMulti($top, $right, $bottom, $left) {
+  padding: calculateRem($top) calculateRem($right) calculateRem($bottom) calculateRem($left);
+}
+
 @mixin remPadAll($size) {
   padding: calculateRem($size);
 }
