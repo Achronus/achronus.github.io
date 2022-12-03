@@ -1,0 +1,69 @@
+---
+title: Monte-Carlo Prediction
+desc: A form of policy evaluation that focuses on estimating value functions of unknown MDPs, learning from complete episodes of experience.
+img_url: mc-prediction.png
+date: 09/03/2022
+tag: rl
+topic: rl_model_free
+type: article
+permalink: /blog/rl_model_free/:title
+layout: single-page
+---
+<p>In one of my <a href="/blog/rl_intro">introductory</a> articles, <a href="/blog/rl_intro/dynamic_programming">RL - Dynamic Programming</a>, we discussed Dynamic Programming (DP) and how it is used with model-based agents to solve <span class="med">known</span> Markov Decision Processes (MDPs).</p>
+<p>This article is the first of the topic that focuses on model-free agents, arranged into individual articles for prediction and control algorithms. Model-Free Prediction (MFP) focuses on <span class="med">estimating</span> the value function of an <span class="med">unknown</span> MDP. While its counterpart, Model-Free Control (MFC), focuses on <span class="med">optimising</span> the <span class="med">unknown</span> MDPs value function.</p> 
+
+<h2>Monte-Carlo Learning</h2>
+<p>Monte-Carlo (MC) methods are the first type of learning method that we will discuss for estimating value functions and discovering optimal policies for an unknown MDP. While these methods are not always the most efficient, they are extremely effective at solving real-world RL problems and are widely used today.</p>
+<p>Agents that use these types of methods learn directly from <span class="med">complete episodes of experiences</span> sequence of states, actions, and rewards from actual (or simulated) interaction with the environment. Being model-free, they require no knowledge of the environment's dynamics, but can still attain optimal behaviour. Due to only taking sample experiences, Monte-Carlo methods are a way to solve RL problems based on averaging sample returns, typically only for episodic tasks, where experiences are divided into episodes that eventually terminate. On the completion of an episode, the value estimates and policies are then updated.</p>
+<p>A great example environment for Monte-Carlo Learning is the game blackjack, refer to the <a href="/projects/mc_learning">Monte-Carlo Learning</a> project for more details.</p>
+
+<h3>MC Prediction</h3>
+<p>MC Prediction is a form of policy evaluation, where the goal is to learn the value-function \(v_\pi\) from episodes of experiences under policy \(\pi\) (equation 1.1.1).</p>
+{%- include single_parts/equation.html text="S_1, A_1, R_2, \cdots, S_k \sim \pi" index="1.1.1" -%}
+
+<p>Commonly, value functions are calculated using the <span class="med">discounted expected return</span> (equation 1.1.2a). However, MC Prediction uses the <span class="med">empirical mean return</span> instead. There are two approaches to calculating this: first-visit and every-visit.</p>
+{%- include single_parts/equation.html text="v_\pi(s) = \mathbb{E}_\pi [G_t | S_t = s]" index="1.1.2a" -%}
+{%- include single_parts/equation.html text="G_t = R_{t+1} + \gamma R_{t+2} + \cdots + \gamma^{T-1} R_T" index="1.1.2b" -%}
+
+<p>First-Visit Policy Evaluation focuses on averaging the returns for the <span class="med">first visit</span> of each state \(s\) in each episode. Comparatively, Every-Visit Policy Evaluation takes the average return of <span class="med">every visit</span> to each state \(s\) within each episode. In practice, they use the same functionality except for the above theoretical properties. Every-visit extends naturally to function approximation and eligibility traces, as discussed in the Temporal-Difference Learning section.</p>
+<p>To understand the process, we will focus on a First-Visit Policy Evaluation. For each episode, the algorithm performs three steps:</p>
+<ol>
+    <li>Increment counter for the state that the agent has visited for the first time, \(N(s) \leftarrow N(s) + 1\)</li>
+    <li>Increment the total return for all states in the episode after a first visit, \(S(s) \leftarrow S(s) + G_t\)</li>
+    <li>Estimate the value function using the mean return across all episodes, \(V(s) = S(s) / N(s)\)</li>
+</ol>
+<p>By the law of large numbers, the sequence of averages of these estimates converges to a true value function, mathematically in equation 1.1.3. With first-visit, each average is an unbiased estimate with the standard deviation of its error falling by \(\frac{1}{\sqrt{n}}\), where \(n\) is the number of returns averaged. Every-visit is more complex, but its estimates also converge to the value function \(v_\pi(s)\).</p>
+{%- include single_parts/equation.html text="V(s) \rightarrow v_\pi(s) \; as \; N(s) \rightarrow \infty" index="1.1.3" -%}
+
+
+<h3>Incremental Mean</h3>
+<p>MC is a type of <span class="med">online algorithm</span> that serially processes an input piece-by-piece. With this specific algorithm, we use what is called an <span class="med">incremental mean</span>, represented mathematically in equation 1.2.1.</p>
+
+{%- include single_parts/equation.html text="\begin{aligned} \mu_k & = \frac{1}{k} \sum^k_{j=1} x_j \\ & = \frac{1}{k} \left( x_k + \sum^{k-1}_{j=1} x_j \right) \\ & = \frac{1}{k} (x_k + (k - 1) \mu_{k-1}) \\ & = \mu_{k-1} + \frac{1}{k} (x_k - \mu_{k-1}) \end{aligned}" index="1.2.1" -%}
+
+<p>At the top of equation 1.2.1, we can see the full calculation for the mean when we have \(k\) elements, where the remaining parts express alternative methods. In the second equation, we sum the numbers up to \(k - 1\) values, add the \(k\)th element to the result, and multiply it by 1 divided by \(k\) elements.</p>
+<p>Rearranging the terms, we retrieve the third and fourth parts of the set of equations, where the third part takes \(k - 1\) and multiplies it by the mean of the elements up to that number \(\mu_{k - 1}\), plus the \(k\)th element to the result and then multiplies that by 1 divided by \(k\) elements.</p>
+<p>Lastly, the fourth part is a simple reposition of the components, which contains an error term \((x_k - \mu_{k - 1})\). The second component \(\mu_{k - 1}\), represents the estimate of what the value will be, and \(x_k\) represents the new value. Using the final formula, we update the mean of the elements (up to \(k - 1\)), denoted \(\mu_{k - 1}\), by a small amount in the direction of the error.</p>
+
+<h3>Incremental Monte-Carlo Updates</h3>
+<p>Using an Every-Visit Policy Evaluation, we can gain a better understanding of the incremental mean. Using incremental updates to the value function \(V(s)\) after each episode \(\{S_1, A_1, R_2, \cdots, S_T\}\), we can iterate through each state \(S_t\) with a return of \(G_t\), and:</p>
+<ul>
+    <li>Increment the counter for the state that the agent has visited, \(N(S_t) \leftarrow N(S_t + 1)\)</li>
+    <li>Then update the value function based on the error of the return that was thought to be received \(V(S_t)\) against the return that has been received \(G_t\) by a small amount in the direction of the error, formulated:</li>
+</ul>
+
+{%- include single_parts/equation.html text="V(S_t) \leftarrow V(S_t) + \frac{1}{N(S_t)} (G_t = V(S_t))" index="1.3.1" -%}
+
+<p>One optimisation to the Monte-Carlo method includes tracking a running mean, which is beneficial in non-stationary problems and acts as a way to forget old episodes, providing an increase in computational performance. The optimisation requires an alpha \(\alpha\) parameter (a discount rate between 0 and 1) included in the value function estimation, depicted in equation 1.3.2. The approach is called constant-\(\alpha\) MC.</p>
+
+{%- include single_parts/equation.html text="V(S_t) \leftarrow V(S_t) + \alpha (G_t - V(S_t))" index="1.3.2" -%}
+
+<h2>More On Model-Free Prediction</h2>
+<p>Monte-Carlo isn't the only model-free method in RL. I discuss alternate algorithms in my <a href="/blog/rl_model_free/td_learning">TD Prediction & TD(\(\lambda\))</a> article. Furthermore, I discuss the differences between the two methods in my <a href="/blog/rl_model_free/mc_vs_td">Monte-Carlo vs. Temporal Difference</a> article.</p>
+
+<h2>References</h2>
+<p>RL Course by David Silver (2015) - <a href="https://www.youtube.com/watch?v=PnHCvfgC_ZA&list=PLqYmG7hTraZBiG_XpjnPrSNw-1XQaM_gB">Lecture 4: Model-Free Prediction</a></p>
+<p>Book by Richard S. Sutton and Andrew G. Barto (2018) - <a href="https://mitpress.mit.edu/books/reinforcement-learning-second-edition">Reinforcement Learning: An Introduction, 2nd Edition</a></p>
+<p>Book by Micheal Lanham (2020) - <a href="https://www.packtpub.com/product/hands-on-reinforcement-learning-for-games/9781839214936">Hands-On Reinforcement Learning for Games</a></p>
+<p>Article by Lilian Weng (2018) - <a href="https://lilianweng.github.io/lil-log/2018/02/19/a-long-peek-into-reinforcement-learning.html">A (Long) Peek into Reinforcement Learning</a></p>
+<p>RL Course by Udacity (2021) - <a href="https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893">Deep Reinforcement Learning Nanodegree</a></p>

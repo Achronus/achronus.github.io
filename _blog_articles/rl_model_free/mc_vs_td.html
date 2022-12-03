@@ -1,0 +1,47 @@
+---
+title: Monte-Carlo vs. Temporal Difference
+desc: Here we compare the two types of policy evaluation methods used in Reinforcement Learning.
+img_url: mc-vs-td.png
+date: 11/03/2022
+tag: rl
+topic: rl_model_free
+type: article
+permalink: /blog/rl_model_free/:title
+layout: single-page
+---
+<p>In the previous articles in this topic, we discussed Monte-Carlo (MD) and Temporal-Difference (TD) Learning methods and how they estimate value functions of unknown Markov Decision Processes (MDPs). In this article, we compare these methods to understand their similarities and differences.</p>
+<p>This article is the third of the topic that focuses on model-free agents, arranged into individual articles for prediction and control algorithms. Model-Free Prediction (MFP) focuses on <span class="med">estimating</span> the value function of an <span class="med">unknown</span> MDP. While its counterpart, Model-Free Control (MFC), focuses on <span class="med">optimising</span> the <span class="med">unknown</span> MDPs value function.</p>
+
+<h2>MC and TD Comparsion</h2>
+<p>MC and TD methods are great RL algorithms that provide a solid foundation for solving various environments, where MC solves episodic tasks, and TD solves both continuous and episodic tasks.</p>
+<p>Recall that a Markov property captures all the relevant information from the history in a single state (the present state). When using this property, algorithms can increase their computational efficiency as they do not have to rely on looking through the whole environment history. Interestingly, MC methods rarely use the Markov property, making them more efficient in non-Markov environments (e.g., partially observed environments). Comparatively, TD methods tend to exploit it, making these methods way more efficient in Markov environments. Without utilising the Markov property, MC is likely to perform slower with large MDPs.</p>
+
+<h3>Bias/Variance Trade-off</h3>
+<p>Next, let's discuss a critical topic in any Machine Learning application: bias/variance trade-off. In RL, bias and variance refer to how well the reinforcement signal (agent's performance) reflects the true value function \(v_\pi(S_t)\). Variance refers to noise in the average accuracy of the value estimate, and bias refers to a stable but inaccurate value estimate.</p>
+<p>MC methods have <span class="med">high variance</span> and <span class="med">zero bias</span>, providing good convergence properties (even with function approximation) and are simple to implement. Its return \(G_t\) (equation 1.1.1) depends on <span class="med">many</span> random actions, transitions and rewards, causing an unbiased estimate of the true value function \(v_\pi(S_t)\) and produces lots of noise within the data samples.</p>
+
+{%- include single_parts/equation.html text="G_t = R_{t+1} + \gamma R_{t+2} + \cdots + \gamma^{T-1} R_T" index="1.1.1" -%}
+{%- include single_parts/equation.html text="R_{t+1} + \gamma v_\pi(S_{t+1})" index="1.1.2" -%}
+
+<p>TD methods, however, have <span class="med">low variance</span> and <span class="med">low bias</span>, making them more efficient than MC. In rare circumstances (when using function approximation), TD methods cannot converge to the true value function. Its form of return, the TD target (equation 1.1.2), starts as a biased estimate and changes to an unbiased one when it reaches the true TD target. Due to the TD target only depending on <span class="med">one</span> random action, transition and reward, the noise generated is substantially lower than the MC return.</p>
+
+<h3>Bootstrapping vs Sampling</h3>
+<p>Over the past few articles, we have discussed the three foundational RL methods in detail: Monte-Carlo Learning, Temporal-Difference Learning, and Dynamic Programming. However, we haven't examined the format that the algorithms use. These formats can be combined or used separately and are a critical component to how they operate. There are two formats: bootstrapping and sampling.</p>
+
+{%- include single_parts/table.html head="Algorithm, Bootstrapping, Sampling" body="Monte-Carlo, No, Yes | Temporal-Difference, Yes, Yes | Dynamic Programming, Yes, No" label="Table 1.2.1. Format comparsion between the three models." -%}
+
+<p><span class="med">Bootstrapping</span> is an approach that uses one or more estimated values during the update step to update other estimated values. More formally, they update estimates based on other estimates. To better understand this, consider the update step in TD(0) (equation 1.2.1).</p>
+
+{%- include single_parts/equation.html text="V(S_t) \leftarrow V(S_t) + \alpha \Big( R_{t+1} + \gamma V(S_{t+1}) - V(S_t) \Big)" index="1.2.1" -%}
+
+<p>Focusing on the secondary component, we can see that \(R_{t+1} + \gamma V(S_{t+1})\) represents the TD target, an estimate of the true value function, and \(V(S_t)\) is the current estimated value function. Here we update an approximation of the value function with another one.</p>
+<p><span class="med">Sampling</span> is a widely used technique in Machine Learning. In RL specifically, it involves taking batches of observations to train the agent. New samples are generated each training iteration, where different algorithms use different sampling methods, such as random, reward-based, and stratified.</p>
+<p>Table 1.2.1 highlights a clear comparison between the three algorithms. In summary, the table shows that MC is a non-bootstrapping method that uses sampling, Dynamic Programming is exclusively a bootstrapping method, and TD uses both formats.</p>
+
+{%- include single_parts/image.html url="backup-comparsion.png" alt="Algorithm backup diagram comparsion" label="Figure 3.2.1. Backup diagrams for Dynamic Programming, Monte-Carlo, and Temporal-Difference Learning." -%}
+
+<p>Another way to see a clear difference between the algorithms is through their backup diagrams. Figure 3.2.1 shows backup diagrams of each of the algorithms. Each one contains a red shaded area that indicates the algorithm's learning path, a region the agent explores before updating its value function. As the diagrams progress from DP to TD, the exploration area gets smaller, reducing the work needed before the agent learns.</p>
+
+<h2>References</h2>
+<p>RL Course by David Silver (2015) - <a href="https://www.youtube.com/watch?v=PnHCvfgC_ZA&list=PLqYmG7hTraZBiG_XpjnPrSNw-1XQaM_gB">Lecture 4: Model-Free Prediction</a></p>
+<p>Book by Richard S. Sutton and Andrew G. Barto (2018) - <a href="https://mitpress.mit.edu/books/reinforcement-learning-second-edition">Reinforcement Learning: An Introduction, 2nd Edition</a></p>
