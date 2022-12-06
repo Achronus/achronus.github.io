@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 page-content">
+            <div class="header text-center mt-5">
+                <h3 class="mb-4">{{ page.type | upcase }}</h3>
+                <h2 class="mt-3 mb-4 display-5">{{ page.title }}</h2>
+                <p class="mb-5">{{ page.date | date: "%d %B, %Y" }}</p>
+                <div class="bg-img">
+                    {%- include page_parts/image.html url=page.img_url alt=page.title classes='rounded' -%}
+                </div><!-- bg-img -->
+                <div class="row">
+                    <div class="tags col-12 col-sm-9 col-lg-6 col-xl-4 offset-lg-2 offset-xl-3 mt-5 text-center lg-text-start">
+                        {%- for page_tag in page.tags -%}
+                            {%- for site_tag in site.tags -%}
+                                {%- if page_tag == site_tag.slug -%}
+                                <div class="project-tag me-4 float-sm-start">
+                                    <i class="{{ site_tag.icon }}"></i>
+                                    {{ site_tag.title }}
+                                </div><!-- project-tag -->
+                                {%- endif -%}
+                            {%- endfor -%}
+                        {%- endfor -%}
+                    </div><!-- col -->
+                    {%- if page.github_url -%}
+                        <div class="code col-12 col-sm-auto col-lg-2 mt-3 mt-sm-5 text-center text-sm-end">
+                            <a href="{{ page.github_url }}">
+                                <i class="fa-solid fa-code"></i>
+                                View code
+                            </a>
+                        </div><!-- .col -->
+                    {%- endif -%}
+                </div><!-- row -->
+            </div><!-- .header -->
+        </div><!-- .col -->
+    </div><!-- .row -->
+</div><!-- .container -->

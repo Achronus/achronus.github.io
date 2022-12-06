@@ -1,7 +1,5 @@
 // FOOTER STYLES
 #footer{
-  @include remPad(30px, 0px);
-  @include remPadTop(40px);
   background-color: $dark-blue;
   .footer-text {
     @include remFont(14px);

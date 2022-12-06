@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
   page_name = setActiveClass();
   setPortfolioTagFloats(page_name);
+
+  if (document.getElementsByClassName('single-page').length > 0) {
+    generateSidebarContents(4);
+  }
   
   if (document.body.id != 'homepage') {
     // Create back to top button
@@ -50,23 +54,23 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 });
 
-jQuery(document).ready(function() {
+$(document).ready(function() {
   // Add style to navbar toggler
-  jQuery(".navbar-toggler").click(function() {
-    jQuery("#site-navigation .container").toggleClass("toggler-bg");
+  $(".navbar-toggler").click(function() {
+    $("#site-navigation .container").toggleClass("toggler-bg");
   });
 
-  jQuery('.btn-previous').click(function() {
-    jQuery('.nav-item > .active').next('li').find('button').trigger('click');
+  $('.btn-previous').click(function() {
+    $('.nav-item > .active').next('li').find('button').trigger('click');
   });
 
-  jQuery('.btn-next').click(function() {
-    jQuery('.nav-item > .active').next('li').find('button').trigger('click');
+  $('.btn-next').click(function() {
+    $('.nav-item > .active').next('li').find('button').trigger('click');
   });
 
   // Disable buttons in first and last tabs
-  jQuery('#tab-content .tab-pane:first-child .helper-btn .btn-previous').addClass('disabled');
-  jQuery('#tab-content .tab-pane:last-child .helper-btn .btn-next').addClass('disabled');
+  $('#tab-content .tab-pane:first-child .helper-btn .btn-previous').addClass('disabled');
+  $('#tab-content .tab-pane:last-child .helper-btn .btn-next').addClass('disabled');
 });
 
 
@@ -102,4 +106,29 @@ function setPortfolioTagFloats(page_name) {
       }
     }
   }
+}
+
+function generateSidebarContents(n_words) {
+  headers = $('.page-content .description h2, .page-content .description h3');
+  toc = $('.sidebar #toc ul');
+
+  // Create each header
+  headers.each(function() {
+    header_words = this.textContent.toLowerCase().replace(/[^\w\s\']|_/g, "").replace(/\s+/g, " ").split(' ');
+    header_words = header_words.slice(0, n_words).join('-');
+    
+    var content = function(item, class_name) {
+      toc.append('<li class="' + class_name + '"><a href="#' + header_words + '">' + item.textContent + '</a></li>');
+    };
+
+    if (this.tagName == 'H3') {
+      content(this, 'subheading');
+    }
+    else {
+      content(this, 'heading');
+    }
+    
+    // Create anchor above header
+    $('<div id="' + header_words + '" class="anchor"></div>').insertBefore(this);
+  });
 }

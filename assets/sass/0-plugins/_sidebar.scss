@@ -1,5 +1,11 @@
 // SIDEBAR STYLES
 .sidebar {
+  height: 100%;
+  @include remMarginTop(70px);
+  padding-left: 5%;
+  &.sticky-top {
+    top: 15%;
+  }
   h2 {
     font-family: $rubik;
     font-weight: bold;
@@ -38,7 +44,7 @@
       }
     }
   }
-  .categories {
+  #toc {
     @include remMarginBot(40px);
     ul {
       margin: 0;
@@ -55,6 +61,9 @@
           @include remPadRight(5px);
           color: $grey;
         }
+        &.subheading {
+          @include remMarginLeft(12px);
+        }
         span {
           &.number {
             float: right;
@@ -62,6 +71,11 @@
             background-color: $tag-bg;
             @include remPad(0px, 5px);
             color: $grey;
+          }
+        }
+        a {
+          &.active {
+            color: red;
           }
         }
       }
