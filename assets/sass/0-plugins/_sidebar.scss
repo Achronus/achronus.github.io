@@ -2,7 +2,8 @@
 .sidebar {
   height: 100%;
   @include remMarginTop(70px);
-  padding-left: 5%;
+  padding-right: 1.5%;
+  padding-left: 1.5%;
   &.sticky-top {
     top: 15%;
   }
@@ -13,6 +14,7 @@
     color: $black;
     @include remFont(24px);
     @include remMarginBot(20px);
+    @include remPadLeft(20px);
     &:before {
       display: inline-block;
       content: "";
@@ -50,19 +52,31 @@
       margin: 0;
       padding: 0;
       list-style: none;
+      overflow: auto;
+      height: 550px;
+      scrollbar-color: $dark-blue #e0e0e0;
+      scrollbar-width: thin;
       li {
         font-family: $rubik;
         color: $black;
         font-weight: 300;
         text-transform: capitalize;
-        @include remPadBot(15px);
+        @include remMarginBot(15px);
         &:before {
-          content: '>';
           @include remPadRight(5px);
           color: $grey;
         }
+        &.heading {
+          @include remPadLeft(20px);
+          &:before {
+            content: '>';
+          }
+        }
         &.subheading {
-          @include remMarginLeft(12px);
+          @include remPadLeft(32px);
+          &:before {
+            content: '-';
+          }
         }
         span {
           &.number {
@@ -73,10 +87,12 @@
             color: $grey;
           }
         }
-        a {
-          &.active {
-            color: red;
-          }
+        &.active {
+          color: $dark-blue;
+          font-weight: 400;
+        }
+        &:hover, a:hover, &:hover:before, &.active:before {
+          color: $dark-blue;
         }
       }
     }
