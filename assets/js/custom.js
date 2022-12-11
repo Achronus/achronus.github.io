@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (document.getElementsByClassName('single-page').length > 0) {
     generateSidebarContents(4);
+    addSidebarNavScrollHighlight();
   }
   
   if (document.body.id != 'homepage') {
@@ -130,5 +131,26 @@ function generateSidebarContents(n_words) {
     
     // Create anchor above header
     $('<div id="' + header_words + '" class="anchor"></div>').insertBefore(this);
+  });
+}
+
+function addSidebarNavScrollHighlight() {
+  var anchorDivs = $('div.anchor');
+  var sidebarHeaders = $('div.sidebar li');
+
+  $(document).scroll(function() {
+      anchorDivs.each(function(index) {
+        var anchorOffset = $(this).offset().top;
+        var anchorHeight = $(this).outerHeight();
+        var anchorBottom = anchorOffset + anchorHeight;
+
+        var scrollPosition = $(document).scrollTop();
+  
+        if (scrollPosition > anchorBottom) {
+          $(sidebarHeaders[index]).addClass('active');
+        } else {
+          $(sidebarHeaders[index]).removeClass('active');
+        };
+    });
   });
 }
