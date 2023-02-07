@@ -1,15 +1,31 @@
 ---
 title: Portfolio
 layout: default
+id: portfolio-page
 ---
+<!-- PORTFOLIO FILTER
+  ============================================================================== -->
+  <section id="portfolio-filter" class="pb-0 pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 filter-btns text-center">
+                <button type="button" class="active btn btn-link" data-filter="all">All</button>
+                {%- for category in site.project_categories -%}
+                    <button type="button" class="btn btn-link" data-filter="{{ category.slug }}">{{ category.title }}</button>
+                {%- endfor -%}
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+</section><!-- #portfolio-filter -->
+
 <!-- PROJECTS
   ============================================================================== -->
-<section id="portfolio">
+<section id="portfolio" class="pt-3">
     <div class="container">
         <div class="row">
             {%- assign sorted = site.projects | sort: 'date' | reverse -%}
             {%- for project in sorted -%}
-            <div class="project-item col-md-6 col-xl-4">
+            <div class="project-item col-md-6 col-xl-4" data-category="{{ project.category }}">
                 <div class="content">
                     <div class="img-container">
                         <a href="{{ project.url }}">

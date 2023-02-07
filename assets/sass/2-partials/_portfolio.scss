@@ -1,16 +1,65 @@
 // PORTFOLIO PAGE
-#portfolio {
-  @include remMargin(40px, 0px);
-  .description {
-    .tags {
-      .project-tag {
+#portfolio-filter {
+  .filter-btns {
+    button {
+      &.btn-link {
+        text-decoration: none;
+        color: $black;
+        &:hover {
+          color: $dark-blue;
+          transition: $base-transition;
+        }
+      }
+      &.active {
         color: $dark-blue;
       }
     }
-    .text {
-      @include remPadTop(10px);
+  }
+}
+
+#portfolio {
+  @include remMargin(40px, 0px);
+  height: 60vh;
+  .project-item {
+    .description {
+      .tags {
+        .project-tag {
+          color: $dark-blue;
+        }
+      }
+      .text {
+        @include remPadTop(10px);
+      }
+    }
+    display: none;
+    -webkit-animation: hideItem 700ms ease both;
+    animation: hideItem 700ms ease both;
+    &.show {
+      display: block;
+      -webkit-animation: showItem 700ms ease both;
+      animation: showItem 700ms ease both;
     }
   }
+}
+
+@-webkit-keyframes hideItem {
+  0% { -webkit-transform: scale(1) rotate(0); opacity: 1; visibility: visible; }
+  100% { -webkit-transform: scale(0) rotate(-12deg); opacity: 0; visibility: hidden; }
+}
+
+@keyframes hideItem {
+  0% { transform: scale(1) rotate(0); opacity: 1; visibility: visible; }
+  100% { transform: scale(0) rotate(-12deg); opacity: 0; visibility: hidden;  }
+}
+
+@-webkit-keyframes showItem {
+  0% { -webkit-transform: scale(0) rotate(12deg); opacity: 0; visibility: hidden;  }
+  100% { -webkit-transform: scale(1) rotate(0); opacity: 1; visibility: visible; }
+}
+
+@keyframes showItem {
+  0% { transform: scale(0) rotate(12deg); opacity: 0; visibility: hidden;  }
+  100% { transform: scale(1) rotate(0); opacity: 1; visibility: visible; }
 }
 
 #portfolio, #articles {

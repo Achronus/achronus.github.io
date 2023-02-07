@@ -1,18 +1,4 @@
 // GLOBAL MIXINS
-@mixin media-breakpoint-up($breakpoint) {
-  // Check breakpoint exists
-  @if map-has-key($grid-breakpoints, $breakpoint) {
-    $breakpoint-value: map-get($grid-breakpoints, $breakpoint);
-
-    // Write the media query
-    @media (min-width: $breakpoint-value) {
-      @content;
-    }
-  } @else {
-    @warn 'Invalid breakpoint: #{$breakpoint}.';
-  }
-}
-
 @mixin boxShadow($offsetX, $offsetY, $blurRadius, $shadowColour) {
   box-shadow: $offsetX $offsetY $blurRadius $shadowColour;
   -moz-box-shadow: $offsetX $offsetY $blurRadius $shadowColour;

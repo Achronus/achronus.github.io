@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", function() {
   page_name = setActiveClass();
   setPortfolioTagFloats(page_name);
 
+  if (document.body.id == 'page portfolio-page') {
+    assignPortfolioItemsToFilters();
+  }
+
   if (document.getElementsByClassName('single-page').length > 0) {
     generateSidebarContents(4);
     addSidebarNavScrollHighlight();
@@ -74,6 +78,51 @@ $(document).ready(function() {
   $('#tab-content .tab-pane:last-child .helper-btn .btn-next').addClass('disabled');
 });
 
+function assignPortfolioItemsToFilters() {
+  const portfolioContainer = document.querySelector('#portfolio')
+  const filterContainer = document.querySelector("#portfolio-filter .filter-btns");
+  const filterBtns = Array.from(filterContainer.children);
+  const portfolioItems = Array.from(document.querySelectorAll(".project-item"));
+  let currentFilter = filterContainer.querySelector("button").getAttribute("data-filter"); 
+  var currentActive = filterBtns.find((btn) => btn.classList.contains('active'));
+
+  const render = (filter) => {
+    portfolioContainer.style.height = '60vh';
+    portfolioItems.forEach(item => {
+      item.classList.remove("show");
+      setTimeout(() => {
+        if(item.getAttribute("data-category") === filter || filter === 'all') {
+          // Add show to clicked data-category
+          if (!item.classList.contains("show")) {
+            item.classList.add("show");
+          }
+        } else {
+          // Hide when category doesn't match
+          if(item.classList.contains("show")) {
+            item.classList.remove("show");
+          }
+        }
+        portfolioContainer.style.height = 'auto';
+      }, 50);
+    });
+  }
+
+  filterBtns.forEach(btn => {
+      let filterValue = btn.getAttribute("data-filter");
+      
+      btn.onclick = () => {
+        // Remove active from previous
+        currentActive.classList.remove("active");
+        btn.classList.add("active");  // Add active to current
+        currentActive = btn;  // Update current
+
+        // Update current filter and rerender
+        currentFilter = filterValue; 
+        render(currentFilter);
+    }
+  });
+  render(currentFilter);
+}
 
 function setActiveClass() {
   // Get URL and convert into .nav-link format
