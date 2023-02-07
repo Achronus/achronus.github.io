@@ -12,37 +12,27 @@
   }
 }
 
-#back-to-top {
-  .top-link {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    display: inline-flex;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    margin: 0 3em 3em 0;
-    border-radius: 50%;
-    padding: .25em;
-    width: 60px;
-    height: 60px;
-    color: #fff;
-    background-color: $dark-blue;
+#btn-back-to-top {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: none;
+  cursor: pointer;
+  margin: 0 3em 3em 0;
+  border-radius: 50%;
+  padding: .25em;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  background-color: $dark-blue;
+  transition: $base-transition;
+  border: none;
+  scroll-behavior: auto;
+  &:hover {
+    background-color: $black;
     transition: $base-transition;
-    &.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    &.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-    &:hover {
-      background-color: $black;
-      transition: $base-transition;
-    }
-    svg {
-      @include remFont(24px);
-    }
+  }
+  svg {
+    @include remFont(24px);
   }
 }

@@ -13,49 +13,18 @@ document.addEventListener("DOMContentLoaded", function() {
   
   if (document.body.id != 'homepage') {
     // Create back to top button
-    const scrollToTopButton = document.querySelector('.top-link');
+    const scrollToTopButton = document.getElementById('btn-back-to-top');
 
-    const scrollFunc = () => {
-      let y = window.scrollY;
-      
-      // Add and remove sticky navbar styles
-      var cList = document.body.classList;
-      if(cList.contains('wiki-articles-template') || cList.contains('projects-template') || cList.contains('error404')) {
-      }
-      else {
-        if (window.scrollY > 20) {
-          document.getElementById('site-navigation').classList.add('sticky-nav');
-          document.getElementById('mainNavBar').classList.remove('mt-4');
-        } else {
-          document.getElementById('site-navigation').classList.remove('sticky-nav');
-          document.getElementById('mainNavBar').classList.add('mt-4');
-        } 
-      }
-
-      // Display button after view-height reached
-      if (y > 500) {
-        scrollToTopButton.className = "top-link show";
-      } else {
-        scrollToTopButton.className = "top-link hide";
-      }
+    window.onscroll = function() {
+      scrollBackToTop(scrollToTopButton, 200);
     };
 
-    window.addEventListener("scroll", scrollFunc);
-
-    const scrollToTop = () => {
-      const c = document.documentElement.scrollTop || document.body.scrollTop;
-      
-      // Scroll back to top
-      if (c > 200) {
-        window.requestAnimationFrame(scrollToTop);
-        window.scrollTo(0, c - c / 1.8);
-      }
-    };
-
-    scrollToTopButton.onclick = function(e) {
-      e.preventDefault();
-      scrollToTop();
-    };
+    const scrollTop = function() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  
+    scrollToTopButton.addEventListener("click", scrollTop);
   };
 });
 
@@ -77,6 +46,14 @@ $(document).ready(function() {
   $('#tab-content .tab-pane:first-child .helper-btn .btn-previous').addClass('disabled');
   $('#tab-content .tab-pane:last-child .helper-btn .btn-next').addClass('disabled');
 });
+
+function scrollBackToTop(btn, threshold) {
+  if (document.body.scrollTop || document.documentElement.scrollTop > threshold) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+}
 
 function assignPortfolioItemsToFilters() {
   const portfolioContainer = document.querySelector('#portfolio')
