@@ -8,7 +8,7 @@ about_page_url: 'about'
 portfolio_page_url: 'portfolio'
 blog_page_url: 'blog'
 
-footer_text: '2022 All Rights Reserved. Created by me.'
+footer_text: 'All Rights Reserved. Created by me.'
 
 collections:
   activities:

@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-6 footer-text align-self-center text-center text-md-start mb-3 mb-md-0">
-            <p>&copy; {{ site.footer_text }}</p>
+            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.footer_text }}</p>
           </div> <!-- footer-text -->
           <div class="col-sm-12 col-md-6 social-icons text-center text-md-end">
             {%- include page_parts/social-btn.html name="linkedin" url=site.linkedin_url -%}
