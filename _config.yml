@@ -25,3 +25,9 @@ collections:
     permalink: /blog/:title
   blog_articles:
     output: true
+
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
