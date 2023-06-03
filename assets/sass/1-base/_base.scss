@@ -43,7 +43,8 @@ section {
   }
 }
 
-p {
+p, li {
+  @include remFont(17px);
   font-family: $rubik;
   font-weight: 300;
   color: $black;
