@@ -123,14 +123,14 @@ p, li {
       &.fa-github {
         color: #454545;
       }
+      &.fa-mug-hot {
+        color: #6a5342;
+      }
     }
     &:hover {
       background-color: $black !important;
       svg {
-        &.fa-linkedin {
-          color: #fff;
-        }
-        &.fa-github {
+        &.fa-linkedin, &.fa-github, &.fa-mug-hot {
           color: #fff;
         }
       }

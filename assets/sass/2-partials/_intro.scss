@@ -79,8 +79,11 @@
         &.github-btn {
           background-color: #454545;
         }
+        &.mug-hot-btn {
+          background-color: #6a5342;
+        }
         svg {
-          &.fa-linkedin, &.fa-github {
+          &.fa-linkedin, &.fa-github, &.fa-mug-hot {
             color: #fff;
           }
         }
