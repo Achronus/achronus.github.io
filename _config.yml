@@ -7,7 +7,7 @@ buymeacoffee_url: 'https://www.buymeacoffee.com/achronus'
 
 about_page_url: 'about'
 portfolio_page_url: 'portfolio'
-blog_page_url: 'blog'
+blog_page_url: 'https://medium.com/@achronus'
 
 footer_text: 'All Rights Reserved. Created by me.'
 
@@ -21,11 +21,6 @@ collections:
   projects:
     output: true
     permalink: /:collection/:title
-  blog_topics:
-    output: true
-    permalink: /blog/:title
-  blog_articles:
-    output: true
 
 markdown: kramdown
 kramdown:
