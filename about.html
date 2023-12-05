@@ -21,23 +21,3 @@ id: about-page
         </div><!-- row -->
     </div><!-- container -->
 </section><!-- #about-me -->
-
-<!-- ACTIVITY
-============================================================================== -->
-<section id="activity">
-    <div class="container">
-        <div class="row">
-            {%- for activity in site.activities -%}
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="title text-center text-md-start">
-                    {%- include page_parts/image.html url=activity.img_url alt=activity.header %}
-                    <h2>{{ activity.header }}</h2>
-                </div><!-- title -->
-                <div class="text text-center text-md-start mt-4 mb-5 mb-md-0">
-                    {{ activity.content }}
-                </div><!-- text -->
-            </div><!-- col -->
-            {%- endfor -%}
-        </div><!-- row -->
-    </div><!-- container -->
-</section><!-- #activity -->
